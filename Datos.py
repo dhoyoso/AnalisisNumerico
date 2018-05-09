@@ -14,14 +14,6 @@ class datos(QDialog):
         self.funciones = funciones
         self.continuar.clicked.connect(self.on_pushButton_clicked)
 
-    def solucionShow(self):
-        self.dialogue = solucion()
-        self.dialogue.show()
-        self.dialogue.clearParameters()
-        if(self.Eabs.isChecked()):
-            self.dialogue.setParametersForBiseccion(self.xi.value(),self.xs.value(),self.tol.value(), self.niter.value(),True)
-        elif(self.Erel.isChecked()):
-            self.dialogue.setParametersForBiseccion(self.xi.value(),self.xs.value(),self.tol.value(), self.niter.value(),False)
 
     @pyqtSlot()
     def on_pushButton_clicked(self):
@@ -30,10 +22,4 @@ class datos(QDialog):
         self.funciones.setFppx(self.Fppx.text())
         self.funciones.setGx(self.Gx.text())
         self.close()
-
-
-
-        #self.solucionShow()
-
-
 

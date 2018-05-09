@@ -11,6 +11,7 @@ from RaicesMultiples import RaicesMultiples
 from ReglaFalsa import ReglaFalsa
 from Secante import Secante
 
+
 from AnalisisNumerico.PuntoFijo import PuntoFijo
 
 ## Create functions and set domain length
@@ -32,7 +33,6 @@ plt.grid(True)
 plt.legend(['y = x^2', 'y = 2x'], loc='upper left')
 
 ## Show the graph
-plt.show()
 
 class solucion(QDialog):
     xi = float
@@ -308,6 +308,7 @@ class solucion(QDialog):
     @pyqtSlot()
     def on_pushButton_clicked(self):
         self.tableWidget.clear()
+
 
 
 

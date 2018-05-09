@@ -112,7 +112,7 @@ class main(QDialog):
 
 
 
-app = QApplication(sys.argv)
-widget = main()
-widget.show()
-sys.exit(app.exec())
+#app = QApplication(sys.argv)
+#widget = main()
+#widget.show()
+#sys.exit(app.exec())
