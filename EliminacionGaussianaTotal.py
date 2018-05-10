@@ -9,6 +9,7 @@ class EliminacionGaussianaTotal:
         self.unica = True  # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
         self.marcas = []
         self.arregloMarcas = []
+        self.etapas = []
 
     def eliminacionGaussianaTotal(self, n, Ab):
         self.Ab = Ab
@@ -32,6 +33,7 @@ class EliminacionGaussianaTotal:
                     self.Ab[i - 1][j - 1] = self.Ab[i - 1][j - 1] - multiplicador * self.Ab[k - 1][j - 1]
                 print("Multiplicador" + str(i) + "," + str(k) + " : " + str(multiplicador))
             print(" ")
+            self.etapas.append(self.Ab)
             self.imprimirMatriz()
         print("Sustitución Regresiva")
         for i in range(n, 0, -1):
@@ -86,6 +88,12 @@ class EliminacionGaussianaTotal:
 
     def getAb(self):
         return self.Ab
+
+    def getEtapas(self):
+        return self.etapas
+
+    def getarregloMarcas(self):
+        return self.arregloMarcas
 
     def reset(self):
         self.xns = []
