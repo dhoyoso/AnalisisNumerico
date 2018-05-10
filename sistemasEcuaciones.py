@@ -45,7 +45,8 @@ class sistemasEcuaciones(QDialog):
         self.sistemaecuaciones.setAB(gausi.getAb())
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
-        self.dialogue = solucionsistemas(self.sistemaecuaciones, gausi.unica, gausi.marcas)
+        self.sistemaecuaciones.setEtapas(gausi.getEtapas())
+        self.dialogue = solucionsistemas(self.sistemaecuaciones, gausi.unica, gausi.getArregloMarcas())
         self.dialogue.show()
 
     def ingsistemasShow(self):

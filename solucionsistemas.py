@@ -55,6 +55,7 @@ class solucionsistemas(QDialog):
                 final = self.sistemas.lastAB
                 xns = self.sistemas.xns
                 n = self.sistemas.n
+                marcas = self.marcas[-1]
                 print("ini", inicial)
                 # primera iter
                 labels = []

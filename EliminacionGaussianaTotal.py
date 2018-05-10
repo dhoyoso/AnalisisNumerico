@@ -80,7 +80,6 @@ class EliminacionGaussianaTotal:
                 self.imprimirMatriz()
 
     def imprimirMatriz(self):
-        # print('     '.join(str(self.marcas)))
         print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in self.Ab]))
 
     def getXns(self):
@@ -92,19 +91,21 @@ class EliminacionGaussianaTotal:
     def getEtapas(self):
         return self.etapas
 
-    def getarregloMarcas(self):
+    def getArregloMarcas(self):
         return self.arregloMarcas
 
     def reset(self):
         self.xns = []
         self.Ab = [[]]
         self.n = 0
+        self.arregloMarcas = []
+        self.etapas = []
 
 
-gausi = EliminacionGaussianaTotal()
+#gausi = EliminacionGaussianaTotal()
 a = [1, -2, 0.5, -5]
 c = [-2, 5, -1.5, 0]
 b = [-0.2, 1.75, -1, 10]
 
 e = [a, b, c]
-gausi.eliminacionGaussianaTotal(3, e)
+#gausi.eliminacionGaussianaTotal(3, e)

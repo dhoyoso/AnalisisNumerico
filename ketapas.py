@@ -19,7 +19,11 @@ class Ketapas(QDialog):
         self.etapa.setText(str(self.contadorEtapa +1))
         self.imprimirMatriz(self.sistemas.etapas[self.contadorEtapa])
         print(self.marcas)
-        self.setEtapa(self.marcas , self.sistemas.etapas[self.contadorEtapa])
+        if(marcas!=[]):
+            self.setEtapa(self.marcas[self.contadorEtapa] , self.sistemas.etapas[self.contadorEtapa])
+        else:
+            self.setEtapa(self.marcas , self.sistemas.etapas[self.contadorEtapa])
+
         if (self.contadorEtapa == (self.sistemas.n - 2)):
             self.siguiente.setEnabled(False)
             self.siguiente.setDisabled(True)
@@ -135,19 +139,31 @@ class Ketapas(QDialog):
             self.etapa.setText(str(self.contadorEtapa + 1))
             print(str(self.contadorEtapa))
             if (self.contadorEtapa == (self.sistemas.n - 2)):
-                self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
+                if (self.marcas != []):
+                    self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
+                else:
+                    self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
                 self.siguiente.setEnabled(False)
                 self.siguiente.setDisabled(True)
             else:
-                self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
+                if (self.marcas != []):
+                    self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
+                else:
+                    self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
                 self.siguiente.setEnabled(True)
                 self.siguiente.setDisabled(False)
             if (self.contadorEtapa == 0):
-                self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
+                if (self.marcas != []):
+                    self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
+                else:
+                    self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
                 self.anterior.setEnabled(False)
                 self.anterior.setDisabled(True)
             else:
-                self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
+                if (self.marcas != []):
+                    self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
+                else:
+                    self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
                 self.anterior.setEnabled(True)
                 self.anterior.setDisabled(False)
 
