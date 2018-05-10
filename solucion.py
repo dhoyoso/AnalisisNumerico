@@ -12,7 +12,7 @@ from ReglaFalsa import ReglaFalsa
 from Secante import Secante
 
 
-from AnalisisNumerico.PuntoFijo import PuntoFijo
+from PuntoFijo import PuntoFijo
 
 ## Create functions and set domain length
 x = np.arange(0.0, 2.0, 0.01)

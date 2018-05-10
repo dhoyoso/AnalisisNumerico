@@ -14,7 +14,7 @@ from paramRaices import paramRaices
 from paramRegla import paramRegla
 from paramSecante import paramSecante
 
-from AnalisisNumerico.Datos import datos
+from Datos import datos
 
 ## Create functions and set domain length
 x = np.arange(0.0, 2.0, 0.01)

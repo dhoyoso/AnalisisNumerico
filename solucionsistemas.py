@@ -1,7 +1,7 @@
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QTableWidget
 from PyQt5.uic import loadUi
-from AnalisisNumerico.ketapas import Ketapas
+from ketapas import Ketapas
 
 class solucionsistemas(QDialog):
     def __init__(self, sistemas, solunica,marcas):

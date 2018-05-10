@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class EliminacionGaussianaTotal:
     def __init__(self):
         self.xns = []
@@ -7,6 +8,7 @@ class EliminacionGaussianaTotal:
         self.n = 0
         self.unica = True  # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
         self.marcas = []
+        self.arregloMarcas = []
 
     def eliminacionGaussianaTotal(self, n, Ab):
         self.Ab = Ab
@@ -21,6 +23,7 @@ class EliminacionGaussianaTotal:
                 self.Ab[k - 1][k - 1]))
             print("Multiplicadores:")
             self.pivoteoTotal(k)
+            print(self.arregloMarcas)
             if self.unica == False:
                 return
             for i in range(k + 1, n + 1):
@@ -38,7 +41,7 @@ class EliminacionGaussianaTotal:
             temp = (self.Ab[i - 1][n] - sumatoria) / self.Ab[i - 1][i - 1]
             print("ESTA ES I: ", i)
             self.xns[i - 1] = temp
-            print("X" + str(self.marcas[i-1]) + " = " + str(self.xns[i - 1]))
+            print("X" + str(self.marcas[i - 1]) + " = " + str(self.xns[i - 1]))
 
     def pivoteoTotal(self, k):
         max = 0
@@ -63,13 +66,14 @@ class EliminacionGaussianaTotal:
                 self.Ab[filaMax][i] = aux
             self.imprimirMatriz()
             if colMax != k - 1:
-                for j in range(0, len(self.Ab[0])-1):
+                for j in range(0, len(self.Ab[0]) - 1):
                     aux = self.Ab[j][k - 1]
                     self.Ab[j][k - 1] = self.Ab[j][colMax]
                     self.Ab[j][colMax] = aux
                 aux2 = self.marcas[colMax]
                 self.marcas[colMax] = self.marcas[k - 1]
                 self.marcas[k - 1] = aux2
+                self.arregloMarcas.append(np.copy(self.marcas))
                 print("")
                 self.imprimirMatriz()
 
@@ -89,11 +93,10 @@ class EliminacionGaussianaTotal:
         self.n = 0
 
 
-#gausi = EliminacionGaussianaTotal()
-a = [2, -3, 4, 1, 10]
-b = [-4, 2, 1, -2, -10]
-c = [1, 3, -5, 3, 32]
-d = [-3, -1, 1, -1, -21]
+gausi = EliminacionGaussianaTotal()
+a = [1, -2, 0.5, -5]
+c = [-2, 5, -1.5, 0]
+b = [-0.2, 1.75, -1, 10]
 
-e = [a, b, c, d]
-#gausi.eliminacionGaussianaTotal(4, e)
+e = [a, b, c]
+gausi.eliminacionGaussianaTotal(3, e)

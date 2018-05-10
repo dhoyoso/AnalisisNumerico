@@ -5,6 +5,7 @@ class EliminacionGaussianaSimple:
         self.Ab = [[]]
         self.n = 0
         self.etapas =[]
+        self.unica = True # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
 
     def eliminacionGaussianaSimple(self, n, Ab):
         self.Ab = Ab
@@ -15,8 +16,11 @@ class EliminacionGaussianaSimple:
         self.imprimirMatriz()
         for k in range(1, n):
             print("Etapa " + str(k))
-            print("Objetivo: Poner ceros debajo del elemento Ab" + str(k) + "," + str(k) + "= " + str(
-                self.Ab[k - 1][k - 1]))
+            if self.Ab[k - 1][k - 1] == 0:
+                print("El sistema no tiene solución unica!")
+                self.unica = False
+                return
+            print("Objetivo: Poner ceros debajo del elemento Ab" + str(k) + "," + str(k) + "= " + str(self.Ab[k - 1][k - 1]))
             print("Multiplicadores:")
             for i in range(k + 1, n + 1):
                 multiplicador = self.Ab[i - 1][k - 1] / self.Ab[k - 1][k - 1]

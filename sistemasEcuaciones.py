@@ -1,13 +1,13 @@
 
-from AnalisisNumerico.Sistemas import Sistemas
+from Sistemas import Sistemas
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.uic import loadUi
-from AnalisisNumerico.EliminacionGaussianaSimple import EliminacionGaussianaSimple
-from AnalisisNumerico.EliminacionGaussianaParcial import EliminacionGaussianaParcial
-from AnalisisNumerico.EliminacionGaussianaTotal import EliminacionGaussianaTotal
-from AnalisisNumerico.ingSistemas import ingSistemas
-from AnalisisNumerico.solucionsistemas import solucionsistemas
+from EliminacionGaussianaSimple import EliminacionGaussianaSimple
+from EliminacionGaussianaParcial import EliminacionGaussianaParcial
+from EliminacionGaussianaTotal import EliminacionGaussianaTotal
+from ingSistemas import ingSistemas
+from solucionsistemas import solucionsistemas
 
 class sistemasEcuaciones(QDialog):
     def __init__(self):
@@ -25,7 +25,7 @@ class sistemasEcuaciones(QDialog):
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
         self.sistemaecuaciones.setEtapas(gausi.getEtapas())
-        self.dialogue = solucionsistemas(self.sistemaecuaciones,True,[])
+        self.dialogue = solucionsistemas(self.sistemaecuaciones,gausi.unica,[])
         self.dialogue.show()
 
     def parcialShow(self):
@@ -34,6 +34,7 @@ class sistemasEcuaciones(QDialog):
         self.sistemaecuaciones.setAB(gausi.getAb())
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
+        self.sistemaecuaciones.setEtapas(gausi.getEtapas())
         self.dialogue = solucionsistemas(self.sistemaecuaciones, gausi.unica,[])
         self.dialogue.show()
 

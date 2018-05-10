@@ -1,14 +1,17 @@
+import numpy as np
 class EliminacionGaussianaParcial:
     def __init__(self):
         self.xns = []
         self.Ab = [[]]
         self.n = 0
         self.unica = True # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
+        self.etapas = []
 
     def eliminacionGaussianaParcial(self, n, Ab):
         self.Ab = Ab
         self.n = n
         self.xns = [0] * n
+        self.etapas = [0] * n
         print("Matriz Original")
         self.imprimirMatriz()
         for k in range(1, n):
@@ -24,6 +27,8 @@ class EliminacionGaussianaParcial:
                     self.Ab[i - 1][j - 1] = self.Ab[i - 1][j - 1] - multiplicador * self.Ab[k - 1][j - 1]
                 print("Multiplicador" + str(i) + "," + str(k) + " : " + str(multiplicador))
             print(" ")
+            print(k-1)
+            self.etapas[k-1] = np.copy(self.Ab)
             self.imprimirMatriz()
         print("Sustitución Regresiva")
         for i in range(n, 0, -1):
@@ -65,6 +70,13 @@ class EliminacionGaussianaParcial:
 
     def getAb(self):
         return self.Ab
+
+    def getEtapas(self):
+        return self.etapas
+
+    def imprimirMatrizEtapas(self):
+        print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in self.etapas]))
+
 
     def reset(self):
         self.xns = []

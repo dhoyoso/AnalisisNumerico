@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.uic import loadUi
-from AnalisisNumerico.main import main
-from AnalisisNumerico.sistemasEcuaciones import sistemasEcuaciones
+from main import *
+from sistemasEcuaciones import sistemasEcuaciones
 
 class paginaprincipal(QDialog):
     def __init__(self):
@@ -43,4 +45,4 @@ class paginaprincipal(QDialog):
 app = QApplication(sys.argv)
 widget = paginaprincipal()
 widget.show()
-sys.exit(app.exec())
+sys.exit(app.exec_())
