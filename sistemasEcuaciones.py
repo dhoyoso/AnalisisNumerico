@@ -11,6 +11,9 @@ from factorizacionLUCholesky import FactorizacionLUCholesky
 from factorizacionLUCrout import FactorizacionLUCrout
 from factorizacionLUDoolittle import FactorizacionLUDoolittle
 
+from jacobi import Jacobi
+from seidel import Seidel
+
 from ingSistemas import ingSistemas
 from solucionsistemas import solucionsistemas
 
@@ -87,8 +90,9 @@ class sistemasEcuaciones(QDialog):
         self.dialogue.show()
 
     def jacobishow(self):
-        gausi = FactorizacionLUCholesky()
-        gausi.factorizacionLUCholesky(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        gausi = Jacobi()
+        #    def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
+        gausi.jacobi(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value(),)
         self.sistemaecuaciones.setXns(gausi.getXns())
         self.sistemaecuaciones.setEtapasL(gausi.getEtapasL())
         self.sistemaecuaciones.setEtapasU(gausi.getEtapasU())

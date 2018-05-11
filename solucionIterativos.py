@@ -12,6 +12,7 @@ from ReglaFalsa import ReglaFalsa
 from Secante import Secante
 
 
+
 from PuntoFijo import PuntoFijo
 
 ## Create functions and set domain length
