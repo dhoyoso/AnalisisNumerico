@@ -1,4 +1,6 @@
 import numpy as np
+
+
 class FactorizacionLUCrout:
     def __init__(self):
         self.xns = []
@@ -9,7 +11,7 @@ class FactorizacionLUCrout:
         self.n = 0
         self.etapasL = []
         self.etapasU = []
-        self.zs = []
+        self.z = []
         self.unica = True
 
     def factorizacionLUCrout(self, A, b, n):
@@ -33,7 +35,6 @@ class FactorizacionLUCrout:
                 elif i == j:
                     self.L[i][j] = -1
                     self.U[i][j] = 1
-
 
         print("Etapa 0")
         print("Matriz A")
@@ -68,13 +69,15 @@ class FactorizacionLUCrout:
                 self.U[k - 1][i - 1] = (self.A[k - 1][i - 1] - suma) / self.L[k - 1][k - 1]
             print("Matriz U:")
             self.imprimirMatrizU()
+            self.etapasL.append(np.copy(self.L))
+            self.etapasU.append(np.copy(self.U))
         print("Sustición progresiva Lz = b:")
-        z = self.sustitucionProgresiva()
-        print("z:", str(z))
+        self.z = self.sustitucionProgresiva()
+        print("z:", str(self.z))
         print("Sustición regresiva Ux = z")
-        x = self.sustitucionRegresiva(z)
-        for i in range(0, len(x)):
-            print("X", i + 1, " = ", x[i])
+        self.xns = self.sustitucionRegresiva(self.z)
+        for i in range(0, len(self.xns)):
+            print("X", i + 1, " = ", self.xns[i])
 
     def sustitucionProgresiva(self):
         m = len(self.L)
@@ -127,13 +130,22 @@ class FactorizacionLUCrout:
     def getAb(self):
         return self.Ab
 
+    def getZns(self):
+        return self.z
+
+    def getEtapasL(self):
+        return self.etapasL
+
+    def getEtapasU(self):
+        return self.etapasU
+
     def reset(self):
         self.xns = []
         self.Ab = [[]]
         self.n = 0
 
 
-gausi = FactorizacionLUCrout()
+#gausi = FactorizacionLUCrout()
 q = [45, -3, -5, -7]
 r = [7, 23, -5, -2]
 p = [-5, -2, 67, -8]
@@ -143,4 +155,4 @@ a = [q, r, p, s]
 
 b = [-20, 69, 96, -32]
 
-gausi.factorizacionLUCrout(a, b, 4)
+#gausi.factorizacionLUCrout(a, b, 4)

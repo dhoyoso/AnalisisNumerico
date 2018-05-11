@@ -73,7 +73,7 @@ class FactorizacionLUDoolittle:
         print("Sustición regresiva Ux = z")
         self.xns = self.sustitucionRegresiva(self.z)
         for i in range(0, len(self.xns)):
-            print("X", i + 1, " = ", self.xnsx[i])
+            print("X", i + 1, " = ", self.xns[i])
 
     def sustitucionProgresiva(self):
         m = len(self.L)
@@ -132,6 +132,15 @@ class FactorizacionLUDoolittle:
     def getB(self):
         return self.b
 
+    def getZns(self):
+        return self.z
+
+    def getEtapasL(self):
+        return self.etapasL
+
+    def getEtapasU(self):
+        return self.etapasU
+
     def reset(self):
         self.xns = []
         self.Ab = [[]]
@@ -141,7 +150,7 @@ class FactorizacionLUDoolittle:
         self.zs = []
 
 
-gausi = FactorizacionLUDoolittle()
+#gausi = FactorizacionLUDoolittle()
 q = [36, 3, -4, 5]
 r = [5, -45, 10, -2]
 p = [6, 8, 57, 5]
@@ -157,4 +166,4 @@ A = [[0, 1, 1, 0, 1],
      [-1, -1, -1, 0, 0],
      [0, 2, -1, 1, 0]]
 
-gausi.factorizacionLUDoolittle(a, b, 4)
+#gausi.factorizacionLUDoolittle(a, b, 4)

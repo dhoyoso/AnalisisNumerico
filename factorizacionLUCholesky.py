@@ -13,11 +13,11 @@ class FactorizacionLUCholesky:
         self.n = 0
         self.etapasL = []
         self.etapasU = []
-        self.zs = []
+        self.z = []
         self.unica = True
 
     def factorizacionLUCholesky(self, A, b, n):
-        if any(elem < 0 for elem in np.diag(A)) | np.linalg.det(A) == 0:
+        if (any(elem < 0 for elem in np.diag(A))) | (np.linalg.det(A) == 0):
             self.unica = False
             return
 
@@ -74,12 +74,12 @@ class FactorizacionLUCholesky:
             self.etapasL.append(np.copy(self.L))
             self.etapasU.append(np.copy(self.U))
         print("Sustición progresiva Lz = b:")
-        z = self.sustitucionProgresiva()
-        print("z:", str(z))
+        self.z = self.sustitucionProgresiva()
+        print("z:", str(self.z))
         print("Sustición regresiva Ux = z")
-        x = self.sustitucionRegresiva(z)
-        for i in range(0, len(x)):
-            print("X", i + 1, " = ", x[i])
+        self.xns = self.sustitucionRegresiva(self.z)
+        for i in range(0, len(self.xns)):
+            print("X", i + 1, " = ", self.xns[i])
 
     def sustitucionProgresiva(self):
         m = len(self.L)
@@ -132,13 +132,22 @@ class FactorizacionLUCholesky:
     def getAb(self):
         return self.Ab
 
+    def getEtapasL(self):
+        return self.etapasL
+
+    def getEtapasU(self):
+        return self.etapasU
+
+    def getZns(self):
+        return self.z
+
     def reset(self):
         self.xns = []
         self.Ab = [[]]
         self.n = 0
 
 
-gausi = FactorizacionLUCholesky()
+#gausi = FactorizacionLUCholesky()
 q = [45, -3, -5, -7]
 r = [7, 23, -5, -2]
 p = [-5, -2, 67, -8]
@@ -148,4 +157,4 @@ a = [q, r, p, s]
 
 b = [-20, 69, 96, -32]
 
-gausi.factorizacionLUCholesky(a, b, 4)
+#gausi.factorizacionLUCholesky(a, b, 4)
