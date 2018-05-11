@@ -10,14 +10,13 @@ from Sistemas import Sistemas
 from factorizacionLUCholesky import FactorizacionLUCholesky
 from factorizacionLUCrout import FactorizacionLUCrout
 from factorizacionLUDoolittle import FactorizacionLUDoolittle
+from valoresIniciales import ValoresIniciales
 
 from jacobi import Jacobi
 from seidel import Seidel
 
 from ingSistemas import ingSistemas
 from solucionsistemas import solucionsistemas
-
-
 
 
 class sistemasEcuaciones(QDialog):
@@ -28,6 +27,10 @@ class sistemasEcuaciones(QDialog):
         self.setWindowTitle('Sistemas de ecuaciones')
         self.continuar.clicked.connect(self.on_pushButton_clicked)
         self.ingsistema.clicked.connect(self.on_pushButton_clicked)
+        self.valores_iniciales.clicked.connect(self.on_pushButton_clicked)
+
+        self.valores_iniciales.setEnabled(False)
+        self.valores_iniciales.setDisabled(True)
 
     def simpleShow(self):
         gausi = EliminacionGaussianaSimple()
@@ -89,21 +92,24 @@ class sistemasEcuaciones(QDialog):
         self.dialogue = SolucionFactorizacionDirecta(self.sistemaecuaciones, gausi.unica, [])
         self.dialogue.show()
 
-    def jacobishow(self):
+    def jacobiShow(self):
         gausi = Jacobi()
         #    def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
-        gausi.jacobi(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value(),)
-        self.sistemaecuaciones.setXns(gausi.getXns())
-        self.sistemaecuaciones.setEtapasL(gausi.getEtapasL())
-        self.sistemaecuaciones.setEtapasU(gausi.getEtapasU())
-        self.sistemaecuaciones.setZns(gausi.getZns())
-        self.dialogue = SolucionFactorizacionDirecta(self.sistemaecuaciones, gausi.unica, [])
+        gausi.jacobi(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        self.sistemaecuaciones.setIteraciones(gausi.getEtapas())
+        self.dialogue = SolucionFactorizacionDirecta(self.sistemaecuaciones)
+        self.dialogue.show()
+
+    def valoresShow(self):
+        self.dialogue = ValoresIniciales(self.sistemaecuaciones)
         self.dialogue.show()
 
     def ingsistemasShow(self):
         self.sistemaecuaciones.setN(self.n.value())
         self.dialogue = ingSistemas(self.sistemaecuaciones, self.n.value())
         self.dialogue.show()
+        self.valores_iniciales.setEnabled(True)
+        self.valores_iniciales.setDisabled(False)
 
     @pyqtSlot()
     def on_pushButton_clicked(self):
@@ -132,7 +138,18 @@ class sistemasEcuaciones(QDialog):
                 print("cholesky")
                 self.sistemaecuaciones.reset()
                 self.choleskyShow()
-        elif  self.sender().text() == "Valores iniciales"
+            elif self.seidel.isChecked():
+                print("seidel")
+                self.sistemaecuaciones.reset()
+                #self.seidelShow()
+            elif self.jacobi.isChecked():
+                print("jacobi")
+                self.sistemaecuaciones.reset()
+                self.jacobiShow()
+
+        elif (self.sender().text().find("Valores") != -1):
+            print("valoresIniciales")
+            self.valoresShow()
         elif (self.sender().text().find("Ingresar") != -1):
             print("ingsistemas")
             self.ingsistemasShow()

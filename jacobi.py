@@ -51,6 +51,9 @@ class Jacobi:
                 mayor = abs(x[i - 1] - x0[i - 1])
         return mayor
 
+    def getEtapas(self):
+        return self.etapas
+
     def reset(self):
         self.xns = []
         self.Ab = [[]]

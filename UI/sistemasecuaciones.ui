@@ -91,7 +91,7 @@
     </size>
    </property>
   </widget>
-  <widget class="QRadioButton" name="Newton">
+  <widget class="QRadioButton" name="seidel">
    <property name="geometry">
     <rect>
      <x>160</x>

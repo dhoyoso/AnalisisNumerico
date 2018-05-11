@@ -13,6 +13,8 @@ class Sistemas:
     etapasL = []
     etapasU = []
     zns = []
+    xceros = []
+    iteraciones = []
 
     def setInicialAB(self, a):
         self.inicialAB = a
@@ -28,6 +30,9 @@ class Sistemas:
 
     def setLastAB(self, x):
         self.lastAB = x
+
+    def setIteraciones(self, x):
+        self.iteraciones = x
 
     def setXns(self, x):
         self.xns = x
@@ -47,6 +52,9 @@ class Sistemas:
     def setEtapasU(self, etapas):
         self.etapasU = etapas
 
+    def setXceros(self,x):
+        self.xceros = x
+
     def reset(self):
         self.AB = deepcopy(self.inicialAB)  # matriz aumentada.
         self.lastAB = [[]]
@@ -55,3 +63,5 @@ class Sistemas:
         self.etapasL = []
         self.etapasU = []
         self.zns = []
+        self.xceros = []
+        self.iteraciones = []
