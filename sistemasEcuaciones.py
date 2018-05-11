@@ -132,7 +132,7 @@ class sistemasEcuaciones(QDialog):
                 print("cholesky")
                 self.sistemaecuaciones.reset()
                 self.choleskyShow()
-
+        elif  self.sender().text() == "Valores iniciales"
         elif (self.sender().text().find("Ingresar") != -1):
             print("ingsistemas")
             self.ingsistemasShow()
