@@ -35,6 +35,8 @@ class FactorizacionLUDoolittle:
                 elif i == j:
                     self.L[i][j] = 1
                     self.U[i][j] = -1
+        self.etapasL.append(np.copy(self.L))
+        self.etapasU.append(np.copy(self.U))
         print("Etapa 0")
         print("Matriz A")
         self.imprimirMatrizA()
@@ -141,6 +143,16 @@ class FactorizacionLUDoolittle:
     def getEtapasU(self):
         return self.etapasU
 
+    def imprimirMatrizEtapasL(self):
+        for i in self.etapasL:
+            print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in i]))
+            print("")
+
+    def imprimirMatrizEtapasU(self):
+        for i in self.etapasU:
+            print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in i]))
+            print("")
+
     def reset(self):
         self.xns = []
         self.Ab = [[]]
@@ -150,20 +162,19 @@ class FactorizacionLUDoolittle:
         self.zs = []
 
 
-#gausi = FactorizacionLUDoolittle()
-q = [36, 3, -4, 5]
-r = [5, -45, 10, -2]
-p = [6, 8, 57, 5]
-s = [2, 3, -8, -42]
+gausi = FactorizacionLUDoolittle()
+a = [1,-2,0.5]
+b = [-2,5,-1.5]
+c = [-0.2,1.75,-1]
 
-a = [q, r, p, s]
+bb = [-5,0,-10]
 
-b = [-20, 69, 96, -32]
+e = [a, b, c]
 
-A = [[0, 1, 1, 0, 1],
-     [-1, 0, 1, 1, 0],
-     [2, 1, 0, -1, -1],
-     [-1, -1, -1, 0, 0],
-     [0, 2, -1, 1, 0]]
+gausi.factorizacionLUDoolittle(e, bb, 3)
+gausi.imprimirMatrizEtapasL()
+print("JOCO")
+gausi.imprimirMatrizEtapasU()
 
-#gausi.factorizacionLUDoolittle(a, b, 4)
+
+

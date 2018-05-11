@@ -13,7 +13,7 @@ class KetapasFactorizacion(QDialog):
         self.siguiente.clicked.connect(self.on_pushButton_clicked)
         self.anterior.clicked.connect(self.on_pushButton_clicked)
         self.contadorEtapa = 0
-        self.etapa.setText(str(self.contadorEtapa +1))
+        self.etapa.setText(str(self.contadorEtapa))
         self.n = self.sistemas.n
         n = self.n
         inicial = self.sistemas.inicialAB
@@ -34,7 +34,7 @@ class KetapasFactorizacion(QDialog):
 
         self.setEtapa(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
 
-        if (self.contadorEtapa == (self.sistemas.n - 2)):
+        if (self.contadorEtapa == len(self.sistemas.etapasU)):
             self.siguiente.setEnabled(False)
             self.siguiente.setDisabled(True)
         else:
@@ -50,7 +50,6 @@ class KetapasFactorizacion(QDialog):
 
 
     def setEtapa(self, n, L, U):
-        self.tableWidget.clear()
         # L
         labels = []
         for x in range(0, n):
@@ -78,7 +77,6 @@ class KetapasFactorizacion(QDialog):
 
 
     def setEtapa2(self, n, L, U):
-        self.tableWidget.clear()
         # L
         labels = []
         for x in range(0, n):
@@ -107,56 +105,44 @@ class KetapasFactorizacion(QDialog):
         if (self.sender().text() == "Anterior"):
             print("anterior")
             self.contadorEtapa -= 1
-            self.etapa.setText(str(self.contadorEtapa + 1))
+            self.etapa.setText(str(self.contadorEtapa))
             print(str(self.contadorEtapa))
             if(self.contadorEtapa == 0):
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
-
                 self.anterior.setEnabled(False)
                 self.anterior.setDisabled(True)
             else:
-                if (self.marcas != []):
-                    self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
-                else:
-                    if (self.marcas != []):
-                        self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
-                    else:
-                        self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
+                self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
                 self.anterior.setEnabled(True)
                 self.anterior.setDisabled(False)
-            if (self.contadorEtapa == (self.sistemas.n - 2)):
-                self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
 
+            if (self.contadorEtapa == len(self.sistemas.etapasU)-1):
+                self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
                 self.siguiente.setEnabled(False)
                 self.siguiente.setDisabled(True)
             else:
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
-
                 self.siguiente.setEnabled(True)
                 self.siguiente.setDisabled(False)
 
         elif (self.sender().text().find("Siguiente") != -1):
             print("siguiente")
             self.contadorEtapa += 1
-            self.etapa.setText(str(self.contadorEtapa + 1))
+            self.etapa.setText(str(self.contadorEtapa))
             print(str(self.contadorEtapa))
-            if (self.contadorEtapa == (self.sistemas.n - 2)):
+            if (self.contadorEtapa == len(self.sistemas.etapasU)-1):
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
-
                 self.siguiente.setEnabled(False)
                 self.siguiente.setDisabled(True)
             else:
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
-
                 self.siguiente.setEnabled(True)
                 self.siguiente.setDisabled(False)
             if (self.contadorEtapa == 0):
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
-
                 self.anterior.setEnabled(False)
                 self.anterior.setDisabled(True)
             else:
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
-
                 self.anterior.setEnabled(True)
                 self.anterior.setDisabled(False)

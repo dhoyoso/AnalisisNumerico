@@ -16,15 +16,14 @@ class Ketapas(QDialog):
         self.anterior.clicked.connect(self.on_pushButton_clicked)
         self.contadorEtapa = 0
         self.marcas = marcas
-        self.etapa.setText(str(self.contadorEtapa +1))
-        self.imprimirMatriz(self.sistemas.etapas[self.contadorEtapa])
+        self.etapa.setText(str(self.contadorEtapa))
         print(self.marcas)
         if(marcas!=[]):
             self.setEtapa(self.marcas[self.contadorEtapa] , self.sistemas.etapas[self.contadorEtapa])
         else:
             self.setEtapa(self.marcas , self.sistemas.etapas[self.contadorEtapa])
 
-        if (self.contadorEtapa == (self.sistemas.n - 2)):
+        if (self.contadorEtapa == len(self.sistemas.etapas)-1):
             self.siguiente.setEnabled(False)
             self.siguiente.setDisabled(True)
         else:
@@ -53,7 +52,6 @@ class Ketapas(QDialog):
             labels = []
             for x in range(0, n):
                 labels.append("X" + str(x + 1))
-            labels.append("B")
             labels.append("B")
             for x in range(0, n + 1):
                 self.tableWidget.insertColumn(x)
@@ -90,7 +88,6 @@ class Ketapas(QDialog):
             for x in range(0, n):
                 labels.append("X" + str(x + 1))
             labels.append("B")
-            labels.append("B")
             self.tableWidget.setHorizontalHeaderLabels(labels)
             for i in range(0, n):
                 for j in range(0, n + 1):
@@ -115,7 +112,7 @@ class Ketapas(QDialog):
         if (self.sender().text() == "Anterior"):
             print("anterior")
             self.contadorEtapa -= 1
-            self.etapa.setText(str(self.contadorEtapa + 1))
+            self.etapa.setText(str(self.contadorEtapa ))
             print(str(self.contadorEtapa))
             if(self.contadorEtapa == 0):
                 if (self.marcas != []):
@@ -134,7 +131,7 @@ class Ketapas(QDialog):
                         self.setEtapa2(self.marcas, self.sistemas.etapas[self.contadorEtapa])
                 self.anterior.setEnabled(True)
                 self.anterior.setDisabled(False)
-            if (self.contadorEtapa == (self.sistemas.n - 2)):
+            if (self.contadorEtapa == (len(self.sistemas.etapas)-1)):
                 if (self.marcas != []):
                     self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
                 else:
@@ -152,9 +149,9 @@ class Ketapas(QDialog):
         elif (self.sender().text().find("Siguiente") != -1):
             print("siguiente")
             self.contadorEtapa += 1
-            self.etapa.setText(str(self.contadorEtapa + 1))
+            self.etapa.setText(str(self.contadorEtapa))
             print(str(self.contadorEtapa))
-            if (self.contadorEtapa == (self.sistemas.n - 2)):
+            if (self.contadorEtapa == (len(self.sistemas.etapas)-1)):
                 if (self.marcas != []):
                     self.setEtapa2(self.marcas[self.contadorEtapa], self.sistemas.etapas[self.contadorEtapa])
                 else:

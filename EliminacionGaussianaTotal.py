@@ -14,9 +14,11 @@ class EliminacionGaussianaTotal:
     def eliminacionGaussianaTotal(self, n, Ab):
         self.Ab = Ab
         self.n = n
-        self.xns = [0] * n
         self.marcas = np.arange(1, n + 1)
-        #self.arregloMarcas.append(np.arange(1,n+1).tolist())
+        self.arregloMarcas.append(np.copy(self.marcas))
+        self.etapas.append(np.copy(self.Ab))
+        self.xns = [0] * n
+        # self.arregloMarcas.append(np.arange(1,n+1).tolist())
         print("Matriz Original")
         self.imprimirMatriz()
         for k in range(1, n):
@@ -101,7 +103,6 @@ class EliminacionGaussianaTotal:
     def getArregloMarcas(self):
         return self.arregloMarcas
 
-
     def reset(self):
         self.xns = []
         self.Ab = [[]]
@@ -110,13 +111,13 @@ class EliminacionGaussianaTotal:
         self.etapas = []
 
 
-gausi = EliminacionGaussianaTotal()
-a = [2,-1,1,2]
-b = [-1,2,5,-5]
-c = [3,1,-2,9]
+#gausi = EliminacionGaussianaTotal()
+a = [2, -1, 1, 2]
+b = [-1, 2, 5, -5]
+c = [3, 1, -2, 9]
 
 e = [a, b, c]
-gausi.eliminacionGaussianaTotal(3, e)
+#gausi.eliminacionGaussianaTotal(3, e)
 print("JOCO")
-gausi.imprimirMatrizEtapas()
-print(gausi.arregloMarcas)
+#gausi.imprimirMatrizEtapas()
+#print(gausi.arregloMarcas)

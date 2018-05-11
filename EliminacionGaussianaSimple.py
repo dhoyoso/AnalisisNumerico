@@ -11,8 +11,8 @@ class EliminacionGaussianaSimple:
         self.Ab = Ab
         self.n = n
         self.xns = [0] * n
-        self.etapas = [0] * n
         print("Matriz Original")
+        self.etapas.append(np.copy(self.Ab))
         self.imprimirMatriz()
         for k in range(1, n):
             print("Etapa " + str(k))
@@ -28,7 +28,7 @@ class EliminacionGaussianaSimple:
                     self.Ab[i - 1][j - 1] = self.Ab[i - 1][j - 1] - multiplicador * self.Ab[k - 1][j - 1]
                 print("Multiplicador" + str(i) + "," + str(k) + " : " + str(multiplicador))
             print(" ")
-            self.etapas[k-1] = np.copy(self.Ab)
+            self.etapas.append(np.copy(self.Ab))
             print("Etapa:  ", str(k))
             print(self.etapas[k-1])
             print("")

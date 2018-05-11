@@ -35,7 +35,8 @@ class FactorizacionLUCrout:
                 elif i == j:
                     self.L[i][j] = -1
                     self.U[i][j] = 1
-
+        self.etapasL.append(np.copy(self.L))
+        self.etapasU.append(np.copy(self.U))
         print("Etapa 0")
         print("Matriz A")
         self.imprimirMatrizA()

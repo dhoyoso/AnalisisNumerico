@@ -2,7 +2,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.uic import loadUi
 
-from ketapas import Ketapas
+from ketapasFactorizacion import KetapasFactorizacion
 
 
 class SolucionFactorizacionDirecta(QDialog):
@@ -15,8 +15,8 @@ class SolucionFactorizacionDirecta(QDialog):
         self.etapas.clicked.connect(self.on_pushButton_clicked)
         if (solunica):
             inicial = self.sistemas.inicialAB
-            L = self.sistemas.etapasL[self.sistemas.n-1]
-            U = self.sistemas.etapasU[self.sistemas.n-1]
+            L = self.sistemas.etapasL[-1]
+            U = self.sistemas.etapasU[-1]
             zns = self.sistemas.zns
             xns = self.sistemas.xns
             n = self.sistemas.n
@@ -61,13 +61,13 @@ class SolucionFactorizacionDirecta(QDialog):
 
             print(xns)
             solucion = []
-            for i in range(0, n):
+            for i in range(0, len(xns)):
                 solucion.append(" X" + str(i + 1) + " = " + str(round(xns[i], 2)))
             self.label_7.setText("".join(solucion))
 
             print(zns)
             solucion = []
-            for i in range(0, n):
+            for i in range(0, len(zns)):
                 solucion.append(" Z" + str(i + 1) + " = " + str(round(zns[i], 2)))
             self.label_9.setText("".join(solucion))
 
@@ -80,7 +80,7 @@ class SolucionFactorizacionDirecta(QDialog):
         self.tableWidget_2.clear()
 
     def showEtapas(self):
-        self.dialogue = Ketapas(self.sistemas, self.marcas)
+        self.dialogue = KetapasFactorizacion(self.sistemas)
         self.dialogue.show()
 
     @pyqtSlot()
