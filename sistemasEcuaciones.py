@@ -15,6 +15,8 @@ from ingSistemas import ingSistemas
 from solucionsistemas import solucionsistemas
 
 
+
+
 class sistemasEcuaciones(QDialog):
     def __init__(self):
         super(sistemasEcuaciones, self).__init__()
@@ -75,6 +77,16 @@ class sistemasEcuaciones(QDialog):
         self.dialogue.show()
 
     def choleskyShow(self):
+        gausi = FactorizacionLUCholesky()
+        gausi.factorizacionLUCholesky(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        self.sistemaecuaciones.setXns(gausi.getXns())
+        self.sistemaecuaciones.setEtapasL(gausi.getEtapasL())
+        self.sistemaecuaciones.setEtapasU(gausi.getEtapasU())
+        self.sistemaecuaciones.setZns(gausi.getZns())
+        self.dialogue = SolucionFactorizacionDirecta(self.sistemaecuaciones, gausi.unica, [])
+        self.dialogue.show()
+
+    def jacobishow(self):
         gausi = FactorizacionLUCholesky()
         gausi.factorizacionLUCholesky(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
         self.sistemaecuaciones.setXns(gausi.getXns())
