@@ -75,7 +75,8 @@ class EliminacionGaussianaParcial:
         return self.etapas
 
     def imprimirMatrizEtapas(self):
-        print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in self.etapas]))
+        for i in self.etapas:
+            print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in i]))
 
 
     def reset(self):
