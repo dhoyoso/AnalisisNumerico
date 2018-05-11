@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>861</width>
-    <height>508</height>
+    <width>862</width>
+    <height>297</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,14 +23,14 @@
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Ingresa la matriz aumentada&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Ingresa valores iniciales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="guardar">
    <property name="geometry">
     <rect>
      <x>650</x>
-     <y>460</y>
+     <y>240</y>
      <width>124</width>
      <height>27</height>
     </rect>
@@ -52,7 +52,7 @@
      <x>100</x>
      <y>90</y>
      <width>671</width>
-     <height>351</height>
+     <height>121</height>
     </rect>
    </property>
   </widget>
