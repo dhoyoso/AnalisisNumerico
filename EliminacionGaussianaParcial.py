@@ -86,10 +86,10 @@ class EliminacionGaussianaParcial:
         self.n = 0
 
 
-# gausi = EliminacionGaussianaParcial()
+gausi = EliminacionGaussianaParcial()
 a = [1, -2, 0.5, -5]
 b = [-2, 5, -1.5, 0]
 c = [-0.2, 1.75, -1, 10]
 
 e = [a, b, c]
-# gausi.eliminacionGaussianaParcial(3, e)
+gausi.eliminacionGaussianaParcial(3, e)

@@ -146,14 +146,13 @@ class FactorizacionLUCrout:
         self.n = 0
 
 
-#gausi = FactorizacionLUCrout()
-q = [45, -3, -5, -7]
-r = [7, 23, -5, -2]
-p = [-5, -2, 67, -8]
-s = [-3, -4, -7, 78]
+gausi = FactorizacionLUCrout()
+a = [1,-2,0.5]
+b = [-2,5,-1.5]
+c = [-0.2,1.75,-1]
 
-a = [q, r, p, s]
+bb = [-5,0,10]
 
-b = [-20, 69, 96, -32]
+e = [a, b, c]
 
-#gausi.factorizacionLUCrout(a, b, 4)
+gausi.factorizacionLUCrout(e, bb, 3)

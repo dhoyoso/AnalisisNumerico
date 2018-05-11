@@ -110,14 +110,13 @@ class EliminacionGaussianaTotal:
         self.arregloMarcas = []
         self.etapas = []
 
-
-#gausi = EliminacionGaussianaTotal()
-a = [2, -1, 1, 2]
-b = [-1, 2, 5, -5]
-c = [3, 1, -2, 9]
+gausi = EliminacionGaussianaTotal()
+a = [1, -2, 0.5, -5]
+b = [-2, 5, -1.5, 0]
+c = [-0.2, 1.75, -1, 10]
 
 e = [a, b, c]
-#gausi.eliminacionGaussianaTotal(3, e)
+
+gausi.eliminacionGaussianaTotal(3, e)
 print("JOCO")
-#gausi.imprimirMatrizEtapas()
-#print(gausi.arregloMarcas)
+print(gausi.arregloMarcas)

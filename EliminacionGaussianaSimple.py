@@ -1,11 +1,13 @@
 import numpy as np
+
+
 class EliminacionGaussianaSimple:
     def __init__(self):
         self.xns = []
         self.Ab = [[]]
         self.n = 0
-        self.etapas =[]
-        self.unica = True # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
+        self.etapas = []
+        self.unica = True  # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
 
     def eliminacionGaussianaSimple(self, n, Ab):
         self.Ab = Ab
@@ -20,7 +22,8 @@ class EliminacionGaussianaSimple:
                 print("El sistema no tiene solución unica!")
                 self.unica = False
                 return
-            print("Objetivo: Poner ceros debajo del elemento Ab" + str(k) + "," + str(k) + "= " + str(self.Ab[k - 1][k - 1]))
+            print("Objetivo: Poner ceros debajo del elemento Ab" + str(k) + "," + str(k) + "= " + str(
+                self.Ab[k - 1][k - 1]))
             print("Multiplicadores:")
             for i in range(k + 1, n + 1):
                 multiplicador = self.Ab[i - 1][k - 1] / self.Ab[k - 1][k - 1]
@@ -30,7 +33,7 @@ class EliminacionGaussianaSimple:
             print(" ")
             self.etapas.append(np.copy(self.Ab))
             print("Etapa:  ", str(k))
-            print(self.etapas[k-1])
+            print(self.etapas[k - 1])
             print("")
             self.imprimirMatriz()
         print("Sustitución Regresiva")
@@ -42,7 +45,6 @@ class EliminacionGaussianaSimple:
             print("ESTA ES I: ", i)
             self.xns[i - 1] = temp
             print("X" + str(i) + " = " + str(self.xns[i - 1]))
-
 
     def getXns(self):
         return self.xns
@@ -64,4 +66,12 @@ class EliminacionGaussianaSimple:
         self.Ab = [[]]
         self.n = 0
         self.etapas = []
+
+gausi = EliminacionGaussianaSimple()
+a = [1, -2, 0.5, -5]
+b = [-2, 5, -1.5, 0]
+c = [-0.2, 1.75, -1, 10]
+
+e = [a, b, c]
+gausi.eliminacionGaussianaSimple(3, e)
 
