@@ -95,7 +95,7 @@ class sistemasEcuaciones(QDialog):
     def jacobiShow(self):
         gausi = Jacobi()
         #    def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
-        gausi.jacobi(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        gausi.jacobi(self.sistemaecuaciones.A,self.sistemaecuaciones.B, self.n.value(), self.sistemaecuaciones.iteraciones, self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol, self.sistemaecuaciones.lambd)
         self.sistemaecuaciones.setIteraciones(gausi.getEtapas())
         self.dialogue = SolucionFactorizacionDirecta(self.sistemaecuaciones)
         self.dialogue.show()

@@ -15,6 +15,9 @@ class Sistemas:
     zns = []
     xceros = []
     iteraciones = []
+    lamb = None
+    numiter = 0
+    tol = 0
 
     def setInicialAB(self, a):
         self.inicialAB = a
@@ -43,6 +46,15 @@ class Sistemas:
     def setN(self, n):
         self.n = n
 
+    def setLamb(self,x):
+        self.lamb = x
+
+    def setNumiter(self,x):
+        self.numiter = x
+
+    def setTol(self,x):
+        self.tol = x
+
     def setEtapas(self, etapas):
         self.etapas = etapas
 
@@ -65,3 +77,6 @@ class Sistemas:
         self.zns = []
         self.xceros = []
         self.iteraciones = []
+        self.lamb = None
+        self.numiter = 0
+        self.tol = 0

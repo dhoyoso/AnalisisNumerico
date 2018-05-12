@@ -1,3 +1,4 @@
+import math
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.uic import loadUi
@@ -32,10 +33,10 @@ class ValoresIniciales(QDialog):
             b[i] = float(self.tableWidget.item(0, i).text())
         return b
 
-
-
     @pyqtSlot()
     def on_pushButton_clicked(self):
         self.sistemas.setXceros(self.getXceros())
+        self.sistemas.setLamb(self.lamb.value())
+        self.sistemas.setNumiter(self.iter.value())
+        self.sistemas.setTol(math.pow(10,-self.tol.value()))
         self.close()
-
