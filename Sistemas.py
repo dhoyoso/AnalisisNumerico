@@ -75,8 +75,4 @@ class Sistemas:
         self.etapasL = []
         self.etapasU = []
         self.zns = []
-        self.xceros = []
         self.iteraciones = []
-        self.lamb = None
-        self.numiter = 0
-        self.tol = 0

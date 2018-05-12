@@ -60,18 +60,20 @@ class Jacobi:
         self.n = 0
 
 
-gausi = Jacobi()
-q = [45, 13, -4, 8]
-r = [-5, -28, 4, -14]
-p = [9, 15, 63, -7]
-s = [2, 3, -8, -42]
-
-a = [q, r, p, s]
-
-b = [-25, 82, 75, -43]
-
-x0 = [2, 2, 2, 2]
-
-# def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
-
-gausi.jacobi(a, b, 4, x0, 13, 10e-5, 1)
+#gausi = Jacobi()
+#q = [45, 13, -4, 8]
+#r = [-5, -28, 4, -14]
+#p = [9, 15, 63, -7]
+#s = [2, 3, -8, -42]
+#
+#a = [q, r, p, s]
+#
+#b = [-25, 82, 75, -43]
+#
+#x0 = [2, 2, 2, 2]
+#
+## def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
+#
+#gausi.jacobi(a, b, 4, x0, 13, 10e-5, 1)
+#print("JOCO")
+#print(gausi.getEtapas())

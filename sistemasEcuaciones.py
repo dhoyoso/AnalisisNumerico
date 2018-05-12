@@ -5,18 +5,16 @@ from PyQt5.uic import loadUi
 from EliminacionGaussianaParcial import EliminacionGaussianaParcial
 from EliminacionGaussianaSimple import EliminacionGaussianaSimple
 from EliminacionGaussianaTotal import EliminacionGaussianaTotal
-from solucionFactorizacionDirecta import SolucionFactorizacionDirecta
 from Sistemas import Sistemas
 from factorizacionLUCholesky import FactorizacionLUCholesky
 from factorizacionLUCrout import FactorizacionLUCrout
 from factorizacionLUDoolittle import FactorizacionLUDoolittle
-from valoresIniciales import ValoresIniciales
-
-from jacobi import Jacobi
-from seidel import Seidel
-
 from ingSistemas import ingSistemas
+from jacobi import Jacobi
+from solucionFactorizacionDirecta import SolucionFactorizacionDirecta
+from solucionIterativos import SolucionIterativos
 from solucionsistemas import solucionsistemas
+from valoresIniciales import ValoresIniciales
 
 
 class sistemasEcuaciones(QDialog):
@@ -94,10 +92,14 @@ class sistemasEcuaciones(QDialog):
 
     def jacobiShow(self):
         gausi = Jacobi()
-        #    def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
-        gausi.jacobi(self.sistemaecuaciones.A,self.sistemaecuaciones.B, self.n.value(), self.sistemaecuaciones.iteraciones, self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol, self.sistemaecuaciones.lambd)
+        print("ceros "+str(self.sistemaecuaciones.xceros)+" "+str(self.sistemaecuaciones.numiter)+" "+str(self.sistemaecuaciones.tol)+' '+str(self.sistemaecuaciones.lamb))
+        gausi.jacobi(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value(),
+                     self.sistemaecuaciones.xceros, self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol,
+                     self.sistemaecuaciones.lamb)
+        print(gausi.getEtapas())
         self.sistemaecuaciones.setIteraciones(gausi.getEtapas())
-        self.dialogue = SolucionFactorizacionDirecta(self.sistemaecuaciones)
+        print('ETAPAS' + str(self.sistemaecuaciones.iteraciones))
+        self.dialogue = SolucionIterativos(self.sistemaecuaciones)
         self.dialogue.show()
 
     def valoresShow(self):
@@ -141,7 +143,7 @@ class sistemasEcuaciones(QDialog):
             elif self.seidel.isChecked():
                 print("seidel")
                 self.sistemaecuaciones.reset()
-                #self.seidelShow()
+                # self.seidelShow()
             elif self.jacobi.isChecked():
                 print("jacobi")
                 self.sistemaecuaciones.reset()

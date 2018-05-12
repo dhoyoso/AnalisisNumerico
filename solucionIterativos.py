@@ -35,14 +35,15 @@ plt.legend(['y = x^2', 'y = 2x'], loc='upper left')
 
 ## Show the graph
 
-class solucionIterativos(QDialog):
+class SolucionIterativos(QDialog):
     def __init__(self, sistemas):
-        super(solucionIterativos,self).__init__()
+        super(SolucionIterativos,self).__init__()
         loadUi('UI/solucionecuacionesiterativas.ui',self)
         self.setWindowTitle('Solucion')
         self.sistemas = sistemas
         self.pushButton_3.clicked.connect(self.on_pushButton_clicked)
         # k iter
+        print(self.sistemas.iteraciones)
         n = self.sistemas.n
         labels = []
         for x in range(0, n):
@@ -50,10 +51,11 @@ class solucionIterativos(QDialog):
         for x in range(0, n):
             self.tableWidget.insertColumn(x)
         self.tableWidget.setHorizontalHeaderLabels(labels)
-        for x in range(0,len(self.sistemas.xceros)):
+        for x in range(0, len(self.sistemas.iteraciones)):
             self.tableWidget.insertRow(x)
-            for j in range(0,n):
-                self.tableWidget.setItem(x, j, QTableWidgetItem(self.sistemas.xceros[x][j]))
+        for i in range(0, len(self.sistemas.iteraciones)):
+            for j in range(0, n):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(round(self.sistemas.iteraciones[i][j],9))))
 
 
     def clearParameters(self):

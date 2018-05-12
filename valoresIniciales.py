@@ -1,9 +1,8 @@
 import math
+
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.uic import loadUi
-
-from solucion import solucion
 
 
 class ValoresIniciales(QDialog):
@@ -38,5 +37,5 @@ class ValoresIniciales(QDialog):
         self.sistemas.setXceros(self.getXceros())
         self.sistemas.setLamb(self.lamb.value())
         self.sistemas.setNumiter(self.iter.value())
-        self.sistemas.setTol(math.pow(10,-self.tol.value()))
+        self.sistemas.setTol(math.pow(10, -1 * self.tol.value()))
         self.close()
