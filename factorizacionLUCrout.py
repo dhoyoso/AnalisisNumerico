@@ -27,13 +27,13 @@ class FactorizacionLUCrout:
         for i in range(0, n):
             for j in range(0, n):
                 if i < j:
-                    self.U[i][j] = -1
+                    self.U[i][j] = 0
                     self.L[i][j] = 0
                 elif i > j:
-                    self.L[i][j] = -1
+                    self.L[i][j] = 0
                     self.U[i][j] = 0
                 elif i == j:
-                    self.L[i][j] = -1
+                    self.L[i][j] = 0
                     self.U[i][j] = 1
         self.etapasL.append(np.copy(self.L))
         self.etapasU.append(np.copy(self.U))
@@ -53,14 +53,14 @@ class FactorizacionLUCrout:
             for p in range(0, k - 1):
                 suma += self.L[k - 1][p] * self.U[p][k - 1]
 
-            print(self.A[k - 1][k - 1])
+            print(suma)
             self.L[k - 1][k - 1] = self.A[k - 1][k - 1] - suma
 
             for j in range(k + 1, n + 1):
                 suma = 0
                 for p in range(0, k - 1):
                     suma += self.L[j - 1][p] * self.U[p][k - 1]
-                self.L[j - 1][k - 1] = (self.A[j - 1][k - 1] - suma) / self.L[k - 1][k - 1]
+                self.L[j - 1][k - 1] = (self.A[j - 1][k - 1] - suma) / self.U[k - 1][k - 1]
             print("Matriz L:")
             self.imprimirMatrizL()
             for i in range(k + 1, n + 1):
@@ -147,12 +147,13 @@ class FactorizacionLUCrout:
 
 
 gausi = FactorizacionLUCrout()
-a = [1,-2,0.5]
-b = [-2,5,-1.5]
-c = [-0.2,1.75,-1]
+a = [36, 3, -4, 5]
+b = [5, -45, 10, -2]
+c = [6, 8, 57, 5]
+d = [2, 3, -8, -42]
 
-bb = [-5,0,10]
+bb = [-20, 69, 96, -32]
 
-e = [a, b, c]
+e = [a, b, c, d]
 
-gausi.factorizacionLUCrout(e, bb, 3)
+gausi.factorizacionLUCrout(e, bb, 4)
