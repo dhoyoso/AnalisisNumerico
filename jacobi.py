@@ -14,13 +14,13 @@ class Jacobi:
         self.A = A
         self.b = b
         self.n = n
-
+        iteraciones += 1
         contador = 1
 
         print(str(contador))
         error = tolerancia + 1
         x = [0] * n
-
+        self.etapas.append(np.copy(x0))
         while (error > tolerancia) & (contador < iteraciones):
             print("L")
             for i in range(1, n + 1):
@@ -34,7 +34,7 @@ class Jacobi:
             for i in range(1, n + 1):
                 x0[i - 1] = x[i - 1]
             contador += 1
-            self.etapas.append(x)
+            self.etapas.append(np.copy(x))
         self.xns = x
 
         if error < tolerancia:

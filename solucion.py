@@ -1,4 +1,5 @@
 from PyQt5.QtCore import pyqtSlot
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 from Biseccion import Biseccion
@@ -68,49 +69,7 @@ class solucion(QDialog):
         self.label_5.setText(result)
 
     def getTol(self,tol):
-        if (tol == 0):
-            err = 10e-1
-        elif (tol == 1):
-            err = 10e-2
-        elif (tol == 2):
-            err = 10e-3
-        elif (tol == 3):
-            err = 10e-4
-        elif (tol == 4):
-            err = 10e-5
-        elif (tol == 5):
-            err = 10e-6
-        elif (tol == 6):
-            err = 10e-7
-        elif (tol == 7):
-            err = 10e-8
-        elif (tol == 8):
-            err = 10e-9
-        elif (tol == 9):
-            err = 10e-10
-        elif (tol == 10):
-            err = 10e-11
-        elif (tol == 11):
-            err = 10e-12
-        elif (tol == 12):
-            err = 10e-13
-        elif (tol == 13):
-            err = 10e-14
-        elif (tol == 14):
-            err = 10e-15
-        elif (tol == 15):
-            err = 10e-16
-        elif (tol == 16):
-            err = 10e-17
-        elif (tol == 17):
-            err = 10e-18
-        elif (tol == 18):
-            err = 10e-19
-        elif (tol == 19):
-            err = 10e-20
-        else:
-            err = 10e-0
-        return err
+        return math.pow(10, -1 * tol)
 
     def setParametersForBiseccion(self,xi , xs, tol, niter, eabs):
         biseccion = Biseccion()

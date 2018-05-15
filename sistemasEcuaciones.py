@@ -11,6 +11,7 @@ from factorizacionLUCrout import FactorizacionLUCrout
 from factorizacionLUDoolittle import FactorizacionLUDoolittle
 from ingSistemas import ingSistemas
 from jacobi import Jacobi
+from seidel import Seidel
 from solucionFactorizacionDirecta import SolucionFactorizacionDirecta
 from solucionIterativos import SolucionIterativos
 from solucionsistemas import solucionsistemas
@@ -102,6 +103,18 @@ class sistemasEcuaciones(QDialog):
         self.dialogue = SolucionIterativos(self.sistemaecuaciones)
         self.dialogue.show()
 
+    def seidelShow(self):
+        gausi = Seidel()
+        print("ceros "+str(self.sistemaecuaciones.xceros)+" "+str(self.sistemaecuaciones.numiter)+" "+str(self.sistemaecuaciones.tol)+' '+str(self.sistemaecuaciones.lamb))
+        gausi.seidel(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value(),
+                     self.sistemaecuaciones.xceros, self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol,
+                     self.sistemaecuaciones.lamb)
+        print(gausi.getEtapas())
+        self.sistemaecuaciones.setIteraciones(gausi.getEtapas())
+        print('ETAPAS' + str(self.sistemaecuaciones.iteraciones))
+        self.dialogue = SolucionIterativos(self.sistemaecuaciones)
+        self.dialogue.show()
+
     def valoresShow(self):
         self.dialogue = ValoresIniciales(self.sistemaecuaciones)
         self.dialogue.show()
@@ -143,7 +156,7 @@ class sistemasEcuaciones(QDialog):
             elif self.seidel.isChecked():
                 print("seidel")
                 self.sistemaecuaciones.reset()
-                # self.seidelShow()
+                self.seidelShow()
             elif self.jacobi.isChecked():
                 print("jacobi")
                 self.sistemaecuaciones.reset()
