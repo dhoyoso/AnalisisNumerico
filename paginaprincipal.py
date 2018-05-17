@@ -45,4 +45,10 @@ class paginaprincipal(QDialog):
 app = QApplication(sys.argv)
 widget = paginaprincipal()
 widget.show()
+sys._excepthook = sys.excepthook
+def exception_hook(exctype, value, traceback):
+    print(exctype, value, traceback)
+    sys.__excepthook__(exctype, value, traceback)
+    sys.exit(1)
+sys.excepthook = exception_hook
 sys.exit(app.exec_())

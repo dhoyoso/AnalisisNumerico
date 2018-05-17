@@ -21,19 +21,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>30</y>
-     <width>841</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Ecuaciones de una variable&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QRadioButton" name="Busquedas">
    <property name="geometry">
     <rect>
@@ -286,16 +276,26 @@
     <rect>
      <x>640</x>
      <y>110</y>
-     <width>124</width>
+     <width>141</width>
      <height>27</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    padding: 6px;</string>
    </property>
    <property name="text">
     <string>Ingresar función</string>
@@ -306,16 +306,26 @@
     <rect>
      <x>640</x>
      <y>150</y>
-     <width>124</width>
+     <width>141</width>
      <height>27</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    padding: 6px;</string>
    </property>
    <property name="text">
     <string>Graficar</string>
@@ -324,21 +334,47 @@
   <widget class="QPushButton" name="continuar">
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>640</x>
      <y>480</y>
-     <width>124</width>
+     <width>141</width>
      <height>27</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    padding: 6px;</string>
+   </property>
    <property name="text">
     <string>Continuar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>871</width>
+     <height>69</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 0, 255);</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Ecuaciones de una variable&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

@@ -13,24 +13,14 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>30</y>
-     <width>581</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Datos&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>80</y>
+     <y>100</y>
      <width>28</width>
      <height>18</height>
     </rect>
@@ -50,7 +40,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>110</y>
+     <y>130</y>
      <width>31</width>
      <height>18</height>
     </rect>
@@ -70,7 +60,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>170</y>
+     <y>190</y>
      <width>30</width>
      <height>18</height>
     </rect>
@@ -90,7 +80,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>200</y>
+     <y>220</y>
      <width>28</width>
      <height>18</height>
     </rect>
@@ -110,7 +100,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>140</y>
+     <y>160</y>
      <width>34</width>
      <height>18</height>
     </rect>
@@ -130,7 +120,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>80</y>
+     <y>100</y>
      <width>421</width>
      <height>20</height>
     </rect>
@@ -143,7 +133,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>140</y>
+     <y>160</y>
      <width>421</width>
      <height>20</height>
     </rect>
@@ -156,7 +146,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>110</y>
+     <y>130</y>
      <width>421</width>
      <height>20</height>
     </rect>
@@ -169,7 +159,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>170</y>
+     <y>190</y>
      <width>421</width>
      <height>20</height>
     </rect>
@@ -182,7 +172,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>200</y>
+     <y>220</y>
      <width>421</width>
      <height>20</height>
     </rect>
@@ -202,10 +192,20 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    padding: 6px;</string>
    </property>
    <property name="text">
     <string>Cancelar</string>
@@ -222,13 +222,39 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    padding: 6px;</string>
+   </property>
    <property name="text">
     <string>Continuar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>611</width>
+     <height>69</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 0, 255);</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Datos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

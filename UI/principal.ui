@@ -15,7 +15,6 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);
-QDialog:{background-color:red}
 </string>
   </property>
   <widget class="QRadioButton" name="sistemas">
@@ -99,9 +98,9 @@ QDialog:{background-color:red}
   <widget class="QPushButton" name="continuar">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>230</y>
-     <width>186</width>
+     <width>161</width>
      <height>27</height>
     </rect>
    </property>
@@ -123,7 +122,7 @@ QDialog:{background-color:red}
     border-radius: 10px;
     border-color:rgb(170, 0, 255);
     font: bold 14px;
-    min-width: 10em;
+
     padding: 6px;</string>
    </property>
    <property name="text">

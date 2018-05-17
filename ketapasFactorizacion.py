@@ -13,7 +13,6 @@ class KetapasFactorizacion(QDialog):
         self.siguiente.clicked.connect(self.on_pushButton_clicked)
         self.anterior.clicked.connect(self.on_pushButton_clicked)
         self.contadorEtapa = 0
-        self.etapa.setText(str(self.contadorEtapa))
         self.n = self.sistemas.n
         n = self.n
         inicial = self.sistemas.inicialAB
@@ -105,7 +104,6 @@ class KetapasFactorizacion(QDialog):
         if (self.sender().text() == "Anterior"):
             print("anterior")
             self.contadorEtapa -= 1
-            self.etapa.setText(str(self.contadorEtapa))
             print(str(self.contadorEtapa))
             if(self.contadorEtapa == 0):
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])
@@ -128,7 +126,6 @@ class KetapasFactorizacion(QDialog):
         elif (self.sender().text().find("Siguiente") != -1):
             print("siguiente")
             self.contadorEtapa += 1
-            self.etapa.setText(str(self.contadorEtapa))
             print(str(self.contadorEtapa))
             if (self.contadorEtapa == len(self.sistemas.etapasU)-1):
                 self.setEtapa2(self.n,self.sistemas.etapasL[self.contadorEtapa],self.sistemas.etapasU[self.contadorEtapa])

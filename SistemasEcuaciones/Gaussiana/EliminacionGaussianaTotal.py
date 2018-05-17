@@ -135,13 +135,3 @@ e = [a, b, c]
 gausi.eliminacionGaussianaTotal(3, e)
 print("JOCO")
 print(gausi.arregloMarcas)
-
-for index, s in enumerate(marcas):
-    print(index, s)
-    s -= 1
-    temp = xns[index]
-    temp1 = marcas[index]
-    marcas[index] = marcas[s]
-    xns[index] = xns[s]
-    marcas[s] = temp1
-    xns[s] = temp
