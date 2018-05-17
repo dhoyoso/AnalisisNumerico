@@ -2,19 +2,19 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from EliminacionGaussianaParcial import EliminacionGaussianaParcial
-from EliminacionGaussianaSimple import EliminacionGaussianaSimple
-from EliminacionGaussianaTotal import EliminacionGaussianaTotal
+from SistemasEcuaciones.Gaussiana.EliminacionGaussianaParcial import EliminacionGaussianaParcial
+from SistemasEcuaciones.Gaussiana.EliminacionGaussianaSimple import EliminacionGaussianaSimple
+from SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
 from Sistemas import Sistemas
-from factorizacionLUCholesky import FactorizacionLUCholesky
-from factorizacionLUCrout import FactorizacionLUCrout
-from factorizacionLUDoolittle import FactorizacionLUDoolittle
+from SistemasEcuaciones.FactorizacionDirecta.factorizacionLUCholesky import FactorizacionLUCholesky
+from SistemasEcuaciones.FactorizacionDirecta.factorizacionLUCrout import FactorizacionLUCrout
+from SistemasEcuaciones.FactorizacionDirecta.factorizacionLUDoolittle import FactorizacionLUDoolittle
 from ingSistemas import ingSistemas
-from jacobi import Jacobi
-from seidel import Seidel
-from solucionFactorizacionDirecta import SolucionFactorizacionDirecta
-from solucionIterativos import SolucionIterativos
-from solucionsistemas import solucionsistemas
+from SistemasEcuaciones.Iterativos.jacobi import Jacobi
+from SistemasEcuaciones.Iterativos.seidel import Seidel
+from Soluciones.solucionFactorizacionDirecta import SolucionFactorizacionDirecta
+from Soluciones.solucionIterativos import SolucionIterativos
+from Soluciones.solucionsistemas import solucionsistemas
 from valoresIniciales import ValoresIniciales
 
 
