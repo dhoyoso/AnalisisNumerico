@@ -16,15 +16,29 @@ class ValoresIniciales(QDialog):
         n = self.n
         self.guardar.clicked.connect(self.on_pushButton_clicked)
         # k iter
-        labels = []
-        for x in range(0, n):
-            labels.append("X" + str(x + 1))
-        for x in range(0, n):
-            self.tableWidget.insertColumn(x)
-        self.tableWidget.setHorizontalHeaderLabels(labels)
-        self.tableWidget.insertRow(0)
-        for i in range(0, n):
-            self.tableWidget.setItem(0, i, QTableWidgetItem(" "))
+        if(self.sistemas.numiter == 0):
+            labels = []
+            for x in range(0, n):
+                labels.append("X" + str(x + 1))
+            for x in range(0, n):
+                self.tableWidget.insertColumn(x)
+            self.tableWidget.setHorizontalHeaderLabels(labels)
+            self.tableWidget.insertRow(0)
+            for i in range(0, n):
+                self.tableWidget.setItem(0, i, QTableWidgetItem(" "))
+        else:
+            labels = []
+            for x in range(0, n):
+                labels.append("X" + str(x + 1))
+            for x in range(0, n):
+                self.tableWidget.insertColumn(x)
+            self.tableWidget.setHorizontalHeaderLabels(labels)
+            self.tableWidget.insertRow(0)
+            for i in range(0, n):
+                self.tableWidget.setItem(0, i, QTableWidgetItem(str(self.sistemas.xceros[i])))
+            self.tol.setValue(abs(math.log(self.sistemas.tol,10)))
+            self.iter.setValue(self.sistemas.numiter)
+            self.lamb.setValue(self.sistemas.lamb)
 
     def getXceros(self):
         b = [None] * self.n
