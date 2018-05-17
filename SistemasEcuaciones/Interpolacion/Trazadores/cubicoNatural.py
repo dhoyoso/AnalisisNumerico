@@ -152,5 +152,20 @@ class CubicoNatural:
         for i in range(0, len(self.b)):
             self.tabla[i][4 * self.n] = self.b[i]
 
-        total.eliminacionGaussianaTotal(self.n * 4,self.tabla)
-        solucion =  total.xns
+        total.eliminacionGaussianaTotal(self.n * 4, self.tabla)
+        solucion = total.xns
+        ind = 0
+        if valor >= x[0]:
+            if valor <= x[-1]:
+                for i in range(0, len(x) - 1):
+                    if (valor >= x[i]) & (valor < x[i + 1]):
+                        ind = i
+            else:
+                ind = len(x) - 2
+
+        resp = 0
+        for i in range(0, 4):
+            resp += solucion[(ind * 4) + i] * pow(valor, 3 - i)
+
+        print("Resultado:")
+        print("f(" + str(valor) + ") = " + str(resp))
