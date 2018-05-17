@@ -1,7 +1,7 @@
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
-
+import numpy as np
 from SistemasEcuaciones.Gaussiana.EliminacionGaussianaParcial import EliminacionGaussianaParcial
 from SistemasEcuaciones.Gaussiana.EliminacionGaussianaSimple import EliminacionGaussianaSimple
 from SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
@@ -33,7 +33,7 @@ class sistemasEcuaciones(QDialog):
 
     def simpleShow(self):
         gausi = EliminacionGaussianaSimple()
-        gausi.eliminacionGaussianaSimple(self.n.value(), self.sistemaecuaciones.AB)
+        gausi.eliminacionGaussianaSimple(self.n.value(), np.copy(self.sistemaecuaciones.AB))
         self.sistemaecuaciones.setAB(gausi.getAb())
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
@@ -43,7 +43,7 @@ class sistemasEcuaciones(QDialog):
 
     def parcialShow(self):
         gausi = EliminacionGaussianaParcial()
-        gausi.eliminacionGaussianaParcial(self.n.value(), self.sistemaecuaciones.AB)
+        gausi.eliminacionGaussianaParcial(self.n.value(), np.copy(self.sistemaecuaciones.AB))
         self.sistemaecuaciones.setAB(gausi.getAb())
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
@@ -53,7 +53,7 @@ class sistemasEcuaciones(QDialog):
 
     def totalShow(self):
         gausi = EliminacionGaussianaTotal()
-        gausi.eliminacionGaussianaTotal(self.n.value(), self.sistemaecuaciones.AB)
+        gausi.eliminacionGaussianaTotal(self.n.value(), np.copy(self.sistemaecuaciones.AB))
         self.sistemaecuaciones.setAB(gausi.getAb())
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
@@ -63,7 +63,7 @@ class sistemasEcuaciones(QDialog):
 
     def doolittleShow(self):
         gausi = FactorizacionLUDoolittle()
-        gausi.factorizacionLUDoolittle(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        gausi.factorizacionLUDoolittle(np.copy(self.sistemaecuaciones.A), np.copy(self.sistemaecuaciones.B), self.n.value())
         self.sistemaecuaciones.setXns(gausi.getXns())
         self.sistemaecuaciones.setEtapasL(gausi.getEtapasL())
         self.sistemaecuaciones.setEtapasU(gausi.getEtapasU())
@@ -73,7 +73,7 @@ class sistemasEcuaciones(QDialog):
 
     def croutShow(self):
         gausi = FactorizacionLUCrout()
-        gausi.factorizacionLUCrout(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        gausi.factorizacionLUCrout(np.copy(self.sistemaecuaciones.A), np.copy(self.sistemaecuaciones.B), self.n.value())
         self.sistemaecuaciones.setXns(gausi.getXns())
         self.sistemaecuaciones.setEtapasL(gausi.getEtapasL())
         self.sistemaecuaciones.setEtapasU(gausi.getEtapasU())
@@ -83,7 +83,7 @@ class sistemasEcuaciones(QDialog):
 
     def choleskyShow(self):
         gausi = FactorizacionLUCholesky()
-        gausi.factorizacionLUCholesky(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value())
+        gausi.factorizacionLUCholesky(np.copy(self.sistemaecuaciones.A), np.copy(self.sistemaecuaciones.B), self.n.value())
         self.sistemaecuaciones.setXns(gausi.getXns())
         self.sistemaecuaciones.setEtapasL(gausi.getEtapasL())
         self.sistemaecuaciones.setEtapasU(gausi.getEtapasU())
@@ -94,8 +94,8 @@ class sistemasEcuaciones(QDialog):
     def jacobiShow(self):
         gausi = Jacobi()
         print("ceros "+str(self.sistemaecuaciones.xceros)+" "+str(self.sistemaecuaciones.numiter)+" "+str(self.sistemaecuaciones.tol)+' '+str(self.sistemaecuaciones.lamb))
-        gausi.jacobi(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value(),
-                     self.sistemaecuaciones.xceros, self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol,
+        gausi.jacobi(np.copy(self.sistemaecuaciones.A), np.copy(self.sistemaecuaciones.B), self.n.value(),
+                     np.copy(self.sistemaecuaciones.xceros), self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol,
                      self.sistemaecuaciones.lamb)
         print(gausi.getEtapas())
         self.sistemaecuaciones.setIteraciones(gausi.getEtapas())
@@ -106,8 +106,8 @@ class sistemasEcuaciones(QDialog):
     def seidelShow(self):
         gausi = Seidel()
         print("ceros "+str(self.sistemaecuaciones.xceros)+" "+str(self.sistemaecuaciones.numiter)+" "+str(self.sistemaecuaciones.tol)+' '+str(self.sistemaecuaciones.lamb))
-        gausi.seidel(self.sistemaecuaciones.A, self.sistemaecuaciones.B, self.n.value(),
-                     self.sistemaecuaciones.xceros, self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol,
+        gausi.seidel(np.copy(self.sistemaecuaciones.A), np.copy(self.sistemaecuaciones.B), self.n.value(),
+                     np.copy(self.sistemaecuaciones.xceros), self.sistemaecuaciones.numiter, self.sistemaecuaciones.tol,
                      self.sistemaecuaciones.lamb)
         print(gausi.getEtapas())
         self.sistemaecuaciones.setIteraciones(gausi.getEtapas())
