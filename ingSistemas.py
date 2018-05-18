@@ -12,20 +12,38 @@ class ingSistemas(QDialog):
         self.sistema = sistema
         self.n = n
         self.guardar.clicked.connect(self.on_pushButton_clicked)
-        labels = []
-        for x in range(0, n):
-            labels.append("X" + str(x + 1))
-        labels.append("B")
-        for x in range(0, n + 1):
-            currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
-            self.tableWidget.insertColumn(currentRowCount)
-            if (x != n):
+        if(self.sistema.AB!=[[]]):
+            inicial = self.sistema.inicialAB
+            n = self.sistema.n
+            print("ini", inicial)
+            # primera iter
+            labels = []
+            for x in range(0, n):
+                labels.append("X" + str(x + 1))
+            labels.append("B")
+            for x in range(0, n + 1):
+                self.tableWidget.insertColumn(x)
+            self.tableWidget.setHorizontalHeaderLabels(labels)
+            for x in range(0, n):
+                self.tableWidget.insertRow(x)
+            for i in range(0, n):
+                for j in range(0, n + 1):
+                    self.tableWidget.setItem(i, j, QTableWidgetItem(str(inicial[i][j])))
+        else:
+            labels = []
+            for x in range(0, n):
+                labels.append("X" + str(x + 1))
+            labels.append("B")
+            for x in range(0, n + 1):
                 currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
-                self.tableWidget.insertRow(currentRowCount)
-                for y in range(0, n):
-                    self.tableWidget.setItem(currentRowCount, y, QTableWidgetItem(" "))
+                self.tableWidget.insertColumn(currentRowCount)
+                if (x != n):
+                    currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
+                    self.tableWidget.insertRow(currentRowCount)
+                    for y in range(0, n):
+                        self.tableWidget.setItem(currentRowCount, y, QTableWidgetItem(" "))
 
-        self.tableWidget.setHorizontalHeaderLabels(labels)
+            self.tableWidget.setHorizontalHeaderLabels(labels)
 
     def getA(self):
         # print(self.tableWidget.item(0,0).text())

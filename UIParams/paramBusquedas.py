@@ -2,7 +2,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from solucion import solucion
+from Soluciones.solucion import solucion
 
 
 class paramBusquedas(QDialog):

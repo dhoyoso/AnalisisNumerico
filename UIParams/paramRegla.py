@@ -2,12 +2,12 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from solucion import solucion
+from Soluciones.solucion import solucion
 
 
-class paramSecante(QDialog):
-    def __init__(self, funciones):
-        super(paramSecante, self).__init__()
+class paramRegla(QDialog):
+    def __init__(self,funciones):
+        super(paramRegla, self).__init__()
         loadUi('UI/biseccion.ui', self)
         self.funciones = funciones
         self.setWindowTitle('Parámetros')
@@ -18,9 +18,9 @@ class paramSecante(QDialog):
         self.dialogue.show()
         self.dialogue.clearParameters()
         if(self.Eabs.isChecked()):
-            self.dialogue.setParametersForSecante(self.xi.value(),self.xs.value(),self.tol.value(), self.niter.value(),True)
+            self.dialogue.setParametersForReglaFalsa(self.xi.value(),self.xs.value(),self.tol.value(), self.niter.value(),True)
         elif(self.Erel.isChecked()):
-            self.dialogue.setParametersForSecante(self.xi.value(),self.xs.value(),self.tol.value(), self.niter.value(),False)
+            self.dialogue.setParametersForReglaFalsa(self.xi.value(),self.xs.value(),self.tol.value(), self.niter.value(),False)
 
     @pyqtSlot()
     def on_pushButton_clicked(self):

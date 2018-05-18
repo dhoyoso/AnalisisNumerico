@@ -75,4 +75,3 @@ class Sistemas:
         self.etapasL = []
         self.etapasU = []
         self.zns = []
-        self.iteraciones = []

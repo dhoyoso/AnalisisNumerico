@@ -48,6 +48,7 @@ class EliminacionGaussianaTotal:
             print("ESTA ES I: ", i)
             self.xns[i - 1] = temp
             print("X" + str(self.marcas[i - 1]) + " = " + str(self.xns[i - 1]))
+        self.ordenarX()
 
     def pivoteoTotal(self, k):
         max = 0
@@ -103,12 +104,26 @@ class EliminacionGaussianaTotal:
     def getArregloMarcas(self):
         return self.arregloMarcas
 
+    def ordenarX(self):
+        for index, s in enumerate(self.marcas):
+            print(index, s)
+            s -= 1
+            temp = self.xns[index]
+            temp1 = self.marcas[index]
+            self.marcas[index] = self.marcas[s]
+            self.xns[index] = self.xns[s]
+            self.marcas[s] = temp1
+            self.xns[s] = temp
+
+
+
     def reset(self):
         self.xns = []
         self.Ab = [[]]
         self.n = 0
         self.arregloMarcas = []
         self.etapas = []
+
 
 gausi = EliminacionGaussianaTotal()
 a = [1, -2, 0.5, -5]

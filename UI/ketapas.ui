@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
@@ -26,18 +29,29 @@
   <widget class="QPushButton" name="siguiente">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>570</x>
      <y>480</y>
-     <width>124</width>
+     <width>186</width>
      <height>27</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    min-width: 10em;
+    padding: 6px;</string>
    </property>
    <property name="text">
     <string>Siguiente</string>
@@ -59,19 +73,6 @@
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Etapa:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>40</y>
-     <width>841</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Etapas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="etapa">
@@ -97,19 +98,46 @@
     <rect>
      <x>90</x>
      <y>480</y>
-     <width>124</width>
+     <width>186</width>
      <height>27</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    min-width: 10em;
+    padding: 6px;</string>
+   </property>
    <property name="text">
     <string>Anterior</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>871</width>
+     <height>69</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 0, 255);</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Etapas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

@@ -16,7 +16,6 @@ class Ketapas(QDialog):
         self.anterior.clicked.connect(self.on_pushButton_clicked)
         self.contadorEtapa = 0
         self.marcas = marcas
-        self.etapa.setText(str(self.contadorEtapa))
         print(self.marcas)
         if(marcas!=[]):
             self.setEtapa(self.marcas[self.contadorEtapa] , self.sistemas.etapas[self.contadorEtapa])
@@ -112,7 +111,6 @@ class Ketapas(QDialog):
         if (self.sender().text() == "Anterior"):
             print("anterior")
             self.contadorEtapa -= 1
-            self.etapa.setText(str(self.contadorEtapa ))
             print(str(self.contadorEtapa))
             if(self.contadorEtapa == 0):
                 if (self.marcas != []):
@@ -149,7 +147,6 @@ class Ketapas(QDialog):
         elif (self.sender().text().find("Siguiente") != -1):
             print("siguiente")
             self.contadorEtapa += 1
-            self.etapa.setText(str(self.contadorEtapa))
             print(str(self.contadorEtapa))
             if (self.contadorEtapa == (len(self.sistemas.etapas)-1)):
                 if (self.marcas != []):

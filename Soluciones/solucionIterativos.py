@@ -1,19 +1,8 @@
-from PyQt5.QtCore import pyqtSlot
 import matplotlib.pyplot as plt
 import numpy as np
-from Biseccion import Biseccion
-from BusquedasIncrementales import BusquedasIncrementales
-from Newton import Newton
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.uic import loadUi
-from RaicesMultiples import RaicesMultiples
-from ReglaFalsa import ReglaFalsa
-from Secante import Secante
-
-
-
-from PuntoFijo import PuntoFijo
 
 ## Create functions and set domain length
 x = np.arange(0.0, 2.0, 0.01)

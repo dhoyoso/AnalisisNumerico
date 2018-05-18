@@ -2,15 +2,15 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from solucion import solucion
+from Soluciones.solucion import solucion
 
 
-class paramNewton(QDialog):
+class paramPunto(QDialog):
     def __init__(self,funciones):
-        super(paramNewton, self).__init__()
+        super(paramPunto, self).__init__()
         loadUi('UI/Newton.ui', self)
-        self.funciones = funciones
         self.setWindowTitle('Parámetros')
+        self.funciones = funciones
         self.continuar.clicked.connect(self.on_pushButton_clicked)
 
     def solucionShow(self):
@@ -18,9 +18,9 @@ class paramNewton(QDialog):
         self.dialogue.show()
         self.dialogue.clearParameters()
         if(self.Eabs.isChecked()):
-            self.dialogue.setParametersForNewton(self.x0.value(),self.tol.value(), self.niter.value(),True)
+            self.dialogue.setParametersForPuntoFijo(self.x0.value(),self.tol.value(), self.niter.value(),True)
         elif(self.Erel.isChecked()):
-            self.dialogue.setParametersForNewton(self.x0.value(), self.tol.value(), self.niter.value(), False)
+            self.dialogue.setParametersForPuntoFijo(self.x0.value(), self.tol.value(), self.niter.value(), False)
 
     @pyqtSlot()
     def on_pushButton_clicked(self):

@@ -1,18 +1,14 @@
-import sys
-
-
-import numpy as np
 from Funciones import Funciones
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QApplication, QDialog
+from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
-from paramBisec import paramBisec
-from paramBusquedas import paramBusquedas
-from paramNewton import paramNewton
-from paramPunto import paramPunto
-from paramRaices import paramRaices
-from paramRegla import paramRegla
-from paramSecante import paramSecante
+from UIParams.paramBisec import paramBisec
+from UIParams.paramBusquedas import paramBusquedas
+from UIParams.paramNewton import paramNewton
+from UIParams.paramPunto import paramPunto
+from UIParams.paramRaices import paramRaices
+from UIParams.paramRegla import paramRegla
+from UIParams.paramSecante import paramSecante
 from Datos import datos
 
 
