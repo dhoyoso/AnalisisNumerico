@@ -10,12 +10,13 @@ class CubicoNatural:
         self.A = [[]]
         self.b = []
         self.n = 0
+        self.total = None
 
     def cubicoNatural(self, nroPtos, valor, x, y):
-        total = EliminacionGaussianaTotal()
+        self.total = EliminacionGaussianaTotal()
         self.n = nroPtos - 1
-        self.tabla = [[0] * (self.n) for i in range(self.n)]
-        self.b = [0] * 4
+        self.tabla = [[0] * (self.n * 4 + 1) for i in range((self.n * 4))]
+        self.b = [0] * self.n * 4
         eqNumber = 1
         k = 0
         var = 0
@@ -37,7 +38,7 @@ class CubicoNatural:
                     eq += " + "
                 elif cont == 4:
                     eq += "d" + str(((k / 4) + 1))
-                cont = 0
+                    cont = 0
                 cont += 1
                 exp -= 1
             self.b[i] = y[var]
@@ -59,8 +60,8 @@ class CubicoNatural:
             exp = 2
             eq = str(eqNumber) + ") "
             for j in range(0, 3):
-                self.tabla[m + i][k + j] = str((3 - j)) * pow(x[var], exp)
-                self.tabla[m + i][kaux + j] = str(-(3 - j)) * pow(x[var], exp)
+                self.tabla[m + i][k + j] = (3 - j) * pow(x[var], exp)
+                self.tabla[m + i][kaux + j] = -(3 - j) * pow(x[var], exp)
                 if cont2 == 1:
                     eq += str((3 - j)) + " * a" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
                     eq += " + "
@@ -152,8 +153,8 @@ class CubicoNatural:
         for i in range(0, len(self.b)):
             self.tabla[i][4 * self.n] = self.b[i]
 
-        total.eliminacionGaussianaTotal(self.n * 4, self.tabla)
-        solucion = total.xns
+        self.total.eliminacionGaussianaTotal(self.n * 4, self.tabla)
+        solucion = self.total.xns
         ind = 0
         if valor >= x[0]:
             if valor <= x[-1]:
@@ -169,3 +170,11 @@ class CubicoNatural:
 
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
+
+
+cubico = CubicoNatural()
+
+x = [1,2,3,4,5]
+y = [1,8,27,64,125]
+valor = 2
+cubico.cubicoNatural(4, valor, x, y)
