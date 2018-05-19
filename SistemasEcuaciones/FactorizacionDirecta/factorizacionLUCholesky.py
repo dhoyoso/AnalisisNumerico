@@ -147,13 +147,13 @@ class FactorizacionLUCholesky:
         self.n = 0
 
 
-gausi = FactorizacionLUCholesky()
-a = [1,-2,0.5]
-b = [-2,5,-1.5]
-c = [-0.2,1.75,-1]
+#gausi = FactorizacionLUCholesky()
+#a = [1,-2,0.5]
+#b = [-2,5,-1.5]
+#c = [-0.2,1.75,-1]
 
-bb = [-5,0,10]
+#bb = [-5,0,10]
 
-e = [a, b, c]
+#e = [a, b, c]
 
-gausi.factorizacionLUCholesky(e, bb, 3)
+#gausi.factorizacionLUCholesky(e, bb, 3)

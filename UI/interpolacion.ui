@@ -88,7 +88,7 @@
     <string>Continuar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="ingfuncion">
+  <widget class="QPushButton" name="ingpuntos">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -248,7 +248,7 @@
     </size>
    </property>
   </widget>
-  <widget class="QSpinBox" name="n">
+  <widget class="QSpinBox" name="npuntos">
    <property name="geometry">
     <rect>
      <x>760</x>
@@ -274,9 +274,9 @@
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>580</x>
      <y>200</y>
-     <width>181</width>
+     <width>221</width>
      <height>261</height>
     </rect>
    </property>

@@ -1,4 +1,4 @@
-from SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
+from AnalisisNumerico.SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
 
 
 class CubicoNatural:
@@ -177,4 +177,4 @@ cubico = CubicoNatural()
 x = [1,2,3,4,5]
 y = [1,8,27,64,125]
 valor = 2
-cubico.cubicoNatural(4, valor, x, y)
+cubico.cubicoNatural(5, valor, x, y)

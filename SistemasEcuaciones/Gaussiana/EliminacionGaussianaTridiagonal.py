@@ -54,11 +54,11 @@ class EliminacionGaussianaTridiagonal:
         print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in self.matrix]))
 
 
-gausi = EliminacionGaussianaTridiagonal()
+#gausi = EliminacionGaussianaTridiagonal()
 
 a = [5, -3, 2, 4, 7]
 b = [4, 8, 7, -5, 10, 15]
 c = [3, 2, 2, 2, 2]
 bb = [23, 18, 19, 2, 12, -50]
 
-gausi.eliminacionGaussianaTridiagonal(6, a, b, c, bb)
+#gausi.eliminacionGaussianaTridiagonal(6, a, b, c, bb)
