@@ -1,5 +1,5 @@
 from AnalisisNumerico.SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
-
+import numpy as np
 
 class CubicoNatural:
     def __init__(self):
@@ -17,6 +17,7 @@ class CubicoNatural:
         self.n = nroPtos - 1
         self.tabla = [[0] * (self.n * 4 + 1) for i in range((self.n * 4))]
         self.b = [0] * self.n * 4
+
         eqNumber = 1
         k = 0
         var = 0
@@ -28,7 +29,7 @@ class CubicoNatural:
             for j in range(0, 4):
                 self.tabla[i][k + j] = pow(x[var], exp)
                 if cont == 1:
-                    eq += "a" + str(((k / 4) + 1)) + " * (" + str(str(x[var])) + ")^" + str(exp)
+                    eq += "a" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
                     eq += " + "
                 elif cont == 2:
                     eq += "b" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
@@ -65,17 +66,17 @@ class CubicoNatural:
                 if cont2 == 1:
                     eq += str((3 - j)) + " * a" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
                     eq += " + "
-                    eq += str(-(3 - j)) + " * a" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
+                    eq += str(-(3 - j)) + " * a" + str(((kaux / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
                     eq += " + "
                 elif cont2 == 2:
                     eq += str((3 - j)) + " * b" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")"
                     eq += " + "
-                    eq += str(-(3 - j)) + " * b" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")"
+                    eq += str(-(3 - j)) + " * b" + str(((kaux / 4) + 1)) + " * (" + str(x[var]) + ")"
                     eq += " + "
                 elif cont2 == 3:
                     eq += "c" + str(((k / 4) + 1))
                     eq += " + "
-                    eq += "-c" + str(((k / 4) + 1))
+                    eq += "-c" + str(((kaux / 4) + 1))
                     cont2 = 0
 
                 cont2 += 1
@@ -102,12 +103,12 @@ class CubicoNatural:
                 self.tabla[m + i][k + j] = (6 - 4 * j) * pow(x[var], exp)
                 self.tabla[m + i][kaux + j] = -(6 - 4 * j) * pow(x[var], exp)
                 if cont3 == 1:
-                    eq += str(-(6 - 4 * j)) + " * a" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
+                    eq += str((6 - 4 * j)) + " * a" + str(((k / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
                     eq += " + "
                     eq += str(-(6 - 4 * j)) + " * a" + str(((kaux / 4) + 1)) + " * (" + str(x[var]) + ")^" + str(exp)
                     eq += " + "
                 elif cont3 == 2:
-                    eq += str(-(6 - 4 * j)) + " * b" + str(((k / 4) + 1))
+                    eq += str((6 - 4 * j)) + " * b" + str(((k / 4) + 1))
                     eq += " + "
                     eq += str(-(6 - 4 * j)) + " * b" + str(((kaux / 4) + 1))
                     cont3 = 0
@@ -147,17 +148,17 @@ class CubicoNatural:
             k = (self.n * 4) - 4
             eqNumber += 1
             m += 1
-            var = len(self.x) - 1
+            var = len(x) - 1
         print()
 
         for i in range(0, len(self.b)):
             self.tabla[i][4 * self.n] = self.b[i]
 
-        self.total.eliminacionGaussianaTotal(self.n * 4, self.tabla)
-        solucion = self.total.xns
+        self.total.eliminacionGaussianaTotal(self.n * 4,  np.copy(self.tabla))
+        solucion = self.total.getXns()
         ind = 0
         if valor >= x[0]:
-            if valor <= x[-1]:
+            if valor <= x[len(x)-1]:
                 for i in range(0, len(x) - 1):
                     if (valor >= x[i]) & (valor < x[i + 1]):
                         ind = i
@@ -167,7 +168,7 @@ class CubicoNatural:
         resp = 0
         for i in range(0, 4):
             resp += solucion[(ind * 4) + i] * pow(valor, 3 - i)
-
+        print (solucion)
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
 
