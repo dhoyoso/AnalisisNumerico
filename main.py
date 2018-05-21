@@ -2,13 +2,13 @@ from Funciones import Funciones
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
-from UIParams.paramBisec import paramBisec
-from UIParams.paramBusquedas import paramBusquedas
-from UIParams.paramNewton import paramNewton
-from UIParams.paramPunto import paramPunto
-from UIParams.paramRaices import paramRaices
-from UIParams.paramRegla import paramRegla
-from UIParams.paramSecante import paramSecante
+from Params.paramBisec import paramBisec
+from Params.paramBusquedas import paramBusquedas
+from Params.paramNewton import paramNewton
+from Params.paramPunto import paramPunto
+from Params.paramRaices import paramRaices
+from Params.paramRegla import paramRegla
+from Params.paramSecante import paramSecante
 from Datos import datos
 
 

@@ -162,7 +162,7 @@ class FactorizacionLUDoolittle:
         self.zs = []
 
 
-gausi = FactorizacionLUDoolittle()
+#gausi = FactorizacionLUDoolittle()
 a = [1,-2,0.5]
 b = [-2,5,-1.5]
 c = [-0.2,1.75,-1]
@@ -172,10 +172,10 @@ bb = [-5,0,10]
 e = [a, b, c]
 
 
-gausi.factorizacionLUDoolittle(e, bb, 3)
-gausi.imprimirMatrizEtapasL()
-print("JOCO")
-gausi.imprimirMatrizEtapasU()
+#gausi.factorizacionLUDoolittle(e, bb, 3)
+#gausi.imprimirMatrizEtapasL()
+#print("JOCO")
+#gausi.imprimirMatrizEtapasU()
 
 
 

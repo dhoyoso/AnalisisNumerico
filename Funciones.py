@@ -38,4 +38,3 @@ class Funciones:
         x = value
         return eval(self.Gx)
 
-# TODO no se guarda fx!!!

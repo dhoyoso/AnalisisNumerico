@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.uic import loadUi
 from main import *
 from sistemasEcuaciones import sistemasEcuaciones
+from interpolacion import Interpolacion
 
 class paginaprincipal(QDialog):
     def __init__(self):
@@ -15,10 +16,9 @@ class paginaprincipal(QDialog):
         self.setWindowTitle('Página principal')
         self.continuar.clicked.connect(self.on_pushButton_clicked)
 
-    def unaVariableShow(self):
-        self.dialogue = main()
+    def interpolacionShow(self):
+        self.dialogue = Interpolacion()
         self.dialogue.show()
-        #self.solucionWindow.show()
 
     def sistemasShow(self):
         self.dialogue = sistemasEcuaciones()
@@ -35,7 +35,7 @@ class paginaprincipal(QDialog):
                 print("sistemas")
             elif (self.interpolacion.isChecked()):
                 print("interpol")
-                #self.paramBiseccionShow()
+                self.interpolacionShow()
             elif (self.diferenciacion.isChecked()):
                 #self.paramReglaFalsaShow()
                 print("diferenciacion e integracion")
