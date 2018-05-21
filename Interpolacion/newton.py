@@ -5,11 +5,11 @@ class NewtonInterpolacion:
         self.tabla = [[]]
         self.valor = 0
         self.n = 0
+        self.pol = ""
 
-    def newtonInterpolacion(self, nroPtos, valor, x, y):
+    def newtonInterpolacion(self, nroPtos, x, y):
         self.x = x
         self.y = y
-        self.valor = valor
         self.n = nroPtos
         self.tabla = [[0] * (self.n) for i in range(self.n)]
         for i in range(0, self.n):
@@ -21,25 +21,31 @@ class NewtonInterpolacion:
         self.imprimirMatriz()
         print("Polinomio interpolante:")
         bi = self.tabla[0][0]
-        pol = "P(x): " + str(bi)
+        pol =  str(bi)
         temp = ""
         aux = 1
         for i in range(1, self.n):
-            temp = temp + "(x - " + str(x[i - 1]) + ")"
+            temp = temp + "(x-" + str(x[i - 1]) + ")"
             if self.tabla[i][i] > 0:
-                pol = pol + "\n" + "      + " + str(round(self.tabla[i][i], 2)) + " * " + temp
+                pol = pol  + "+" + str(round(self.tabla[i][i], 2)) + "*" + temp
             else:
-                pol = pol + "\n" + "       " + str(round(self.tabla[i][i], 2)) + " * " + temp
+                pol = pol  + str(round(self.tabla[i][i], 2)) + "*" + temp
             aux = aux * (self.valor - x[i - 1])
             bi = bi + self.tabla[i][i] * aux
         print(pol)
-        print("Resultado: ")
-        print("f(" + str(valor) + ") = " + str(bi))
+        self.pol = pol
 
     def imprimirMatriz(self):
-
-        # print('     '.join(str(self.marcas)))
         print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in self.tabla]))
+
+    def hallarvalor(self,valor):
+        bi = self.tabla[0][0]
+        aux = 1
+        for i in range(1, self.n):
+            aux = aux * (valor - self.x[i - 1])
+            bi = bi + self.tabla[i][i] * aux
+        return bi
+
 
     def reset(self):
         self.xns = []
@@ -47,9 +53,9 @@ class NewtonInterpolacion:
         self.n = 0
 
 
-gausi = NewtonInterpolacion()
+#gausi = NewtonInterpolacion()
 
-x = [1, 1.2, 1.4, 1.6, 1.8]
-y = [-0.620907, 0.640927, 2.234099, 4.183599, 6.513606]
+#x = [1, 1.2, 1.4, 1.6, 1.8]
+#y = [-0.620907, 0.640927, 2.234099, 4.183599, 6.513606]
 
-gausi.newtonInterpolacion(5, 2, x, y)
+#gausi.newtonInterpolacion(5, x, y)
