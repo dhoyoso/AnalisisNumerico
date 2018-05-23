@@ -11,7 +11,6 @@ class SolucionFactorizacionDirecta(QDialog):
         loadUi('UI/solucionecuacionesfactorizaciondirecta.ui', self)
         self.setWindowTitle('Solución')
         self.sistemas = sistemas
-        self.pushButton_3.clicked.connect(self.on_pushButton_clicked)
         self.etapas.clicked.connect(self.on_pushButton_clicked)
         if (solunica):
             inicial = self.sistemas.inicialAB
@@ -85,9 +84,6 @@ class SolucionFactorizacionDirecta(QDialog):
 
     @pyqtSlot()
     def on_pushButton_clicked(self):
-        if (self.sender().text() == "Cancelar"):
-            self.tableWidget.clear()
-            self.tableWidget_2.clear()
-        elif (self.sender().text().find("etapas") != -1):
+        if (self.sender().text().find("etapas") != -1):
             print("etapas")
             self.showEtapas()

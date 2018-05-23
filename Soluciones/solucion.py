@@ -14,25 +14,6 @@ from UnaVariable.Abiertos.Secante import Secante
 
 from UnaVariable.Abiertos.PuntoFijo import PuntoFijo
 
-## Create functions and set domain length
-x = np.arange(0.0, 2.0, 0.01)
-y = x**2
-dy = 2*x - 1
-
-## Plot functions and a point where they intersect
-plt.plot(x, y)
-plt.plot(x, dy)
-plt.plot(1, 1, 'or')
-
-## Config the graph
-plt.title('A Cool Graph')
-plt.xlabel('X')
-plt.ylabel('Y')
-#plt.ylim([0, 4])
-plt.grid(True)
-plt.legend(['y = x^2', 'y = 2x'], loc='upper left')
-
-## Show the graph
 
 class solucion(QDialog):
     xi = float
@@ -43,7 +24,6 @@ class solucion(QDialog):
         loadUi('UI/solucion.ui',self)
         self.setWindowTitle('Página principal')
         self.funciones = funciones
-        self.pushButton_3.clicked.connect(self.on_pushButton_clicked)
 
     def clearParameters(self):
         self.tableWidget.clear()
@@ -263,9 +243,6 @@ class solucion(QDialog):
         self.label_5.setText(result)
 
 
-    @pyqtSlot()
-    def on_pushButton_clicked(self):
-        self.tableWidget.clear()
 
 
 

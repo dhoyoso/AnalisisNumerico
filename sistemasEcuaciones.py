@@ -16,6 +16,7 @@ from Soluciones.solucionFactorizacionDirecta import SolucionFactorizacionDirecta
 from Soluciones.solucionIterativos import SolucionIterativos
 from Soluciones.solucionsistemas import solucionsistemas
 from valoresIniciales import ValoresIniciales
+from ayuda import ayuda
 
 
 class sistemasEcuaciones(QDialog):
@@ -26,8 +27,8 @@ class sistemasEcuaciones(QDialog):
         self.setWindowTitle('Sistemas de ecuaciones')
         self.continuar.clicked.connect(self.on_pushButton_clicked)
         self.ingsistema.clicked.connect(self.on_pushButton_clicked)
+        self.ayuda.clicked.connect(self.on_pushButton_clicked)
         self.valores_iniciales.clicked.connect(self.on_pushButton_clicked)
-
         self.valores_iniciales.setEnabled(False)
         self.valores_iniciales.setDisabled(True)
 
@@ -168,3 +169,36 @@ class sistemasEcuaciones(QDialog):
         elif (self.sender().text().find("Ingresar") != -1):
             print("ingsistemas")
             self.ingsistemasShow()
+        elif (self.sender().text() == "Ayuda"):
+            if self.simple.isChecked():
+                print("simple")
+                self.dialogue = ayuda("gaussianasimple")
+                self.dialogue.show()
+            elif self.parcial.isChecked():
+                print("parcial")
+                self.dialogue = ayuda("pivoteoparcial")
+                self.dialogue.show()
+            elif self.total.isChecked():
+                print("total")
+                self.dialogue = ayuda("pivoteototal")
+                self.dialogue.show()
+            elif self.doolittle.isChecked():
+                print("doolittle")
+                self.dialogue = ayuda("doolittle")
+                self.dialogue.show()
+            elif self.crout.isChecked():
+                print("crout")
+                self.dialogue = ayuda("crout")
+                self.dialogue.show()
+            elif self.cholesky.isChecked():
+                print("cholesky")
+                self.dialogue = ayuda("cholesky")
+                self.dialogue.show()
+            elif self.seidel.isChecked():
+                print("seidel")
+                self.dialogue = ayuda("gauss-seidel")
+                self.dialogue.show()
+            elif self.jacobi.isChecked():
+                print("jacobi")
+                self.dialogue = ayuda("jacobi")
+                self.dialogue.show()

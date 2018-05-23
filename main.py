@@ -10,6 +10,7 @@ from Params.paramRaices import paramRaices
 from Params.paramRegla import paramRegla
 from Params.paramSecante import paramSecante
 from Datos import datos
+from ayuda import ayuda
 
 
 class main(QDialog):
@@ -21,6 +22,8 @@ class main(QDialog):
         self.continuar.clicked.connect(self.on_pushButton_clicked)
         self.ingfuncion.clicked.connect(self.on_pushButton_clicked)
         self.botongraficar.clicked.connect(self.on_pushButton_clicked)
+        self.ayuda.clicked.connect(self.on_pushButton_clicked)
+
 
 
     def paramBusquedasShow(self):
@@ -62,9 +65,6 @@ class main(QDialog):
             if(self.Busquedas.isChecked()):
                 print("busquedas")
                 self.paramBusquedasShow()
-            elif(self.Grafico.isChecked()):
-                #TODO
-                print("grafico")
             elif (self.Biseccion.isChecked()):
                 print("biseccion")
                 self.paramBiseccionShow()
@@ -87,6 +87,35 @@ class main(QDialog):
             self.datosShow()
         elif (self.sender().text().find("Graficar") != -1):
             self.funciones.graficar()
+        elif (self.sender().text() == "Ayuda"):
+            if (self.Busquedas.isChecked()):
+                print("busquedas")
+                self.dialogue = ayuda("unavariablebusquedas")
+                self.dialogue.show()
+            elif (self.Biseccion.isChecked()):
+                print("biseccion")
+                self.dialogue = ayuda("unavariablebiseccion")
+                self.dialogue.show()
+            elif (self.Regla.isChecked()):
+                self.dialogue = ayuda("unavariablereglafalsa")
+                self.dialogue.show()
+                print("regla")
+            elif (self.Punto.isChecked()):
+                self.dialogue = ayuda("unavariablepuntofijo")
+                self.dialogue.show()
+                print("punto")
+            elif (self.Newton.isChecked()):
+                self.dialogue = ayuda("unavariablenewton")
+                self.dialogue.show()
+                print("newton")
+            elif (self.Secante.isChecked()):
+                self.dialogue = ayuda("unavariablesecante")
+                self.dialogue.show()
+                print("secante")
+            elif (self.Raices.isChecked()):
+                self.dialogue = ayuda("unavariableraicesmultiples")
+                self.dialogue.show()
+                print("raices")
 
 
 

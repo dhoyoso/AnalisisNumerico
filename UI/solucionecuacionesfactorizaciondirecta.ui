@@ -32,7 +32,7 @@
   <widget class="QPushButton" name="etapas">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>660</x>
      <y>600</y>
      <width>124</width>
      <height>27</height>
@@ -90,36 +90,6 @@
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Solución:&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>660</x>
-     <y>600</y>
-     <width>124</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>-1</pointsize>
-     <weight>75</weight>
-     <italic>false</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(170, 0, 255);
-	border-width: 2px;
-    border-style: outset;
-    border-radius: 10px;
-    border-color:rgb(170, 0, 255);
-    font: bold 14px;
-    padding: 6px;</string>
-   </property>
-   <property name="text">
-    <string>Cancelar</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
