@@ -1,5 +1,7 @@
 import numpy as np
 import math
+import numpy as npy
+import pylab as plb
 
 class Funciones:
     Fx = ""
@@ -37,4 +39,36 @@ class Funciones:
     def calculateGx(self,value):
         x = value
         return eval(self.Gx)
+
+    def graficar(self):
+        # Nos da un arreglo con 256 elementos en el intervalo [a,b] para graficarlos
+        X = npy.linspace(-50,50, 1000, endpoint=True)
+        # Funcion que vamos a graficar con los valores de x generados.
+        if(self.Fx!=""):
+            fx = eval(self.Fx)
+            plb.plot(X, fx, color='purple', label='Fx')
+        if (self.Fpx != ""):
+            fpx = eval(self.Fpx)
+            plb.plot(X, fpx, color='black', label="F\'x")
+        if (self.Fppx != ""):
+            fppx = eval(self.Fppx)
+            plb.plot(X, fppx, color='orchid', label="F\'\'x")
+        if (self.Gx != ""):
+            gx = eval(self.Gx)
+            plb.plot(X, gx, color='blueviolet', label='Gx')
+
+        # Valores sobre el eje X
+        plb.legend(loc='best')
+        #plb.plot(X, ejeX)
+        plb.xlabel("X")
+        plb.ylabel("Y")
+        plb.show()
+
+#
+# fun = Funciones()
+# fun.setFx("(X ** 3) - 0.5")
+# fun.setFpx("(X ** 2) - 0.5")
+# fun.setFppx("(X ** 5) - 0.5")
+# fun.setGx("(X ** 4) - 0.5")
+# fun.graficar()
 
