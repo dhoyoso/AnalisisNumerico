@@ -4,6 +4,7 @@ class EliminacionGaussianaTridiagonal:
         self.b = []
         self.c = []
         self.bb = []
+        self.unica = True
         self.matrix = [[]]
 
     def eliminacionGaussianaTridiagonal(self, n, a, b, c, bb):
@@ -13,7 +14,10 @@ class EliminacionGaussianaTridiagonal:
         self.bb = bb
         self.n = n
         self.matrix = [[0] * n for i in range(self.n)]
-
+        if(a.indexOf(0)!= -1) | (a.indexOf(0)!=-1) | (a.indexOf(0)!=1) | (a.indexOf(0)!=-1):
+            self.unica = False
+            print("No tiene solución única!")
+            return
         for i in range(0, self.n):
             self.matrix[i][i] = b[i]
             if (n - i) != 1:

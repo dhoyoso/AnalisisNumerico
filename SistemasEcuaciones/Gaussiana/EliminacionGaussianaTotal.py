@@ -20,6 +20,14 @@ class EliminacionGaussianaTotal:
         self.xns = [0] * n
         print("Matriz Original")
         self.imprimirMatriz()
+        a = [[None for i in range(self.n)] for j in range(self.n)]
+        for i in range(0, self.n):
+            for j in range(0, self.n):
+                a[i][j] = float(self.Ab[i][j])
+        if (np.linalg.det(a) == 0):
+            self.unica = False
+            print("El sistema no tiene solución unica porque el determinante de A es 0")
+            return
         for k in range(1, n):
             print("Etapa " + str(k))
             print("Objetivo: Poner ceros debajo del elemento A" + str(k) + "," + str(k) + "= " + str(
@@ -42,7 +50,7 @@ class EliminacionGaussianaTotal:
             self.etapas.append(np.copy(self.Ab))
             self.arregloMarcas.append(np.copy(self.marcas).tolist())
             self.imprimirMatriz()
-        print("Sustitución Regresiva")
+        print("SustituciÛn Regresiva")
         for i in range(n, 0, -1):
             sumatoria = 0
             for p in range(i + 1, n + 1):
@@ -67,7 +75,11 @@ class EliminacionGaussianaTotal:
         print("Soy fila maxima", filaMax, "  Soy k ", k)
         if max == 0:
             print("Entre aqui 1")
+<<<<<<< HEAD
+            print("El sistema no tiene soluciÛn ˙nica!")
+=======
             print("El sistema no tiene solución única!")
+>>>>>>> c6905ab9b4438753e82a70d4bb504174fd8e7c02
             self.unica = False
             return
         else:

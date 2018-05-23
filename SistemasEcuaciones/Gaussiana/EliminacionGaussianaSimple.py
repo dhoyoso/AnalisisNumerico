@@ -13,6 +13,14 @@ class EliminacionGaussianaSimple:
         self.Ab = Ab
         self.n = n
         self.xns = [0] * n
+        a = [[None for i in range(self.n)] for j in range(self.n)]
+        for i in range(0, self.n):
+            for j in range(0, self.n):
+                a[i][j] = float(self.Ab[i][j])
+        if(np.linalg.det(a) == 0):
+            self.unica = False
+            print("El sistema no tiene solución unica!")
+            return
         print("Matriz Original")
         self.etapas.append(np.copy(self.Ab))
         self.imprimirMatriz()
@@ -67,11 +75,11 @@ class EliminacionGaussianaSimple:
         self.n = 0
         self.etapas = []
 
-#gausi = EliminacionGaussianaSimple()
+gausi = EliminacionGaussianaSimple()
 a = [1, -2, 0.5, -5]
 b = [-2, 5, -1.5, 0]
 c = [-0.2, 1.75, -1, 10]
 
 e = [a, b, c]
-#gausi.eliminacionGaussianaSimple(3, e)
+gausi.eliminacionGaussianaSimple(3, e)
 

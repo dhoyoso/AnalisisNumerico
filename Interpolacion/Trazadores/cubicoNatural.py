@@ -1,4 +1,4 @@
-from AnalisisNumerico.SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
+from SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
 import numpy as np
 
 class CubicoNatural:
