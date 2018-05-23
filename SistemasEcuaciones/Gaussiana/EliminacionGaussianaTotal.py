@@ -65,17 +65,20 @@ class EliminacionGaussianaTotal:
                     filaMax = i
                     colMax = j
         print("Elemento mayor: ", str(max), " en la fila: ", str(filaMax + 1), " y columna: ", str(colMax + 1))
+        print("Soy fila maxima", filaMax, "  Soy k ", k)
         if max == 0:
+            print("Entre aqui 1")
             print("El sistema no tiene solución única!")
             self.unica = False
             return
-        elif filaMax != k - 1:
-            print("Cambio de fila: ", str(k), " con fila: ", str(filaMax + 1))
-            for i in range(0, len(self.Ab[0])):
-                aux = self.Ab[k - 1][i]
-                self.Ab[k - 1][i] = self.Ab[filaMax][i]
-                self.Ab[filaMax][i] = aux
-            self.imprimirMatriz()
+        else:
+            if filaMax != (k - 1):
+                print("Cambio de fila: ", str(k), " con fila: ", str(filaMax + 1))
+                for i in range(0, len(self.Ab[0])):
+                    aux = self.Ab[k - 1][i]
+                    self.Ab[k - 1][i] = self.Ab[filaMax][i]
+                    self.Ab[filaMax][i] = aux
+                self.imprimirMatriz()
             if colMax != k - 1:
                 print("CAMBIO COL: ", str(k), " con COL: ", str(colMax + 1))
                 for j in range(0, len(self.Ab[0]) - 1):
