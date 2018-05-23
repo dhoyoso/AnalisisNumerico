@@ -18,6 +18,7 @@ class EliminacionGaussianaTotal:
         self.arregloMarcas.append(np.copy(self.marcas))
         self.etapas.append(np.copy(self.Ab))
         self.xns = [0] * n
+        # self.arregloMarcas.append(np.arange(1,n+1).tolist())
         print("Matriz Original")
         self.imprimirMatriz()
         a = [[None for i in range(self.n)] for j in range(self.n)]
@@ -50,7 +51,7 @@ class EliminacionGaussianaTotal:
             self.etapas.append(np.copy(self.Ab))
             self.arregloMarcas.append(np.copy(self.marcas).tolist())
             self.imprimirMatriz()
-        print("SustituciÛn Regresiva")
+        print("Sustitución Regresiva")
         for i in range(n, 0, -1):
             sumatoria = 0
             for p in range(i + 1, n + 1):
@@ -75,11 +76,7 @@ class EliminacionGaussianaTotal:
         print("Soy fila maxima", filaMax, "  Soy k ", k)
         if max == 0:
             print("Entre aqui 1")
-<<<<<<< HEAD
-            print("El sistema no tiene soluciÛn ˙nica!")
-=======
             print("El sistema no tiene solución única!")
->>>>>>> c6905ab9b4438753e82a70d4bb504174fd8e7c02
             self.unica = False
             return
         else:

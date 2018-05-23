@@ -11,6 +11,7 @@ class CubicoNatural:
         self.b = []
         self.n = 0
         self.total = None
+        self.ecuaciones = ""
 
     def cubicoNatural(self, nroPtos, valor, x, y):
         self.total = EliminacionGaussianaTotal()
@@ -23,6 +24,7 @@ class CubicoNatural:
         var = 0
         cont = 1
         print("Etapa 1")
+        self.ecuaciones+="Etapa 1 \n"
         for i in range(0, (self.n * 2)):
             exp = 3
             eq = str(eqNumber) + ") "
@@ -44,6 +46,7 @@ class CubicoNatural:
                 exp -= 1
             self.b[i] = y[var]
             eq += " = " + str(self.b[i])
+            self.ecuaciones += eq + "\n"
             print(eq)
             eqNumber += 1
             if (i % 2 == 1):
@@ -52,6 +55,7 @@ class CubicoNatural:
                 var += 1
         print()
         print("Etapa 2")
+        self.ecuaciones+="Etapa 2 \n"
         k = 0
         kaux = k + 4
         m = self.n * 2
@@ -87,10 +91,13 @@ class CubicoNatural:
             self.b[m + i] = 0
             eq += " = " + str(self.b[m + i])
             print(eq)
+            self.ecuaciones += eq + "\n"
             eqNumber += 1
             var += 1
         print()
         print("Etapa 3.")
+        self.ecuaciones+="Etapa 3 \n"
+
         cont3 = 1
         k = 0
         kaux = k + 4
@@ -119,10 +126,12 @@ class CubicoNatural:
             self.b[m + i] = 0
             eq += " = " + str(self.b[m + i])
             print(eq)
+            self.ecuaciones += eq + "\n"
             eqNumber += 1
             var += 1
         print()
         print("Etapa 4.")
+        self.ecuaciones += "Etapa 4 \n"
         cont4 = 1
         k = 0
         m = m + (self.n - 1)
@@ -145,6 +154,7 @@ class CubicoNatural:
             self.b[m] = 0
             eq += " = " + str(self.b[m])
             print(eq)
+            self.ecuaciones += eq + "\n"
             k = (self.n * 4) - 4
             eqNumber += 1
             m += 1
@@ -179,3 +189,4 @@ x = [1,2,3,4,5]
 y = [1,8,27,64,125]
 valor = 2
 cubico.cubicoNatural(5, valor, x, y)
+print(cubico.ecuaciones)
