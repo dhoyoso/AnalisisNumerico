@@ -6,19 +6,19 @@ class CubicoNatural:
         self.x = []
         self.y = []
         self.tabla = [[0]]
-        self.valor = 0
         self.A = [[]]
         self.b = []
         self.n = 0
         self.total = None
         self.ecuaciones = ""
 
-    def cubicoNatural(self, nroPtos, valor, x, y):
+    def cubicoNatural(self, nroPtos, x, y):
         self.total = EliminacionGaussianaTotal()
         self.n = nroPtos - 1
         self.tabla = [[0] * (self.n * 4 + 1) for i in range((self.n * 4))]
         self.b = [0] * self.n * 4
-
+        self.x = x
+        self.y = y
         eqNumber = 1
         k = 0
         var = 0
@@ -160,12 +160,15 @@ class CubicoNatural:
             m += 1
             var = len(x) - 1
         print()
-
         for i in range(0, len(self.b)):
             self.tabla[i][4 * self.n] = self.b[i]
 
         self.total.eliminacionGaussianaTotal(self.n * 4,  np.copy(self.tabla))
+
+
+    def hallarValor(self,valor):
         solucion = self.total.getXns()
+        x = self.x
         ind = 0
         if valor >= x[0]:
             if valor <= x[len(x)-1]:
@@ -181,12 +184,13 @@ class CubicoNatural:
         print (solucion)
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
+        return resp
 
 
 cubico = CubicoNatural()
 
-x = [1,2,3,4,5]
-y = [1,8,27,64,125]
-valor = 2
-cubico.cubicoNatural(5, valor, x, y)
+x = [2,2.5,3]
+y = [10.6,17.325,25.8]
+cubico.cubicoNatural(3,x,y)
+print(cubico.hallarValor(2))
 print(cubico.ecuaciones)
