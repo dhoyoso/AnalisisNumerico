@@ -16,6 +16,10 @@ class paginaprincipal(QDialog):
         self.setWindowTitle('Página principal')
         self.continuar.clicked.connect(self.on_pushButton_clicked)
 
+    def unaVariableShow(self):
+        self.dialogue = main()
+        self.dialogue.show()
+
     def interpolacionShow(self):
         self.dialogue = Interpolacion()
         self.dialogue.show()
