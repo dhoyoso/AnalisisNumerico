@@ -3,7 +3,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.uic import loadUi
 
-from AnalisisNumerico.Interpolacion.lagrange import Lagrange
+from Interpolacion.lagrange import Lagrange
 
 
 class solucionLagrange(QDialog):
