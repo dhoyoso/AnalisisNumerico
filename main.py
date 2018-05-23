@@ -20,6 +20,8 @@ class main(QDialog):
         self.setWindowTitle('Página principal')
         self.continuar.clicked.connect(self.on_pushButton_clicked)
         self.ingfuncion.clicked.connect(self.on_pushButton_clicked)
+        self.botongraficar.clicked.connect(self.on_pushButton_clicked)
+
 
     def paramBusquedasShow(self):
         self.dialogue = paramBusquedas(self.funciones)
@@ -83,11 +85,14 @@ class main(QDialog):
                 print("raices")
         elif(self.sender().text().find("Ingresar") != -1):
             self.datosShow()
+        elif (self.sender().text().find("Graficar") != -1):
+            self.funciones.graficar()
 
 
 
 
-#app = QApplication(sys.argv)
+
+            #app = QApplication(sys.argv)
 #widget = main()
 #widget.show()
 #sys.exit(app.exec())

@@ -18,7 +18,6 @@ class EliminacionGaussianaTotal:
         self.arregloMarcas.append(np.copy(self.marcas))
         self.etapas.append(np.copy(self.Ab))
         self.xns = [0] * n
-        # self.arregloMarcas.append(np.arange(1,n+1).tolist())
         print("Matriz Original")
         self.imprimirMatriz()
         for k in range(1, n):

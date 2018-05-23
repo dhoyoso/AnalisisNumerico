@@ -27,9 +27,9 @@ class NewtonInterpolacion:
         for i in range(1, self.n):
             temp = temp + "(x-" + str(x[i - 1]) + ")"
             if self.tabla[i][i] > 0:
-                pol = pol  + "+" + str(round(self.tabla[i][i], 2)) + "*" + temp
+                pol = pol  + "+" + str(round(self.tabla[i][i], 6)) + "*" + temp
             else:
-                pol = pol  + str(round(self.tabla[i][i], 2)) + "*" + temp
+                pol = pol  + str(round(self.tabla[i][i], 6)) + "*" + temp
             aux = aux * (self.valor - x[i - 1])
             bi = bi + self.tabla[i][i] * aux
         print(pol)

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>856</width>
-    <height>592</height>
+    <height>633</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,7 +73,7 @@
     <rect>
      <x>90</x>
      <y>260</y>
-     <width>221</width>
+     <width>241</width>
      <height>19</height>
     </rect>
    </property>
@@ -83,7 +83,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Polinomio Interpolante:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Polinomio Interpolante P(x):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
@@ -154,7 +154,7 @@
    <property name="geometry">
     <rect>
      <x>640</x>
-     <y>520</y>
+     <y>530</y>
      <width>124</width>
      <height>31</height>
     </rect>
@@ -320,6 +320,36 @@
      <width>671</width>
      <height>141</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="botongraficar">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>580</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 255);
+	border-width: 2px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:rgb(170, 0, 255);
+    font: bold 14px;
+    padding: 6px;</string>
+   </property>
+   <property name="text">
+    <string>Graficar P(x)</string>
    </property>
   </widget>
  </widget>

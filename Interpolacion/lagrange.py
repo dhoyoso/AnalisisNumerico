@@ -13,7 +13,7 @@ class Lagrange:
         self.n = nroPtos
 
         resultado = 0
-        self.pol = "p(x) "
+        self.pol = ""
 
         for k in range(0, self.n):
             numerador = ""
@@ -26,9 +26,12 @@ class Lagrange:
             termino = numerador + " / " + denominador
             self.Lxs += "L" + str(k) + "(x): " + termino + "\n"
             if self.y[k] > 0:
-                self.pol = self.pol + "      + " + str(round(y[k],2)) + " * [" + termino + "]\n"
+                aux = " + "
+                if(k == 0):
+                    aux = ""
+                self.pol = self.pol + aux + str(round(y[k],6)) + " * (" + termino + ") "
             else:
-                self.pol = self.pol + "  " + str(round(y[k],2)) + " * [" + termino + "]\n"
+                self.pol = self.pol + "  " + str(round(y[k],6)) + " * (" + termino + ") "
 
         print(self.pol)
         print(self.Lxs)

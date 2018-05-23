@@ -11,6 +11,15 @@ class datos(QDialog):
         self.setWindowTitle('Datos')
         self.funciones = funciones
         self.continuar.clicked.connect(self.on_pushButton_clicked)
+        if(funciones.Fx!=""):
+            self.Fx.setText(self.funciones.Fx)
+        if (funciones.Fpx != ""):
+            self.Fpx.setText(self.funciones.Fpx)
+        if (funciones.Fppx != ""):
+            self.Fppx.setText(self.funciones.Fppx)
+        if (funciones.Gx != ""):
+            self.Gx.setText(self.funciones.Gx)
+
 
 
     @pyqtSlot()
