@@ -189,8 +189,10 @@ class CubicoNatural:
 
 cubico = CubicoNatural()
 
+
 x = [2,2.5,3]
 y = [10.6,17.325,25.8]
 cubico.cubicoNatural(3,x,y)
 print(cubico.hallarValor(2))
 print(cubico.ecuaciones)
+
