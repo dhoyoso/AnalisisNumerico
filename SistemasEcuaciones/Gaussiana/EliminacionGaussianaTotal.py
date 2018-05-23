@@ -52,15 +52,20 @@ class EliminacionGaussianaTotal:
             self.arregloMarcas.append(np.copy(self.marcas).tolist())
             self.imprimirMatriz()
         print("Sustitución Regresiva")
+
+
+
         for i in range(n, 0, -1):
             sumatoria = 0
             for p in range(i + 1, n + 1):
                 sumatoria = sumatoria + self.Ab[i - 1][p - 1] * self.xns[p - 1]
             temp = (self.Ab[i - 1][n] - sumatoria) / self.Ab[i - 1][i - 1]
-            print("ESTA ES I: ", i)
             self.xns[i - 1] = temp
             print("X" + str(self.marcas[i - 1]) + " = " + str(self.xns[i - 1]))
+
+        print("Uno", self.xns, self.marcas)
         self.ordenarX()
+        print(self.xns, self.marcas)
 
     def pivoteoTotal(self, k):
         max = 0
@@ -120,15 +125,19 @@ class EliminacionGaussianaTotal:
         return self.arregloMarcas
 
     def ordenarX(self):
+        marcas1 = [0 for i in range(len(self.marcas))]
+        xns1 = [0 for j in range(len(self.marcas))]
+
         for index, s in enumerate(self.marcas):
-            print(index, s)
-            s -= 1
+            s = s - 1
             temp = self.xns[index]
             temp1 = self.marcas[index]
             self.marcas[index] = self.marcas[s]
             self.xns[index] = self.xns[s]
-            self.marcas[s] = temp1
-            self.xns[s] = temp
+            marcas1[s] = temp1
+            xns1[s] = temp
+        self.marcas = np.copy(marcas1)
+        self.xns = np.copy(xns1)
 
 
 
