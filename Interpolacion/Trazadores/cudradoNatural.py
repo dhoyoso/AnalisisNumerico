@@ -117,8 +117,8 @@ class CuadradoNatural:
 
         self.total.eliminacionGaussianaTotal(self.n * 3, np.copy(self.tabla))
         self.solucion = self.total.getXns()
-        for i in range(0, self.n * 3):
-            self.funcion += str(round(self.solucion[i * 3], 2)) + "x^2 + " + str(round(self.solucion[(i * 3)+1], 2)) + "x + " + str(round(self.solucion[(i * 3)+2 ], 2))
+        for i in range(0, self.n):
+            self.funcion += str(round(self.solucion[i * 3], 2)) + "x^2 + " + str(round(self.solucion[(i * 3)+1], 2)) + "x + " + str(round(self.solucion[(i * 3)+2], 2))
             self.funcion += " si " + str(self.x[i]) + " ≤ x ≤ " + str(self.x[i+1]) + "\n"
 
         self.etapas = np.copy(self.total.etapas)
