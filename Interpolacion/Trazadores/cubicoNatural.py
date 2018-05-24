@@ -190,13 +190,14 @@ class CubicoNatural:
         if valor >= x[0]:
             if valor <= x[len(x) - 1]:
                 for i in range(0, len(x) - 1):
-                    if (valor >= x[i]) & (valor < x[i + 1]):
+                    if (valor >= x[i]) & (valor <= x[i + 1]):
                         ind = i
             else:
                 ind = len(x) - 2
-        resp = 0
-        for i in range(0, 3):
-            resp += solucion[(ind * 3) + i] * pow(valor, 2 - i)
+        resp = 0.0
+        for i in range(0, 4):
+
+            resp += solucion[(ind * 4) + i] * pow(valor, 3 - i)
         print(solucion)
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
@@ -211,7 +212,5 @@ cubico = CubicoNatural()
 x = [2, 3, 5]
 y = [-1, 2, -7]
 cubico.cubicoNatural(3, x, y)
-print(cubico.hallarValor(2))
-print(cubico.ecuaciones)
-print(cubico.funcion)
-print(cubico.marcas)
+print(cubico.hallarValor(5))
+

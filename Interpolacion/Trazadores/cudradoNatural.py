@@ -132,10 +132,10 @@ class CuadradoNatural:
 
         self.etapas = np.copy(self.total.etapas)
 
-    def hallarValor(self):
+    def hallarValor(self,valor):
         solucion = self.solucion
         x = self.x
-        ind = 0
+        ind = 0.0
         if valor >= x[0]:
             if valor <= x[len(x) - 1]:
                 for i in range(0, len(x) - 1):
@@ -157,5 +157,6 @@ cuadrado = CuadradoNatural()
 
 x = [3, 4.5, 7, 9]
 y = [2.5, 1, 2.5, 0.5]
-valor = 5
+valor = 3
 cuadrado.cuadradoNatural(4, valor, x, y)
+print(cuadrado.hallarValor(3))
