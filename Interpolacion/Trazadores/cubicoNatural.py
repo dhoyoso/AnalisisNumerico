@@ -16,6 +16,8 @@ class CubicoNatural:
         self.total = None
         self.ecuaciones = ""
         self.funcion = ""
+        self.xns = []
+        self.marcasfinales = []
 
     def cubicoNatural(self, nroPtos, x, y):
         self.total = EliminacionGaussianaTotal()
@@ -178,15 +180,19 @@ class CubicoNatural:
 
         self.total.eliminacionGaussianaTotal(self.n * 4, np.copy(self.tabla))
         self.etapas = np.copy(self.total.etapas)
+        self.xns = np.copy(self.total.xns)
+        self.marcasfinales = np.copy(self.total.beforeordenar)
+        solucion = self.total.getXns()
+        for i in range(1, self.n + 1):
+            self.funcion += str(round(solucion[i - 1], 2)) + "x^3 + " + str(round(solucion[i], 2)) + "x^2 + " + str(
+                round(solucion[i + 1], 2)) + "x + " + str(round(solucion[i + 2], 2)) + " si " + str(
+                round(x[i - 1], 2)) + " ≤ x ≤ " + str(round(x[i], 2)) + "\n"
+
 
     def hallarValor(self, valor):
         solucion = self.total.getXns()
         x = self.x
         ind = 0
-        for i in range(1, self.n + 1):
-            self.funcion += str(round(solucion[i - 1], 2)) + "x^3 + " + str(round(solucion[i], 2)) + "x^2 + " + str(
-                round(solucion[i + 1], 2)) + "x + " + str(round(solucion[i + 2], 2)) + " si " + str(
-                round(x[i - 1], 2)) + " ≤ x ≤ " + str(round(x[i], 2)) + "\n"
         if valor >= x[0]:
             if valor <= x[len(x) - 1]:
                 for i in range(0, len(x) - 1):
@@ -201,7 +207,7 @@ class CubicoNatural:
         print(solucion)
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
-        return str(resp)
+        return resp
 
     def getEtapas(self):
         return self.etapas

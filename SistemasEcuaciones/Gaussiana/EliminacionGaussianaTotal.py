@@ -10,6 +10,7 @@ class EliminacionGaussianaTotal:
         self.marcas = []
         self.arregloMarcas = []
         self.etapas = []
+        self.beforeordenar = []
 
     def eliminacionGaussianaTotal(self, n, Ab):
         self.Ab = Ab
@@ -64,6 +65,8 @@ class EliminacionGaussianaTotal:
             print("X" + str(self.marcas[i - 1]) + " = " + str(self.xns[i - 1]))
 
         print("Uno", self.xns, self.marcas)
+        self.beforeordenar = np.copy(self.marcas)
+        print("DIEGO E SUN MK Y YO TENGO RAZON" + str(self.beforeordenar))
         self.ordenarX()
         print(self.xns, self.marcas)
 
@@ -105,11 +108,11 @@ class EliminacionGaussianaTotal:
                 self.imprimirMatriz()
 
     def imprimirMatriz(self):
-        print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in self.Ab]))
+        print('\n'.join(['     '.join(['{:4}'.format(item, 2) for item in row]) for row in self.Ab]))
 
     def imprimirMatrizEtapas(self):
         for i in self.etapas:
-            print('\n'.join(['     '.join(['{:4}'.format(round(item, 2)) for item in row]) for row in i]))
+            print('\n'.join(['     '.join(['{:4}'.format(item, 2) for item in row]) for row in i]))
             print(" ")
 
     def getXns(self):
@@ -148,14 +151,14 @@ class EliminacionGaussianaTotal:
         self.arregloMarcas = []
         self.etapas = []
 
-#
-# gausi = EliminacionGaussianaTotal()
-# a = [1, -2, 0.5, -5]
-# b = [-2, 5, -1.5, 0]
-# c = [-0.2, 1.75, -1, 10]
-#
-# e = [a, b, c]
-#
-# gausi.eliminacionGaussianaTotal(3, e)
-# print("JOCO")
-# print(gausi.arregloMarcas)
+
+#gausi = EliminacionGaussianaTotal()
+#a = [1, -2, 0.5, -5]
+#b = [-2, 5, -1.5, 0]
+#c = [-0.2, 1.75, -1, 10]
+
+#e = [a, b, c]
+
+#gausi.eliminacionGaussianaTotal(3, e)
+#print("JOCO")
+#print(gausi.arregloMarcas)
