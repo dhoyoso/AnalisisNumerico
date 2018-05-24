@@ -33,8 +33,6 @@ class solucionLagrange(QDialog):
         plb.xlabel("X")
         plb.ylabel("Y")
         plb.grid(True)
-
-
         plb.show()
 
 
@@ -47,7 +45,6 @@ class solucionLagrange(QDialog):
         self.lagrange.lagrange(self.funciones.npuntos, np.copy(self.funciones.x), np.copy(self.funciones.y))
         self.lix.setText(self.lagrange.Lxs)
         self.polinomio.setText(self.lagrange.pol)
-
 
     @pyqtSlot()
     def on_pushButton_clicked(self):

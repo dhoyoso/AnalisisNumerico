@@ -6,8 +6,10 @@ from FuncionInterpolacion import FuncionInterpolacion
 
 from Interpolacion.newton import NewtonInterpolacion
 from Soluciones.solucionNewton import solucionNewton
+from Soluciones.solucionCubico import solucionCubico
 from Soluciones.solucionLagrange import solucionLagrange
 from Interpolacion.lagrange import Lagrange
+from Interpolacion.Trazadores.cubicoNatural import CubicoNatural
 
 
 class Interpolacion(QDialog):
@@ -58,7 +60,17 @@ class Interpolacion(QDialog):
     def cuadraticoShow(self):
         print("lagrangeShow")
     def cubicoShow(self):
-        print("lagrangeShow")
+        print("cubicoShow")
+        gausi = CubicoNatural()
+        x = [2, 3, 5]
+        y = [-1, 2, -7]
+        self.funcioninterpolacion.setX(x)
+        self.funcioninterpolacion.setY(y)
+        self.funcioninterpolacion.setNpuntos(len(x))
+        gausi.cubicoNatural(3,x,y)
+        #gausi.cubicoNatural(self.npuntos.value(), np.copy(self.funcioninterpolacion.x), np.copy(self.funcioninterpolacion.y))
+        self.dialogue = solucionCubico(self.funcioninterpolacion, gausi)
+        self.dialogue.show()
 
     def createTable(self):
         if len(self.funcioninterpolacion.x) == 0:
