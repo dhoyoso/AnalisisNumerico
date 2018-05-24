@@ -12,7 +12,7 @@ class EliminacionGaussianaSimple:
     def eliminacionGaussianaSimple(self, n, Ab):
         self.Ab = Ab
         self.n = n
-        self.xns = [0] * n
+        self.xns = [0.0] * n
         a = [[None for i in range(self.n)] for j in range(self.n)]
         for i in range(0, self.n):
             for j in range(0, self.n):

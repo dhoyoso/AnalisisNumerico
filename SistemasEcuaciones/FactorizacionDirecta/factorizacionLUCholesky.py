@@ -29,14 +29,14 @@ class FactorizacionLUCholesky:
         for i in range(0, n):
             for j in range(0, n):
                 if i < j:
-                    self.U[i][j] = -1
-                    self.L[i][j] = 0
+                    self.U[i][j] = 0.0
+                    self.L[i][j] = 0.0
                 elif i > j:
-                    self.L[i][j] = -1
-                    self.U[i][j] = 0
+                    self.L[i][j] = 0.0
+                    self.U[i][j] = 0.0
                 elif i == j:
-                    self.L[i][j] = -1
-                    self.U[i][j] = -1
+                    self.L[i][j] = 0.0
+                    self.U[i][j] = 0.0
         print("Etapa 0")
         print("Matriz A")
         self.imprimirMatrizA()

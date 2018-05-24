@@ -6,17 +6,19 @@ class CubicoNatural:
         self.x = []
         self.y = []
         self.tabla = [[0]]
+        self.etapas = []
         self.A = [[]]
         self.b = []
         self.n = 0
         self.total = None
         self.ecuaciones = ""
+        self.funcion = ""
 
     def cubicoNatural(self, nroPtos, x, y):
         self.total = EliminacionGaussianaTotal()
         self.n = nroPtos - 1
-        self.tabla = [[0] * (self.n * 4 + 1) for i in range((self.n * 4))]
-        self.b = [0] * self.n * 4
+        self.tabla = [[0.0] * (self.n * 4 + 1) for i in range((self.n * 4))]
+        self.b = [0.0] * self.n * 4
         self.x = x
         self.y = y
         eqNumber = 1
@@ -164,35 +166,40 @@ class CubicoNatural:
             self.tabla[i][4 * self.n] = self.b[i]
 
         self.total.eliminacionGaussianaTotal(self.n * 4,  np.copy(self.tabla))
+        self.etapas = np.copy(self.total.etapas)
 
-
-    def hallarValor(self,valor):
+    def hallarValor(self, valor):
         solucion = self.total.getXns()
         x = self.x
         ind = 0
+        for i in range(1, self.n + 1):
+            self.funcion += str(round(solucion[i - 1],2)) + "x^3 + " + str(round(solucion[i],2)) + "x^2 + " + str(round(solucion[i + 1],2)) + "x + " + str(round(solucion[i + 2],2)) + " si " + str(round(x[i - 1],2)) + " ≤ x ≤ " + str(round(x[i],2)) + "\n"
         if valor >= x[0]:
-            if valor <= x[len(x)-1]:
+            if valor <= x[len(x) - 1]:
                 for i in range(0, len(x) - 1):
                     if (valor >= x[i]) & (valor < x[i + 1]):
                         ind = i
             else:
                 ind = len(x) - 2
-
         resp = 0
-        for i in range(0, 4):
-            resp += solucion[(ind * 4) + i] * pow(valor, 3 - i)
+        for i in range(0, 3):
+            resp += solucion[(ind * 3) + i] * pow(valor, 2 - i)
         print (solucion)
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
-        return resp
+        return str(resp)
+
+    def getEtapas(self):
+        return self.etapas
 
 
 cubico = CubicoNatural()
 
 
-x = [2,2.5,3]
-y = [10.6,17.325,25.8]
+x = [2,3,5]
+y = [-1,2,-7]
 cubico.cubicoNatural(3,x,y)
 print(cubico.hallarValor(2))
 print(cubico.ecuaciones)
+print(cubico.funcion)
 

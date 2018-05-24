@@ -13,7 +13,7 @@ class EliminacionGaussianaTridiagonal:
         self.c = c
         self.bb = bb
         self.n = n
-        self.matrix = [[0] * n for i in range(self.n)]
+        self.matrix = [[0.0] * n for i in range(self.n)]
         if(a.indexOf(0)!= -1) | (a.indexOf(0)!=-1) | (a.indexOf(0)!=1) | (a.indexOf(0)!=-1):
             self.unica = False
             print("No tiene solución única!")

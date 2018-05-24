@@ -17,7 +17,7 @@ class EliminacionGaussianaTotal:
         self.marcas = np.arange(1, n + 1)
         self.arregloMarcas.append(np.copy(self.marcas))
         self.etapas.append(np.copy(self.Ab))
-        self.xns = [0] * n
+        self.xns = [0.0] * n
         # self.arregloMarcas.append(np.arange(1,n+1).tolist())
         print("Matriz Original")
         self.imprimirMatriz()
@@ -43,9 +43,9 @@ class EliminacionGaussianaTotal:
                     print("No tiene solucion unica")
                     self.unica = False
                     return
-                multiplicador = self.Ab[i - 1][k - 1] / self.Ab[k - 1][k - 1]
+                multiplicador = np.copy(self.Ab[i - 1][k - 1]) / np.copy(self.Ab[k - 1][k - 1])
                 for j in range(k, n + 2):
-                    self.Ab[i - 1][j - 1] = self.Ab[i - 1][j - 1] - multiplicador * self.Ab[k - 1][j - 1]
+                    self.Ab[i - 1][j - 1] = np.copy(self.Ab[i - 1][j - 1] - multiplicador * self.Ab[k - 1][j - 1])
                 print("Multiplicador" + str(i) + "," + str(k) + " : " + str(multiplicador))
             print(" ")
             self.etapas.append(np.copy(self.Ab))
@@ -59,7 +59,7 @@ class EliminacionGaussianaTotal:
             sumatoria = 0
             for p in range(i + 1, n + 1):
                 sumatoria = sumatoria + self.Ab[i - 1][p - 1] * self.xns[p - 1]
-            temp = (self.Ab[i - 1][n] - sumatoria) / self.Ab[i - 1][i - 1]
+            temp = (np.copy(self.Ab[i - 1][n]) - sumatoria) / np.copy(self.Ab[i - 1][i - 1])
             self.xns[i - 1] = temp
             print("X" + str(self.marcas[i - 1]) + " = " + str(self.xns[i - 1]))
 
@@ -74,7 +74,7 @@ class EliminacionGaussianaTotal:
         for i in range(k - 1, self.n):
             for j in range(k - 1, self.n):
                 if abs(self.Ab[i][j]) > max:
-                    max = abs(self.Ab[i][j])
+                    max = np.copy(abs(self.Ab[i][j]))
                     filaMax = i
                     colMax = j
         print("Elemento mayor: ", str(max), " en la fila: ", str(filaMax + 1), " y columna: ", str(colMax + 1))
@@ -88,19 +88,19 @@ class EliminacionGaussianaTotal:
             if filaMax != (k - 1):
                 print("Cambio de fila: ", str(k), " con fila: ", str(filaMax + 1))
                 for i in range(0, len(self.Ab[0])):
-                    aux = self.Ab[k - 1][i]
-                    self.Ab[k - 1][i] = self.Ab[filaMax][i]
-                    self.Ab[filaMax][i] = aux
+                    aux = np.copy(self.Ab[k - 1][i])
+                    self.Ab[k - 1][i] = np.copy(self.Ab[filaMax][i])
+                    self.Ab[filaMax][i] = np.copy(aux)
                 self.imprimirMatriz()
             if colMax != k - 1:
                 print("CAMBIO COL: ", str(k), " con COL: ", str(colMax + 1))
                 for j in range(0, len(self.Ab[0]) - 1):
-                    aux = self.Ab[j][k - 1]
-                    self.Ab[j][k - 1] = self.Ab[j][colMax]
-                    self.Ab[j][colMax] = aux
-                aux2 = self.marcas[colMax]
-                self.marcas[colMax] = self.marcas[k - 1]
-                self.marcas[k - 1] = aux2
+                    aux = np.copy(self.Ab[j][k - 1])
+                    self.Ab[j][k - 1] = np.copy(self.Ab[j][colMax])
+                    self.Ab[j][colMax] = np.copy(aux)
+                aux2 = np.copy(self.marcas[colMax])
+                self.marcas[colMax] = np.copy(self.marcas[k - 1])
+                self.marcas[k - 1] = np.copy(aux2)
                 print("")
                 self.imprimirMatriz()
 

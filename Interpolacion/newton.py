@@ -11,7 +11,7 @@ class NewtonInterpolacion:
         self.x = x
         self.y = y
         self.n = nroPtos
-        self.tabla = [[0] * (self.n) for i in range(self.n)]
+        self.tabla = [[0.0] * (self.n) for i in range(self.n)]
         for i in range(0, self.n):
             self.tabla[i][0] = y[i]
         for i in range(1, self.n):

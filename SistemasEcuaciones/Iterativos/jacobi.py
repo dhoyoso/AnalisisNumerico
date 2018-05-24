@@ -19,7 +19,7 @@ class Jacobi:
 
         print(str(contador))
         error = tolerancia + 1
-        x = [0] * n
+        x = [0.0] * n
         self.etapas.append(np.copy(x0))
         while (error > tolerancia) & (contador < iteraciones):
             print("L")
