@@ -1,4 +1,5 @@
 import numpy as np
+
 from SistemasEcuaciones.Gaussiana.EliminacionGaussianaTotal import EliminacionGaussianaTotal
 
 
@@ -9,6 +10,7 @@ class CuadradoNatural:
         self.y = []
         self.tabla = [[0]]
         self.etapas = []
+        self.marcas = []
         self.valor = 0
         self.A = [[]]
         self.b = []
@@ -40,12 +42,18 @@ class CuadradoNatural:
                 if cont == 1:
                     eq += "a" + str(((k / 3) + 1)) + str(pow(x[var], exp))
                     eq += " + "
+                    if self.marcas.count("a" + str(int(((k / 4) + 1)))) == 0:
+                        self.marcas.append("a" + str(int(((k / 4) + 1))))
                 elif cont == 2:
                     eq += "b" + str(((k / 3) + 1)) + str(pow(x[var], exp))
                     eq += " + "
+                    if self.marcas.count("a" + str(int(((k / 4) + 1)))) == 0:
+                        self.marcas.append("a" + str(int(((k / 4) + 1))))
                 elif cont == 3:
                     eq += "c" + str(((k / 3) + 1))
                     cont = 0
+                    if self.marcas.count("a" + str(int(((k / 4) + 1)))) == 0:
+                        self.marcas.append("a" + str(int(((k / 4) + 1))))
 
                 cont += 1
                 exp -= 1
@@ -118,8 +126,9 @@ class CuadradoNatural:
         self.total.eliminacionGaussianaTotal(self.n * 3, np.copy(self.tabla))
         self.solucion = self.total.getXns()
         for i in range(0, self.n):
-            self.funcion += str(round(self.solucion[i * 3], 2)) + "x^2 + " + str(round(self.solucion[(i * 3)+1], 2)) + "x + " + str(round(self.solucion[(i * 3)+2], 2))
-            self.funcion += " si " + str(self.x[i]) + " ≤ x ≤ " + str(self.x[i+1]) + "\n"
+            self.funcion += str(round(self.solucion[i * 3], 2)) + "x^2 + " + str(
+                round(self.solucion[(i * 3) + 1], 2)) + "x + " + str(round(self.solucion[(i * 3) + 2], 2))
+            self.funcion += " si " + str(self.x[i]) + " ≤ x ≤ " + str(self.x[i + 1]) + "\n"
 
         self.etapas = np.copy(self.total.etapas)
 
