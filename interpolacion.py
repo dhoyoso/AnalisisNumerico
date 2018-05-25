@@ -10,6 +10,10 @@ from Soluciones.solucionCubico import solucionCubico
 from Soluciones.solucionLagrange import solucionLagrange
 from Interpolacion.lagrange import Lagrange
 from Interpolacion.Trazadores.cubicoNatural import CubicoNatural
+from Interpolacion.Trazadores.cudradoNatural import CuadradoNatural
+from Interpolacion.Trazadores.lineal import Lineal
+from Soluciones.solucionLineal import solucionLineal
+from ayuda import ayuda
 
 
 class Interpolacion(QDialog):
@@ -20,6 +24,8 @@ class Interpolacion(QDialog):
         self.setWindowTitle('Interpolación')
         self.continuar.clicked.connect(self.on_pushButton_clicked)
         self.ingpuntos.clicked.connect(self.on_pushButton_clicked)
+        self.ayuda.clicked.connect(self.on_pushButton_clicked)
+
         labels = ["Xi", "Yi"]
         self.tableWidget.insertColumn(0)
         self.tableWidget.insertColumn(1)
@@ -55,20 +61,41 @@ class Interpolacion(QDialog):
         self.dialogue.show()
 
     def linealShow(self):
-        print("lagrangeShow")
+        print("lineal")
+        print("cuadradoShow")
+        gausi = Lineal()
+        #x = [1.0, 3.0, 5.0]
+        #y = [1.0, 6.0, 25.0]
+        #self.funcioninterpolacion.setX(x)
+        #self.funcioninterpolacion.setY(y)
+        #self.funcioninterpolacion.setNpuntos(len(x))
+        #gausi.lineal(3, x, y)
+        gausi.lineal(self.npuntos.value(), np.copy(self.funcioninterpolacion.x), np.copy(self.funcioninterpolacion.y))
+        self.dialogue = solucionLineal(self.funcioninterpolacion, gausi)
+        self.dialogue.show()
 
     def cuadraticoShow(self):
-        print("lagrangeShow")
+        print("cuadradoShow")
+        gausi = CuadradoNatural()
+        #x = [3, 4.5, 7, 9]
+        #y = [2.5, 1, 2.5, 0.5]
+        #self.funcioninterpolacion.setX(x)
+        #self.funcioninterpolacion.setY(y)
+        #self.funcioninterpolacion.setNpuntos(len(x))
+        #gausi.cuadradoNatural(4, x, y)
+        gausi.cuadradoNatural(self.npuntos.value(), np.copy(self.funcioninterpolacion.x), np.copy(self.funcioninterpolacion.y))
+        self.dialogue = solucionCubico(self.funcioninterpolacion, gausi)
+        self.dialogue.show()
     def cubicoShow(self):
         print("cubicoShow")
         gausi = CubicoNatural()
-        x = [2, 3, 5]
-        y = [-1, 2, -7]
-        self.funcioninterpolacion.setX(x)
-        self.funcioninterpolacion.setY(y)
-        self.funcioninterpolacion.setNpuntos(len(x))
-        gausi.cubicoNatural(3,x,y)
-        #gausi.cubicoNatural(self.npuntos.value(), np.copy(self.funcioninterpolacion.x), np.copy(self.funcioninterpolacion.y))
+        #x = [2, 3, 5]
+        #y = [-1, 2, -7]
+        #self.funcioninterpolacion.setX(x)
+        #self.funcioninterpolacion.setY(y)
+        #self.funcioninterpolacion.setNpuntos(len(x))
+        #gausi.cubicoNatural(3,x,y)
+        gausi.cubicoNatural(self.npuntos.value(), np.copy(self.funcioninterpolacion.x), np.copy(self.funcioninterpolacion.y))
         self.dialogue = solucionCubico(self.funcioninterpolacion, gausi)
         self.dialogue.show()
 
@@ -116,17 +143,37 @@ class Interpolacion(QDialog):
                 self.lagrangeShow()
             elif self.lineal.isChecked():
                 print("lineal")
-                # self.sistemaecuaciones.reset()
+                self.getXsandYs()
                 self.linealShow()
             elif self.cuadratico.isChecked():
                 print("cuadratico")
-                # self.sistemaecuaciones.reset()
+                self.getXsandYs()
                 self.cuadraticoShow()
             elif self.cubico.isChecked():
                 print("cubico")
-                # self.sistemaecuaciones.reset()
+                self.getXsandYs()
                 self.cubicoShow()
 
         elif (self.sender().text().find("Ingresar") != -1):
             print("ing puntos")
             self.createTable()
+        elif (self.sender().text() == "Ayuda"):
+            if self.newtondivididas.isChecked():
+                print("newton")
+                self.dialogue = ayuda("newtondiferencias")
+                self.dialogue.show()
+            elif self.lagrange.isChecked():
+                self.dialogue = ayuda("lagrange")
+                self.dialogue.show()
+            elif self.lineal.isChecked():
+                print("lineal")
+                self.dialogue = ayuda("lineal")
+                self.dialogue.show()
+            elif self.cuadratico.isChecked():
+                print("cuadratico")
+                self.dialogue = ayuda("cuadratico")
+                self.dialogue.show()
+            elif self.cubico.isChecked():
+                print("cubico")
+                self.dialogue = ayuda("cubico")
+                self.dialogue.show()

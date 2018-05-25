@@ -44,3 +44,6 @@ __pycache__/valoresIniciales.cpython-36.pyc
 __pycache__/ayuda.cpython-36.pyc
 Interpolacion/Trazadores/__pycache__/cubicoNatural.cpython-36.pyc
 Soluciones/__pycache__/solucionCubico.cpython-36.pyc
+Interpolacion/Trazadores/__pycache__/cudradoNatural.cpython-36.pyc
+Interpolacion/Trazadores/__pycache__/lineal.cpython-36.pyc
+Soluciones/__pycache__/solucionLineal.cpython-36.pyc

@@ -19,7 +19,7 @@ class Lineal:
             bi = -(mi * x[i]) + y[i]
             self.b.append(np.copy(bi))
             self.m.append(np.copy(mi))
-            self.funcion += str(round(mi, 2)) + "X + " + str(round(bi, 2))
+            self.funcion += str(round(mi, 2)) + "X + " + str(round(bi, 2))+ " si "+str(round(x[i], 2)) + " ≤ x ≤ "+ str(round(x[i+1], 2))+ "\n"
 
     def hallarValor(self, valor):
         for i in range(0,(self.n)):
@@ -28,8 +28,10 @@ class Lineal:
                 return (self.m[i] * valor) + self.b[i]
 
 
-x = [1.0, 3.0, 4.0, 5.0]
-y = [1.0, 3.0, 4.0, 5.0]
+x = [1.0, 3.0,5.0]
+y = [1.0,6.0,25.0]
 
 gausi = Lineal()
-gausi.lineal(4,x, y)
+gausi.lineal(3,x, y)
+print(gausi.hallarValor(5))
+print(gausi.funcion)

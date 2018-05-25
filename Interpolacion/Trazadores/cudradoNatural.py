@@ -19,8 +19,10 @@ class CuadradoNatural:
         self.solucion = []
         self.funcion = ""
         self.ecuaciones = ""
+        self.xns = []
+        self.marcasfinales = []
 
-    def cuadradoNatural(self, nroPtos, valor, x, y):
+    def cuadradoNatural(self, nroPtos, x, y):
         self.x = x
         self.y = y
         self.total = EliminacionGaussianaTotal()
@@ -40,20 +42,20 @@ class CuadradoNatural:
             for j in range(0, 3):
                 self.tabla[i][k + j] = pow(x[var], exp)
                 if cont == 1:
-                    eq += "a" + str(((k / 3) + 1)) + str(pow(x[var], exp))
+                    eq += "a" + str(int(((k / 3) + 1))) + " * " + str(pow(x[var], exp))
                     eq += " + "
-                    if self.marcas.count("a" + str(int(((k / 4) + 1)))) == 0:
-                        self.marcas.append("a" + str(int(((k / 4) + 1))))
+                    if self.marcas.count("a" + str(int(((k / 3) + 1)))) == 0:
+                        self.marcas.append("a" + str(int(((k / 3) + 1))))
                 elif cont == 2:
-                    eq += "b" + str(((k / 3) + 1)) + str(pow(x[var], exp))
+                    eq += "b" + str(int(((k / 3) + 1))) + " * " + str(pow(x[var], exp))
                     eq += " + "
-                    if self.marcas.count("a" + str(int(((k / 4) + 1)))) == 0:
-                        self.marcas.append("a" + str(int(((k / 4) + 1))))
+                    if self.marcas.count("b" + str(int(((k / 3) + 1)))) == 0:
+                        self.marcas.append("b" + str(int(((k / 3) + 1))))
                 elif cont == 3:
-                    eq += "c" + str(((k / 3) + 1))
+                    eq += "c" + str(int(((k / 3) + 1)))
                     cont = 0
-                    if self.marcas.count("a" + str(int(((k / 4) + 1)))) == 0:
-                        self.marcas.append("a" + str(int(((k / 4) + 1))))
+                    if self.marcas.count("c" + str(int(((k / 3) + 1)))) == 0:
+                        self.marcas.append("c" + str(int(((k / 3) + 1))))
 
                 cont += 1
                 exp -= 1
@@ -82,14 +84,15 @@ class CuadradoNatural:
                 self.tabla[m + i][kaux + j] = -(2 - j) * pow(x[var], exp)
 
                 if cont2 == 1:
-                    eq += "a" + str(((k / 2) + 1)) + "*" + str((2 - j) * pow(x[var], exp))
+                    eq += "a" + str(int(((k / 3) + 1))) + "*" + str((2 - j) * pow(x[var], exp))
                     eq += " + "
-                    eq += " a" + str(((kaux / 2) + 1)) + "*" + str((-(2 - j)) * pow(x[var], exp))
+                    eq += " a" + str(int((kaux / 3) + 1)) + "*" + str((-(2 - j)) * pow(x[var], exp))
                     eq += " + "
+
                 elif cont2 == 2:
-                    eq += "b" + "*" + str(((k / 2) + 1))
+                    eq += "b" + str(int((k / 3) + 1))
                     eq += " + "
-                    eq += "-b" + "*" + str(((kaux / 2) + 1))
+                    eq += "-b" + str(int((kaux / 3) + 1))
                     cont2 = 0
 
                 cont2 += 1
@@ -110,9 +113,9 @@ class CuadradoNatural:
         m = m + (self.n - 1)
         var = 0
         exp = 1
-        eq = "9" + ") "
+        eq = str(eqNumber) + ") "
         self.tabla[m][0] = 2 * pow(x[var], exp)
-        eq += "2" + " * a1.0 "
+        eq += "2" + " * a1 "
         self.b[m] = 0
         eq += " = " + str(self.b[m])
         self.ecuaciones += eq + "\n"
@@ -124,7 +127,9 @@ class CuadradoNatural:
             self.tabla[i][3 * self.n] = self.b[i]
 
         self.total.eliminacionGaussianaTotal(self.n * 3, np.copy(self.tabla))
-        self.solucion = self.total.getXns()
+        self.xns = np.copy(self.total.xns)
+        self.marcasfinales = np.copy(self.total.beforeordenar)
+        self.solucion = np.copy(self.total.getXns())
         for i in range(0, self.n):
             self.funcion += str(round(self.solucion[i * 3], 2)) + "x^2 + " + str(
                 round(self.solucion[(i * 3) + 1], 2)) + "x + " + str(round(self.solucion[(i * 3) + 2], 2))
@@ -132,14 +137,14 @@ class CuadradoNatural:
 
         self.etapas = np.copy(self.total.etapas)
 
-    def hallarValor(self,valor):
+    def hallarValor(self, valor):
         solucion = self.solucion
         x = self.x
         ind = 0.0
         if valor >= x[0]:
             if valor <= x[len(x) - 1]:
                 for i in range(0, len(x) - 1):
-                    if (valor >= x[i]) & (valor < x[i + 1]):
+                    if (valor >= x[i]) & (valor <= x[i + 1]):
                         ind = i
             else:
                 ind = len(x) - 2
@@ -150,7 +155,7 @@ class CuadradoNatural:
         print(solucion)
         print("Resultado:")
         print("f(" + str(valor) + ") = " + str(resp))
-        return str(resp)
+        return resp
 
 
 cuadrado = CuadradoNatural()
@@ -158,5 +163,12 @@ cuadrado = CuadradoNatural()
 x = [3, 4.5, 7, 9]
 y = [2.5, 1, 2.5, 0.5]
 valor = 3
-cuadrado.cuadradoNatural(4, valor, x, y)
-print(cuadrado.hallarValor(3))
+cuadrado.cuadradoNatural(4, x, y)
+print(cuadrado.etapas[0])
+print(cuadrado.etapas[-1])
+print(cuadrado.marcas)
+print(cuadrado.n)
+print(cuadrado.hallarValor(8))
+print(cuadrado)
+print(cuadrado.funcion)
+print(type(cuadrado))

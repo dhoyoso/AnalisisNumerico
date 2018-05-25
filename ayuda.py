@@ -56,8 +56,10 @@ ayudas["gaussianasimple"] ="El método de eliminación gaussiana simple es un m�
                                       "- La transformación del sistema de ecuaciones de ecuaciones utilizando las operaciones elementales hasta obtener un sistema de ecuaciones equivalente cuya matriz de coeficientes es una matriz triangular superior.\n" \
                                       "- La sustitución regresiva para hallar la solución.\n\n" \
                                       "El objetivo de este método es iterar sobre la diagonal de la matriz haciendo las operaciones matemáticas correspondientes en cada paso para hacer 0 las posiciones inferiores a la diagonal, resultando en una matriz triangular superior."
-ayudas["pivoteototal"] ="En el método de Eliminación Gaussiana con pivoteo total, en cada etapa K, se busca el mayor en valor absoluto de los elementos de la submatriz resultante de eliminar las filas F1 hasta Fk y las columnas C1 hasta Ck-1. Al encontrar el mayor, se realiza el intercambio de filas y columnas para ubicarlo en la posición Abkk." \
-                                   "Esto con el fin de que el valor de los multiplicadores sea el más pequeño posible y se reduzca considerablemente el efecto del error de redondeo."
+ayudas["pivoteototal"] ="En el método de Eliminación Gaussiana con pivoteo total, en cada etapa K, se busca el mayor en valor absoluto de los elementos de la submatriz resultante de eliminar las filas F1 hasta Fk y las columnas C1 hasta Ck-1. Al encontrar el mayor, se realiza el intercambio de filas y columnas para ubicarlo en la posición Abkk. \n" \
+                        "Al realizar el cambio de columnas se debe tener en cuenta que se altera el orden de las variables en el sistema. \n" \
+                        "El pivoteo total coloca sobre la diagonal los valores mayores posibles de cada submatriz. Los multiplicadores conservan la misma propiedad del pivoteo parcial. \n" \
+                        "Esto con el fin de que el valor de los multiplicadores sea el más pequeño posible y se reduzca considerablemente el efecto del error de redondeo. \n"
 ayudas["pivoteoparcial"] ="Este metodo es una modificacion a la eliminacion Gaussiana simple utilizando intercambios de filas para evitar que los elementos de la diagonal sean cero." \
                                      "En cada etapa K, se busca que el mayor (en valor absoluto) de los elementos de la columna K que ocupan posiciones mayores o iguales que k, ocupen la posicion de la diagonal, es decir se busca el mayor de los elementos en la columna y luego se intercambian las filas para ubicar este valor en la fila k.\n" \
                                      "Al realizar esto se logra que los multiplicadores cumplan la siguiente propiedad:\n" \
@@ -80,6 +82,32 @@ ayudas["gauss-seidel"] ="El método de Gauss Seidel es una variación del métod
 ayudas["jacobi"] ="El método de Jacobi es un método iterativo basado en punto fijo, por lo que se pretende resolver el sistema de ecuaciones lineales Ax = b a partir de un vector inicial x0 que sirve como aproximación al vector solución x. Del mismo modo, con x0 se genera x1, con x1 se genera x2, y así sucesivamente  de la forma:\n" \
                              "Xn+1= G(xn)\n" \
                              "De este modo, se pretende que el vector aproximado Xn+1 converja a la solución del sistema"
+
+ayudas["newtondiferencias"] = "Este método se basa en la utilización de las diferencias divididas. Se utiliza para determinar un polinomio de a lo sumo grado n con n+1 puntos. \n" \
+                              "Es una alternativa más eficiente a la utilización de la matriz de vandermonde, ya que esta se obtiene por recurrencia utilizando resultados obtenidos en las recurrencias anteriores. \n" \
+                              "Se usa en el caso que los puntos en el eje x se encuentran espaciados de forma arbitraria y provienen de una función desconocida pero supuestamente diferenciable.\n" \
+                              "Las diferencias sirven para evaluar los coeficientes y obtener el polinomio de interpolacion:\n" \
+                              "fn(x) = f(x0) + (x – x0) f[x1, x0] + (x – x0)(x – x1) f[x2, x1, x0]" \
+                              "+ · · · + (x – x0)(x – x1)· · ·(x – xn–1) f[xn, xn–1,· · ·, x0] \n"
+
+ayudas["lagrange"] = "El método de Lagrange es una reformulación del polinomio de Newton con el que se evita el cálculo de las diferencias divididas. \n" \
+                     "Se busca construir el polinomio interpolador de grado n que pasa por n+1 puntos. \n" \
+                     "El polinomio está dado de la forma P(x) = f(x0)Ln0(x)+…..+F(xn)Lnn(x) \n" \
+                     "Donde  para cada k=0,1…..,n \n"
+
+ayudas["lineal"] = "Este es el caso más sencillo. En él, vamos a interpolar una función f(x) de la que se nos dan un número N de pares (x,f(x)) por los que tendrá que pasar nuestra función polinómica P(x). Esta serie de funciones nuestras van a ser lineales, esto es, con grado 1: de la forma P(x) = ax + b. \ n" \
+                   "Definiremos una de estas funciones por cada par de puntos adyacentes, hasta un total de (N-1) funciones, haciéndolas pasar obligatoriamente por los puntos que van a determinarlas, es decir, la función P(x) será el conjunto de segmentos que unen nudos consecutivos; es por ello que nuestra función será continua en dichos puntos, pero no derivable en general. "
+ayudas["cuadratico"] = "En este caso, los polinomios P(x) a través de los que construimos el Spline tienen grado 2. Esto quiere decir, que va a tener la forma P(x) = ax² + bx + c \n" \
+                       "Como en la interpolación segmentaria lineal, vamos a tener N-1 ecuaciones (donde N son los puntos sobre los que se define la función). La interpolación cuadrática nos va a asegurar que la función que nosotros generemos a trozos con los distintos P(x) va a ser continua, ya que para sacar las condiciones que ajusten el polinomio, vamos a determinar como condiciones: \n\n" \
+                       "- Que las partes de la función a trozos P(x) pasen por ese punto. Es decir, que las dos Pn(x) que rodean al f(x) que queremos aproximar, sean igual a f(x) en cada uno de estos puntos. \n" \
+                       "- Que la derivada en un punto siempre coincida para ambos \"lados\" de la función definida a trozos que pasa por tal punto común. \nEsto sin embargo no es suficiente, y necesitamos una condición más. ¿Por qué?. Tenemos 3 incógnitas por cada P(x). En un caso sencillo con f(x) definida en tres puntos y dos ecuaciones P(x) para aproximarla, vamos a tener seis incógnitas en total. Para resolver esto necesitaríamos seis ecuaciones, pero vamos a tener tan sólo cinco: cuatro que igualan el P(x) con el valor de f(x) en ese punto (dos por cada intervalo), y la quinta al igualar la derivada en el punto común a las dos P(x). \n" \
+                       "Se necesita una sexta ecuación,¿de dónde se extrae? Esto suele hacerse con el valor de la derivada en algún punto, al que se fuerza uno de los P(x).  \n"
+ayudas["cubico"] = "En este caso, cada polinomio P(x) a través del que construimos los Splines en [m,n] tiene grado 3. Esto quiere decir, que va a tener la forma P(x) = ax³ + bx² + cx + d \n\n" \
+                   "En este caso vamos a tener cuatro variables por cada intervalo (a,b,c,d), y una nueva condición para cada punto común a dos intervalos, respecto a la derivada segunda: \n" \
+                   "- Que las partes de la función a trozos P(x) pasen por ese punto. Es decir, que las dos Pn(x) que rodean al f(x) que queremos aproximar, sean igual a f(x) en cada uno de estos puntos. \n" \
+                   "- Que la derivada en un punto siempre coincida para ambos \"lados\" de la función definida a trozos que pasa por tal punto común. \n" \
+                    "-Que la derivada segunda en un punto siempre coincida para ambos \"lados\" de la función definida a trozos que pasa por tal punto común. \n" \
+                    "Como puede deducirse al compararlo con el caso de splines cuadráticos, ahora no nos va a faltar una sino dos ecuaciones (condiciones) para el número de incógnitas que tenemos. \n"
 class ayuda(QDialog):
 
     def __init__(self, ayudade):

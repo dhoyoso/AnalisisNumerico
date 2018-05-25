@@ -20,7 +20,10 @@ class solucionCubico(QDialog):
         inicial = self.cubico.etapas[0]
         final = self.cubico.etapas[-1]
         xns = self.cubico.xns
-        n = self.cubico.n * 4
+        if(str(type(self.cubico)).find("Cuadrado") != -1):
+            n = self.cubico.n * 3
+        else:
+            n = self.cubico.n * 4
         marcas = self.cubico.marcas
         print("ini", inicial)
         # primera iter
