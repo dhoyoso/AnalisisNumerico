@@ -6,12 +6,12 @@ Repositorio de métodos numéricos desarrollados para el curso Análisis Númeri
 
 Estas instrucciones le permitirán obtener una copia del proyecto en funcionamiento en su máquina local para fines de desarrollo y prueba.
 
-### Prerequisites
+### Requisitos
 
 Para poner en marcha el programa es necesario tener  [Python](https://www.python.org/downloads/release/python-360/) en la version 3.6, [PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html), [numpy](http://www.numpy.org/) y [matplotlib](https://matplotlib.org/)
 
 
-### Installing
+### Instalación
 
 Una serie de ejemplos paso a paso que le indican cómo ejecutar un entorno de desarrollo
 
@@ -33,7 +33,7 @@ Para correr el programa se ejecuta:
 python paginaprincipal.py
 ```
 
-## Hecho con
+## Hecho con:
 
 * [Python](https://www.python.org/downloads/release/python-360/)
 * [PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html)
