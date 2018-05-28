@@ -57,12 +57,12 @@ class Funciones:
             gx = eval(self.Gx)
             plb.plot(x, gx, color='blueviolet', label='Gx')
         plb.grid(True)
-
+        plb.xlabel("X")
+        plb.ylabel("Y")
         # Valores sobre el eje X
         plb.legend(loc='best')
         #plb.plot(X, ejeX)
-        plb.xlabel("X")
-        plb.ylabel("Y")
+
         plb.show()
 
 #
