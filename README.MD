@@ -1,88 +1,58 @@
-# Project Title
+# Análisis Númerico
 
-One Paragraph of project description goes here
+Repositorio de métodos numéricos desarrollados para el curso Análisis Númerico de la Universidad  EAFIT implementados en Python para la resolución de Ecuaciones de una variable, de Sistemas de Ecuaciones, problemas de Interpolación y Diferenciación.
 
-## Getting Started
+## Comenzando
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Estas instrucciones le permitirán obtener una copia del proyecto en funcionamiento en su máquina local para fines de desarrollo y prueba.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Para poner en marcha el programa es necesario tener  [Python](https://www.python.org/downloads/release/python-360/) en la version 3.6, [PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html), [numpy](http://www.numpy.org/) y [matplotlib](https://matplotlib.org/)
 
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Una serie de ejemplos paso a paso que le indican cómo ejecutar un entorno de desarrollo
 
-Say what the step will be
+Tras instalar python siguiendo los pasos descritos [aquí](https://www.python.org/downloads/) descargaremos pip para instalar las dependencias [aquí](https://pip.pypa.io/en/stable/installing/).
 
-```
-Give the example
-```
-
-And repeat
+Despúes de tener python y pip procedemos a instalar las dependencias de nuestro proyecto así:
 
 ```
-until finished
+pip install PyQt5
+pip install matplotlib
+pip install numpy
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Para correr el programa se ejecuta:
 
 ```
-Give an example
+python paginaprincipal.py
 ```
 
-### And coding style tests
+## Hecho con
 
-Explain what these tests test and why
+* [Python](https://www.python.org/downloads/release/python-360/)
+* [PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html)
+* [numpy](http://www.numpy.org/)
+* [matplotlib](https://matplotlib.org/)
 
-```
-Give an example
-```
 
-## Deployment
+## Versionamiento
 
-Add additional notes about how to deploy this on a live system
+Usamos [SourceTree](https://www.sourcetreeapp.com/) para el versionamiento.
 
-## Built With
+## Autores
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* **Daniel Hoyos Ospina**  - [Git](https://github.com/dhoyoso)
+* **Diego Alejandro Pérez Gutierrez**  - [Git](https://github.com/dperezg1)
+* **Daniela Serna Escobar**  - [Git](https://github.com/dsernae)
+* **Edwin Montoya Jaramillo**  - [Git](https://github.com/emonto15)
 
-## Contributing
+## Licencia
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Este proyecto es un proyecto académico de la universidad EAFIT.
 
