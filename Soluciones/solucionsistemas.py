@@ -86,7 +86,7 @@ class solucionsistemas(QDialog):
                 solucion = []
 
                 for i in range(0, n):
-                    solucion.append(" X" + str(marcas[i]) + " = " + str(round(xns[i], 2)))
+                    solucion.append(" X" + str(i+1) + " = " + str(round(xns[i], 2)))
                 self.label_7.setText("".join(solucion))
                 print(marcas)
         else:

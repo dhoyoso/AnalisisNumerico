@@ -108,6 +108,20 @@ ayudas["cubico"] = "En este caso, cada polinomio P(x) a través del que construi
                    "- Que la derivada en un punto siempre coincida para ambos \"lados\" de la función definida a trozos que pasa por tal punto común. \n" \
                     "-Que la derivada segunda en un punto siempre coincida para ambos \"lados\" de la función definida a trozos que pasa por tal punto común. \n" \
                     "Como puede deducirse al compararlo con el caso de splines cuadráticos, ahora no nos va a faltar una sino dos ecuaciones (condiciones) para el número de incógnitas que tenemos. \n"
+
+ayudas["tridiagonal"] = "En las matrices banda, los elementos se organizan en diagonales alrededor de la diagonal principal, y los que están por fuera de la zona que delimitan dichas diagonales son 0. \n\n" \
+                        "En una matriz banda tridiagonal, todos los elementos son cero a excepción de los elementos de la diagonal principal y de las dos diagonales que se encuentran arriba y abajo. \n\n" \
+                        "Para resolver una matriz banda, en cada etapa se calculan solo 3 cosas: \n\n" \
+                        "    - Un multiplicador, ya que solo un elemento por debajo de la diagonal principal es 0.\n" \
+                        "    - Un cambio en un elemento del vector b  (diagonal principal)\n" \
+                        "    - Un cambio en un elemento del vector d (términos independientes)\n \n" \
+                        "Se sabe que el valor del elemento en el vector a será 0 al finalizar la etapa, por lo que no se calcula y simplemente se le asigna el valor de 0, y el vector c no se modifica ya que el elemento con el que se realiza la eliminación gaussiana en la fila pivote es siempre 0."
+
+
+ayudas["escalonada"] = "El pivoteo escalonado es una estrategia intermedia entre el pivoteo parcial y el pivoteo total.\n" \
+                       "Antes de comenzar con la eliminación, se carga un vector con los mayores elementos de cada fila. Se obtienen unos cocientes con los elementos de la columna de la etapa k y los elementos del vector de mayores en valor absoluto de su respectiva fila. Se elige la fila con el mayor cociente y se intercambia esta fila con la fila Fk."
+
+
 class ayuda(QDialog):
 
     def __init__(self, ayudade):

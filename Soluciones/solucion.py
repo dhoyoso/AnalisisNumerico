@@ -10,7 +10,7 @@ from PyQt5.uic import loadUi
 from UnaVariable.Abiertos.RaicesMultiples import RaicesMultiples
 from UnaVariable.Cerrados.ReglaFalsa import ReglaFalsa
 from UnaVariable.Abiertos.Secante import Secante
-
+from decimal import Decimal
 
 from UnaVariable.Abiertos.PuntoFijo import PuntoFijo
 
@@ -22,7 +22,7 @@ class solucion(QDialog):
     def __init__(self, funciones):
         super(solucion,self).__init__()
         loadUi('UI/solucion.ui',self)
-        self.setWindowTitle('Página principal')
+        self.setWindowTitle('Solución')
         self.funciones = funciones
 
     def clearParameters(self):
@@ -86,7 +86,7 @@ class solucion(QDialog):
             self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(fxs.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem(str(xm.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 5, QTableWidgetItem(str(fxm.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 6, QTableWidgetItem(str(error.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 6, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
 
@@ -126,7 +126,7 @@ class solucion(QDialog):
             self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(fxs.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem(str(xm.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 5, QTableWidgetItem(str(fxm.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 6, QTableWidgetItem(str(error.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 6, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
 
@@ -151,7 +151,7 @@ class solucion(QDialog):
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(error.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
 
@@ -180,7 +180,7 @@ class solucion(QDialog):
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(fpxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(error.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
 
@@ -205,7 +205,7 @@ class solucion(QDialog):
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(error.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
 
@@ -238,7 +238,7 @@ class solucion(QDialog):
             self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(fpxi.__getitem__(x))))
             self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(fppxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem(str(error.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
 

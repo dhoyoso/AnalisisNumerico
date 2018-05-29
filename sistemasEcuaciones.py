@@ -17,7 +17,8 @@ from Soluciones.solucionIterativos import SolucionIterativos
 from Soluciones.solucionsistemas import solucionsistemas
 from valoresIniciales import ValoresIniciales
 from ayuda import ayuda
-
+from SistemasEcuaciones.Gaussiana.EliminacionGaussianaEscalonada import EliminacionGaussianaEscalonado
+from Params.paramTridiagonal import paramTridiagonal
 
 class sistemasEcuaciones(QDialog):
     def __init__(self):
@@ -45,6 +46,16 @@ class sistemasEcuaciones(QDialog):
     def parcialShow(self):
         gausi = EliminacionGaussianaParcial()
         gausi.eliminacionGaussianaParcial(self.n.value(), np.copy(self.sistemaecuaciones.AB))
+        self.sistemaecuaciones.setAB(gausi.getAb())
+        self.sistemaecuaciones.setLastAB(gausi.getAb())
+        self.sistemaecuaciones.setXns(gausi.getXns())
+        self.sistemaecuaciones.setEtapas(gausi.getEtapas())
+        self.dialogue = solucionsistemas(self.sistemaecuaciones, gausi.unica, [])
+        self.dialogue.show()
+
+    def escalonadaShow(self):
+        gausi = EliminacionGaussianaEscalonado()
+        gausi.eliminacionGaussianaEscalonado(self.n.value(), np.copy(self.sistemaecuaciones.AB))
         self.sistemaecuaciones.setAB(gausi.getAb())
         self.sistemaecuaciones.setLastAB(gausi.getAb())
         self.sistemaecuaciones.setXns(gausi.getXns())
@@ -127,6 +138,10 @@ class sistemasEcuaciones(QDialog):
         self.valores_iniciales.setEnabled(True)
         self.valores_iniciales.setDisabled(False)
 
+    def paramTridiagonalShow(self):
+        self.dialogue = paramTridiagonal(self.n.value())
+        self.dialogue.show()
+
     @pyqtSlot()
     def on_pushButton_clicked(self):
         if self.sender().text() == "Continuar":
@@ -134,6 +149,10 @@ class sistemasEcuaciones(QDialog):
                 print("simple")
                 self.sistemaecuaciones.reset()
                 self.simpleShow()
+            elif self.escalonado.isChecked():
+                print("escalonado")
+                self.sistemaecuaciones.reset()
+                self.escalonadaShow()
             elif self.parcial.isChecked():
                 print("parcial")
                 self.sistemaecuaciones.reset()
@@ -162,6 +181,10 @@ class sistemasEcuaciones(QDialog):
                 print("jacobi")
                 self.sistemaecuaciones.reset()
                 self.jacobiShow()
+            elif self.tridiagonal.isChecked():
+                print("tridiagonal")
+                self.sistemaecuaciones.reset()
+                self.paramTridiagonalShow()
 
         elif (self.sender().text().find("Valores") != -1):
             print("valoresIniciales")
@@ -177,6 +200,14 @@ class sistemasEcuaciones(QDialog):
             elif self.parcial.isChecked():
                 print("parcial")
                 self.dialogue = ayuda("pivoteoparcial")
+                self.dialogue.show()
+            elif self.tridiagonal.isChecked():
+                print("tridiagonal")
+                self.dialogue = ayuda("tridiagonal")
+                self.dialogue.show()
+            elif self.escalonado.isChecked():
+                print("escalonada")
+                self.dialogue = ayuda("escalonada")
                 self.dialogue.show()
             elif self.total.isChecked():
                 print("total")

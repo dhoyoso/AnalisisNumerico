@@ -105,6 +105,12 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="minimum">
+    <double>-1000.000000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>1000.000000000000000</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="delta">
    <property name="geometry">
