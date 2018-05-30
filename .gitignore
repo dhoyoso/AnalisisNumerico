@@ -51,3 +51,7 @@ Params/__pycache__/paramTridiagonal.cpython-36.pyc
 SistemasEcuaciones/Gaussiana/__pycache__/EliminacionGaussianaEscalonada.cpython-36.pyc
 SistemasEcuaciones/Gaussiana/__pycache__/EliminacionGaussianaTridiagonal.cpython-36.pyc
 Soluciones/__pycache__/solucionTridiagonal.cpython-36.pyc
+Interpolacion/__pycache__/Neville.cpython-36.pyc
+SistemasEcuaciones/__pycache__/Inversa.cpython-36.pyc
+Soluciones/__pycache__/solucionInversa.cpython-36.pyc
+Soluciones/__pycache__/solucionNeville.cpython-36.pyc

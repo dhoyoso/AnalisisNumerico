@@ -13,6 +13,8 @@ from Interpolacion.Trazadores.cubicoNatural import CubicoNatural
 from Interpolacion.Trazadores.cudradoNatural import CuadradoNatural
 from Interpolacion.Trazadores.lineal import Lineal
 from Soluciones.solucionLineal import solucionLineal
+from Soluciones.solucionNeville import solucionNeville
+
 from ayuda import ayuda
 
 
@@ -153,7 +155,11 @@ class Interpolacion(QDialog):
                 print("cubico")
                 self.getXsandYs()
                 self.cubicoShow()
-
+            elif self.neville.isChecked():
+                print("neville")
+                self.getXsandYs()
+                self.dialogue = solucionNeville(self.funcioninterpolacion)
+                self.dialogue.show()
         elif (self.sender().text().find("Ingresar") != -1):
             print("ing puntos")
             self.createTable()
@@ -176,4 +182,8 @@ class Interpolacion(QDialog):
             elif self.cubico.isChecked():
                 print("cubico")
                 self.dialogue = ayuda("cubico")
+                self.dialogue.show()
+            elif self.neville.isChecked():
+                print("neville")
+                self.dialogue = ayuda("neville")
                 self.dialogue.show()

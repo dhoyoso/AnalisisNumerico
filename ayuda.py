@@ -122,6 +122,10 @@ ayudas["escalonada"] = "El pivoteo escalonado es una estrategia intermedia entre
                        "Antes de comenzar con la eliminación, se carga un vector con los mayores elementos de cada fila. Se obtienen unos cocientes con los elementos de la columna de la etapa k y los elementos del vector de mayores en valor absoluto de su respectiva fila. Se elige la fila con el mayor cociente y se intercambia esta fila con la fila Fk."
 
 
+ayudas["neville"] = "Este método presenta similitudes con Lagrange, la diferencia radica en que este aprovecha los cálculos previos para generar nuevas versiones del polinomio, es decir, los polinomios interpolantes son generados de manera recursiva. Aunque Neville arroja polinomios en su ejecución, este es el método más adecuado para calcular una aproximación al valor numérico de una función al ser evaluada en un punto; proceso que se realiza luego de haber calculado el polinomio interpolante utilizando los métodos de Newton o Lagrange.\n\n" \
+                    "Para comenzar, se asume que cada valor de f(xi) es un polinomio de grado 0 que interpola al punto (xi,f(xi)), el cual se denota como Pi."
+
+
 class ayuda(QDialog):
 
     def __init__(self, ayudade):

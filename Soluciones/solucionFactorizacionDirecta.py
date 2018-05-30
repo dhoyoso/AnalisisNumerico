@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.uic import loadUi
 
 from ketapasFactorizacion import KetapasFactorizacion
-
+from SistemasEcuaciones.Inversa import Inversa
+from Soluciones.solucionInversa import solucionInversa
 
 class SolucionFactorizacionDirecta(QDialog):
     def __init__(self, sistemas, solunica, marcas):
@@ -12,10 +13,14 @@ class SolucionFactorizacionDirecta(QDialog):
         self.setWindowTitle('Solución')
         self.sistemas = sistemas
         self.etapas.clicked.connect(self.on_pushButton_clicked)
+        self.inversa.clicked.connect(self.on_pushButton_clicked)
+
         if (solunica):
             inicial = self.sistemas.inicialAB
             L = self.sistemas.etapasL[-1]
             U = self.sistemas.etapasU[-1]
+            self.L = L
+            self.U = U
             zns = self.sistemas.zns
             xns = self.sistemas.xns
             n = self.sistemas.n
@@ -87,3 +92,9 @@ class SolucionFactorizacionDirecta(QDialog):
         if (self.sender().text().find("etapas") != -1):
             print("etapas")
             self.showEtapas()
+        elif(self.sender().text().find("Inversa")!=-1):
+            print("inversa")
+            inv = Inversa()
+            ini = inv.inversa(self.L, self.U, self.sistemas.n)
+            self.dialogue = solucionInversa(ini,self.sistemas.n)
+            self.dialogue.show()

@@ -61,7 +61,7 @@ class Biseccion:
                         self.errores.append(error)
 
                     if (ym == 0):
-                        return "Xm es una raiz en: " + xm
+                        return "Xm es una raiz en: " + str(xm)
                     elif (error < tol):
                         return "Paro por la tolerancia, la raiz aproximada seria: " + str(xm)
                     else:
@@ -69,10 +69,10 @@ class Biseccion:
                 else:
                     return "No hay raiz en el intervalo"
             else:
-                return "Xu es una raiz y su valor es: " + xu
+                return "Xu es una raiz y su valor es: " + str(xu)
 
         else:
-            return "Xi es una raiz y su valor es: " + xi
+            return "Xi es una raiz y su valor es: " + str(xi)
     def getXis(self):
         return self.xis
     def getFxis(self):

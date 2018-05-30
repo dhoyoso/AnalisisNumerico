@@ -77,7 +77,7 @@ class solucion(QDialog):
         currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
         self.tableWidget.insertColumn(currentRowCount)
         self.tableWidget.setHorizontalHeaderLabels(["Xi", "F(xi)", "Xu", "F(xu)", "Xm", "F(xm)", "error"])
-        for x in range(0, len(xi)):
+        for x in range(0, len(xm)):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xi.__getitem__(x))))

@@ -118,7 +118,7 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>270</y>
+     <y>290</y>
      <width>211</width>
      <height>17</height>
     </rect>
@@ -157,7 +157,7 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>230</y>
+     <y>250</y>
      <width>151</width>
      <height>21</height>
     </rect>
@@ -170,7 +170,7 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>300</y>
+     <y>320</y>
      <width>211</width>
      <height>17</height>
     </rect>
@@ -196,7 +196,7 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>330</y>
+     <y>350</y>
      <width>211</width>
      <height>17</height>
     </rect>
@@ -309,6 +309,32 @@
    </property>
    <property name="text">
     <string>Ayuda</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="neville">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>200</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Neville</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>18</width>
+     <height>18</height>
+    </size>
    </property>
   </widget>
  </widget>
