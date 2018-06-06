@@ -8,7 +8,7 @@ from PyQt5.uic import loadUi
 from main import *
 from sistemasEcuaciones import sistemasEcuaciones
 from interpolacion import Interpolacion
-
+from Diferenciacion import diferenciacion
 class paginaprincipal(QDialog):
     def __init__(self):
         super(paginaprincipal,self).__init__()
@@ -28,6 +28,8 @@ class paginaprincipal(QDialog):
         self.dialogue = sistemasEcuaciones()
         self.dialogue.show()
 
+
+
     @pyqtSlot()
     def on_pushButton_clicked(self):
         if(self.sender().text() == "Continuar"):
@@ -41,7 +43,8 @@ class paginaprincipal(QDialog):
                 print("interpol")
                 self.interpolacionShow()
             elif (self.diferenciacion.isChecked()):
-                #self.paramReglaFalsaShow()
+                self.dialogue = diferenciacion()
+                self.dialogue.show()
                 print("diferenciacion e integracion")
 
 

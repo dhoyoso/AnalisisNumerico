@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 ayudas = dict()
+
+ayudas["diferenciacion"]= "Son un conjunto de métodos basados en la interpolación, series de Taylor y la definición propia de la derivada, utilizados para evaluar las derivadas de funciones por medio de valores funcionales de puntos de datos discretos. \n \nEste método es muy inestable ya que los valores pequeños de h necesarios para disminuir el error de truncamiento hacen crecer el error de redondeo."
+
 ayudas["unavariablepuntofijo"] = "El método del punto fijo es un método iterativo que permite resolver sistemas de ecuaciones no necesariamente lineales.\n"" \
 ""En particular se puede utilizar para determinar raíces de una función de la forma f(x), siempre y cuando se cumplan los criterios de convergencia.\n" \
                                  "El procedimiento empieza con una estimación de  x, que es mejorada por iteración hasta alcanzar la convergencia.\n " \
