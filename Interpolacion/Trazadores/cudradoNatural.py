@@ -158,17 +158,17 @@ class CuadradoNatural:
         return resp
 
 
-cuadrado = CuadradoNatural()
+#cuadrado = CuadradoNatural()
 
-x = [3, 4.5, 7, 9]
-y = [2.5, 1, 2.5, 0.5]
-valor = 3
-cuadrado.cuadradoNatural(4, x, y)
-print(cuadrado.etapas[0])
-print(cuadrado.etapas[-1])
-print(cuadrado.marcas)
-print(cuadrado.n)
-print(cuadrado.hallarValor(8))
-print(cuadrado)
-print(cuadrado.funcion)
-print(type(cuadrado))
+#x = [3, 4.5, 7, 9]
+#y = [2.5, 1, 2.5, 0.5]
+#valor = 3
+#cuadrado.cuadradoNatural(4, x, y)
+#print(cuadrado.etapas[0])
+#print(cuadrado.etapas[-1])
+#print(cuadrado.marcas)
+#print(cuadrado.n)
+#print(cuadrado.hallarValor(8))
+#print(cuadrado)
+#print(cuadrado.funcion)
+#print(type(cuadrado))
