@@ -275,10 +275,19 @@ def jacobi(AB, n, x0, iteraciones, tolerancia, alpha):
             x[i] = alpha * (x[i]) + (1 - alpha) * (x0[i])
         nuevasFilas = comm.gather(x,root=0)
         if rank == 0:
-            x = [0.0] * n
+            x = []
             for i in range(len(nuevasFilas)):
                 for j in range(len(nuevasFilas[i])):
-                    x[j+len(nuevasFilas[i])*i]= nuevasFilas[i][j]
+                    x[j+len(nuevasFilas[i])*i]= nuevasFilas[i][j]    #esta monda es vieja
+            numeroDeNucleos = comm.size  # 4
+            filasPorNucleo = int((n) / numeroDeNucleos)
+            sobrantes = (n) % numeroDeNucleos
+            for i in range(0, size):   #este es el nuevo trycatch TODO
+                nuecleoActual = nuevasFilas[i]
+                for j in range(filasPorNucleo * i, filasPorNucleo * i + filasPorNucleo):
+                    x.append(nuecleoActual[j - filasPorNucleo * i])
+            for jo in range(0, sobrantes):
+                x.append(nuevasFilas[jo][-1])
             error = norma(x, x0, n)
             print(x)
             x0 = np.copy(x)
@@ -332,23 +341,23 @@ def factorizacionLUDoolittle(A, b, n):
     distribuidasTransA = []
     L = []
     U = []
-    if rank == 3:
+    if rank == 0:
         if np.linalg.det(A) == 0:
             return
         L = [[0.0] * n for i in range(n)]
         U = [[0.0] * n for i in range(n)]
         distribuidasL = repartirEquitativamente(n, L, 0)
-    myL = comm.scatter(distribuidasL, root=3)
+    myL = comm.scatter(distribuidasL, root=0)
     for it in range(len(myL)):
         myL[it][rank + (it * size)] = 1.0
-    temp = comm.gather(myL, root=3)
-    if rank == 3:
+    temp = comm.gather(myL, root=0)
+    if rank == 0:
         for i in range(0, len(temp)):
             for j in range(len(temp[i])):
                 L[i + (j * size)] = temp[i][j]
 
     for k in range(0, n - 1):
-        if rank == 3:
+        if rank == 0:
             suma = 0.0
             transU = np.transpose(U).tolist()
             for p in range(0, k + 1):
@@ -362,22 +371,22 @@ def factorizacionLUDoolittle(A, b, n):
         if k == 0:
             myL = [0.0] * n
         else:
-            if rank == 3:
+            if rank == 0:
                 distribuidasL = L[k]
-            myL = comm.bcast(distribuidasL, root=3)
+            myL = comm.bcast(distribuidasL, root=0)
         # U
-        myU = comm.scatter(distribuidasU, root=3)
-        myTransA = comm.scatter(distribuidasTransA, root=3)
-        myA = comm.scatter(distribuidasA, root=3)
-        actualDiag = comm.bcast(U, root=3)
+        myU = comm.scatter(distribuidasU, root=0)
+        myTransA = comm.scatter(distribuidasTransA, root=0)
+        myA = comm.scatter(distribuidasA, root=0)
+        actualDiag = comm.bcast(U, root=0)
         d = actualDiag[k][k]
         suma = 0.0
         for it in range(0, len(myU)):
             for p in range(0, k + 1):
                 suma += myU[it][p] * myL[p]
             myU[it][k] = myA[it] - suma
-        temp = comm.gather(myU, root=3)
-        if rank == 3:
+        temp = comm.gather(myU, root=0)
+        if rank == 0:
             for i in range(0, k + 1):
                 temp.pop()
             for i in range(0, len(temp)):
@@ -385,16 +394,16 @@ def factorizacionLUDoolittle(A, b, n):
                     U[i + (k + 1)] = temp[i][j]
             distribuidasL = repartirEquitativamente(n, L, k + 1)
         # L
-        myL = comm.scatter(distribuidasL, root=3)
+        myL = comm.scatter(distribuidasL, root=0)
         if k == 0:
             if len(myL) == 0:
                 myU = [0.0] * len(myL)
             else:
                 myU = [0.0] * len(myL[0])
         else:
-            if rank == 3:
+            if rank == 0:
                 distribuidasU = U[k]
-            myU = comm.bcast(distribuidasU, root=3)
+            myU = comm.bcast(distribuidasU, root=0)
         suma = 0.0
         print(myU,myL)
         for it in range(0, len(myL)):
@@ -403,14 +412,14 @@ def factorizacionLUDoolittle(A, b, n):
             result = (myTransA[it] - suma) / d
             myL[it][k] = result
 
-        temp = comm.gather(myL, root=3)
-        if rank == 3:
+        temp = comm.gather(myL, root=0)
+        if rank == 0:
             for i in range(k + 1):
                 temp.pop()
             for i in range(0, len(temp)):
                 for j in range(len(temp[i])):
                     L[i + (k + 1)] = temp[i][j]
-    if rank == 3:
+    if rank == 0:
         suma = 0.0
         for p in range(0, n):
             suma += L[n - 1][p] * U[n - 1][p]
@@ -431,24 +440,24 @@ def factorizacionLUCrout(A, b, n):
     distribuidasTransA = []
     L = []
     U = []
-    if rank == 3:
+    if rank == 0:
         if np.linalg.det(A) == 0:
             print("JOCO")
             return
         L = [[0.0] * n for i in range(n)]
         U = [[0.0] * n for i in range(n)]
         distribuidasU = repartirEquitativamente(n, U, 0)
-    myU = comm.scatter(distribuidasU, root=3)
+    myU = comm.scatter(distribuidasU, root=0)
     for it in range(len(myU)):
         myU[it][rank + (it * size)] = 1.0
-    temp = comm.gather(myU, root=3)
-    if rank == 3:
+    temp = comm.gather(myU, root=0)
+    if rank == 0:
         for i in range(0, len(temp)):
             for j in range(len(temp[i])):
                 U[i + (j * size)] = temp[i][j]
 
     for k in range(0, n - 1):
-        if rank == 3:
+        if rank == 0:
             suma = 0.0
             transU = np.transpose(U).tolist()
             for p in range(0, k + 1):
@@ -462,22 +471,22 @@ def factorizacionLUCrout(A, b, n):
         if k == 0:
             myU = [0.0] * n
         else:
-            if rank == 3:
+            if rank == 0:
                 distribuidasU = U[k]
-            myU = comm.bcast(distribuidasU, root=3)
+            myU = comm.bcast(distribuidasU, root=0)
         # L
-        myL = comm.scatter(distribuidasL, root=3)
-        myTransA = comm.scatter(distribuidasTransA, root=3)
-        myA = comm.scatter(distribuidasA, root=3)
-        actualDiag = comm.bcast(L, root=3)
+        myL = comm.scatter(distribuidasL, root=0)
+        myTransA = comm.scatter(distribuidasTransA, root=0)
+        myA = comm.scatter(distribuidasA, root=0)
+        actualDiag = comm.bcast(L, root=0)
         d = actualDiag[k][k]
         suma = 0.0
         for it in range(0, len(myL)):
             for p in range(0, k + 1):
                 suma += myL[it][p] * myU[p]
             myL[it][k] = myTransA[it] - suma
-        temp = comm.gather(myL, root=3)
-        if rank == 3:
+        temp = comm.gather(myL, root=0)
+        if rank == 0:
             for i in range(0, k + 1):
                 temp.pop()
             for i in range(0, len(temp)):
@@ -485,16 +494,16 @@ def factorizacionLUCrout(A, b, n):
                     L[i + (k + 1)] = temp[i][j]
             distribuidasU = repartirEquitativamente(n, U, k + 1)
         # U
-        myU = comm.scatter(distribuidasU, root=3)
+        myU = comm.scatter(distribuidasU, root=0)
         if k == 0:
             if len(myU) == 0:
                 myL = [0.0] * len(myU)
             else:
                 myL = [0.0] * len(myU[0])
         else:
-            if rank == 3:
+            if rank == 0:
                 distribuidasL = L[k]
-            myL = comm.bcast(distribuidasL, root=3)
+            myL = comm.bcast(distribuidasL, root=0)
         suma = 0.0
         for it in range(0, len(myU)):
             for p in range(0, k + 1):
@@ -502,14 +511,14 @@ def factorizacionLUCrout(A, b, n):
             result = (myA[it] - suma) / d
             myU[it][k] = result
 
-        temp = comm.gather(myU, root=3)
-        if rank == 3:
+        temp = comm.gather(myU, root=0)
+        if rank == 0:
             for i in range(k + 1):
                 temp.pop()
             for i in range(0, len(temp)):
                 for j in range(len(temp[i])):
                     U[i + (k + 1)] = temp[i][j]
-    if rank == 3:
+    if rank == 0:
         suma = 0.0
         for p in range(0, n):
             suma += L[n - 1][p] * U[n - 1][p]
@@ -534,7 +543,7 @@ def factorizacionLUCholesky(A, b, n):
     transA = []
     actualVal = 0.0
     transU = []
-    if rank == 3:
+    if rank == 0:
         if (any(elem < 0 for elem in np.diag(A))) | (np.linalg.det(A) == 0):
             return
         L = [[0.0] * n for i in range(n)]
@@ -542,7 +551,7 @@ def factorizacionLUCholesky(A, b, n):
         transA = np.transpose(A)
 
     for k in range(0, n - 1):
-        if rank == 3:
+        if rank == 0:
             suma = 0.0
             transU = np.transpose(U).tolist()
             for p in range(0, k + 1):
@@ -558,38 +567,38 @@ def factorizacionLUCholesky(A, b, n):
         if k == 0:
             myU = [0.0] * n
         else:
-            if rank == 3:
+            if rank == 0:
                 distribuidasU = U[k]
-            myU = comm.bcast(distribuidasU, root=3)
+            myU = comm.bcast(distribuidasU, root=0)
 
-        myL = comm.scatter(distribuidasL, root=3)
-        myTransA = comm.scatter(distribuidasTransA, root=3)
-        myA = comm.scatter(distribuidasA, root=3)
-        actualDiag = comm.bcast(U, root=3)
+        myL = comm.scatter(distribuidasL, root=0)
+        myTransA = comm.scatter(distribuidasTransA, root=0)
+        myA = comm.scatter(distribuidasA, root=0)
+        actualDiag = comm.bcast(U, root=0)
         d = actualDiag[k][k]
         suma = 0.0
         for it in range(0, len(myL)):
             for p in range(0, k + 1):
                 suma += myL[it][p] * myU[p]
             myL[it][k] = (myTransA[it] - suma) / d
-        temp = comm.gather(myL, root=3)
-        if rank == 3:
+        temp = comm.gather(myL, root=0)
+        if rank == 0:
             for i in range(0, k + 1):
                 temp.pop()
             for i in range(0, len(temp)):
                 for j in range(len(temp[i])):
                     L[i + (k + 1)] = temp[i][j]
             distribuidasU = repartirEquitativamente(n, U, k + 1)
-        myU = comm.scatter(distribuidasU, root=3)
+        myU = comm.scatter(distribuidasU, root=0)
         if k == 0:
             if len(myU) == 0:
                 myL = [0.0] * len(myU)
             else:
                 myL = [0.0] * len(myU[0])
         else:
-            if rank == 3:
+            if rank == 0:
                 distribuidasL = L[k]
-            myL = comm.bcast(distribuidasL, root=3)
+            myL = comm.bcast(distribuidasL, root=0)
         suma = 0.0
         for it in range(0, len(myU)):
             for p in range(0, k + 1):
@@ -597,14 +606,14 @@ def factorizacionLUCholesky(A, b, n):
             result = (myA[it] - suma) / d
             myU[it][k] = result
 
-        temp = comm.gather(myU, root=3)
-        if rank == 3:
+        temp = comm.gather(myU, root=0)
+        if rank == 0:
             for i in range(k + 1):
                 temp.pop()
             for i in range(0, len(temp)):
                 for j in range(len(temp[i])):
                     U[i + (k + 1)] = temp[i][j]
-    if rank == 3:
+    if rank == 0:
         suma = 0.0
         for p in range(0, n):
             suma += L[n - 1][p] * U[n - 1][p]
@@ -615,9 +624,6 @@ def factorizacionLUCholesky(A, b, n):
         x = sustitucionRegresiva(U, z)
         for i in range(0, len(x)):
             print("X", i + 1, " = ", x[i])
-
-
-
 
 #a = [34, -5, 6, 12,37]
 #b = [-9,43,21,8,123]
@@ -640,15 +646,15 @@ def factorizacionLUCholesky(A, b, n):
 #g = [-2,7,-2,-5,3,3,4,20]
 #e = [a, b, c, d,e,f,g]
 
-#a = [12, 3, -8, 9,23]
-#b = [2, -3, 5, 12,-45]
-#c = [2, -5, 3, -8,34]
-#e = [3,-8,45,29,34]
-#d = [a, b, c, e]
+a = [12, 3, -8, 9,23]
+b = [2, -3, 5, 12,-45]
+c = [2, -5, 3, -8,34]
+e = [3,-8,45,29,34]
+d = [a, b, c, e]
 
 
-#eliminacionGaussianaTotal(4, d)
+eliminacionGaussianaTotal(4, d)
 #eliminacionGaussianaSimple(7, e)
 
-a = [[13,-3,4,-8,-20],[5,-15,-6,-4,-32],[7,-3,14,5,-36],[6,-4,-9,-17,-40]]
-jacobi(a,4,[6,5,-7,7],100,10e-6,1)
+#a = [[13,-3,4,-8,-20],[5,-15,-6,-4,-32],[7,-3,14,5,-36],[6,-4,-9,-17,-40]]
+#jacobi(a,4,[6,5,-7,7],100,10e-6,1)

@@ -14,9 +14,14 @@ class NewtonInterpolacion:
         self.tabla = [[0.0] * (self.n) for i in range(self.n)]
         for i in range(0, self.n):
             self.tabla[i][0] = y[i]
-        for i in range(1, self.n):
-            for j in range(1, i + 1):
-                self.tabla[i][j] = (self.tabla[i][j - 1] - self.tabla[i - 1][j - 1]) / (x[i] - x[i - j])
+        self.imprimirMatriz()
+        print()
+        for j in range(1, self.n):
+            for i in range(1, self.n):
+                if(i>j-1):
+                    self.tabla[i][j] = (self.tabla[i][j - 1] - self.tabla[i - 1][j - 1]) / (x[i] - x[i - j])
+            self.imprimirMatriz()
+            print()
         print("Tabla de datos:")
         self.imprimirMatriz()
         print("Polinomio interpolante:")
@@ -55,7 +60,7 @@ class NewtonInterpolacion:
 
 #gausi = NewtonInterpolacion()
 
-#x = [1, 1.2, 1.4, 1.6, 1.8]
-#y = [-0.620907, 0.640927, 2.234099, 4.183599, 6.513606]
-
-#gausi.newtonInterpolacion(5, x, y)
+#x = [2,2.5,3,3.6,4.2,5]
+#y = [2.45,6.78,8.75,9.83,10.98,11.73]
+#gausi.newtonInterpolacion(6, x, y)
+#print(gausi.hallarvalor(2))
