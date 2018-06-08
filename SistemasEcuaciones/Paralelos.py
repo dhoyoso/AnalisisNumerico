@@ -277,8 +277,10 @@ def jacobi(AB, n, x0, iteraciones, tolerancia, alpha):
     error = tolerancia + 1
     contador = 1
     rank = comm.rank
-    size = comm.size
     distribuidas = []
+    numeroDeNucleos = comm.size #4
+    filasPorNucleo = int((n)/numeroDeNucleos)
+    sobrantes = (n)%numeroDeNucleos
     #etapas.append(np.copy
     if(rank == 0):
         distribuidas = repartirEquitativamente(4,AB,0)
@@ -286,28 +288,38 @@ def jacobi(AB, n, x0, iteraciones, tolerancia, alpha):
     arregloDeFilas = comm.scatter(distribuidas,root= 0)
     x = [0.0] * len(arregloDeFilas)
     while (error > tolerancia) & (contador < iteraciones):
-        for i in range(0, len(arregloDeFilas)):
+        for i in range(0, filasPorNucleo):
             suma = float(0)
             for j in range(0, n):
-                if (len(arregloDeFilas)*rank)+i != j:
+                if (filasPorNucleo*rank)+i != j:
                     suma = suma + float(arregloDeFilas[i][j]) * float(x0[j])
             x[i] = (float(arregloDeFilas[i][-1]) - suma) / float(arregloDeFilas[i][len(arregloDeFilas)*rank+i])
             x[i] = alpha * (x[i]) + (1 - alpha) * (x0[i])
+        for i in range(sobrantes):
+            if i == rank:
+                suma = float(0)
+                for j in range(0, n):
+                    if  n-sobrantes+i  != j:
+                        suma = suma + float(arregloDeFilas[-1][j]) * float(x0[j])
+                x[-1] = (float(arregloDeFilas[-1][-1]) - suma) / float(arregloDeFilas[-1][n-sobrantes+rank])
+                x[-1] = alpha * (x[-1]) + (1 - alpha) * (x0[-1])
         nuevasFilas = comm.gather(x,root=0)
         if rank == 0:
-            print(nuevasFilas)
-            x = [0.0] * n
+            xns = [0.0] * (n-sobrantes)
             for i in range(len(nuevasFilas)):
                 for j in range(len(nuevasFilas[i])):
-                    x[j+len(nuevasFilas[i])*i]= nuevasFilas[i][j]
-            error = norma(x, x0, n)
-            x0 = np.copy(x)
+                    xns[j+len(nuevasFilas[i])*i]= nuevasFilas[i][j]
+            for jo in range(0, sobrantes):
+                xns.append(nuevasFilas[jo][-1])
+            print(xns)
+            error = norma(xns, x0, n)
+            #print(xns)
+            x0 = np.copy(xns)
         error = comm.bcast(error,root=0)
         x0 = comm.bcast(x0,root= 0)
         contador += 1
         #etapas.append(np.copy(x))
     if(rank == 0):
-        xns = x
         if error < tolerancia:
             print("Vector X")
             print(xns)
