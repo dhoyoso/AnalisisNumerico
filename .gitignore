@@ -55,3 +55,5 @@ Interpolacion/__pycache__/Neville.cpython-36.pyc
 SistemasEcuaciones/__pycache__/Inversa.cpython-36.pyc
 Soluciones/__pycache__/solucionInversa.cpython-36.pyc
 Soluciones/__pycache__/solucionNeville.cpython-36.pyc
+__pycache__/DiferenciacionNumerica.cpython-36.pyc
+__pycache__/Diferenciacion.cpython-36.pyc

@@ -43,8 +43,7 @@ class solucion(QDialog):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xn.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxn.__getitem__(x))))
-        print(result+"joperra")
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxn.__getitem__(x)))))
         self.label_5.setText(result)
 
     def getTol(self,tol):
@@ -81,11 +80,11 @@ class solucion(QDialog):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxi.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(xs.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(fxs.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem('%.2E' % Decimal(str(fxs.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem(str(xm.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 5, QTableWidgetItem(str(fxm.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 5, QTableWidgetItem('%.2E' % Decimal(str(fxm.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 6, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
@@ -121,11 +120,11 @@ class solucion(QDialog):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxi.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(xs.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(fxs.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem('%.2E' % Decimal(str(fxs.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem(str(xm.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 5, QTableWidgetItem(str(fxm.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 5, QTableWidgetItem('%.2E' % Decimal(str(fxm.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 6, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
@@ -149,8 +148,8 @@ class solucion(QDialog):
         for x in range(0, len(xns)):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
-            self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem('%.2E' % Decimal(str(xns.__getitem__(x)))))
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxi.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
@@ -178,8 +177,8 @@ class solucion(QDialog):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(fpxi.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxi.__getitem__(x)))))
+            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem('%.2E' % Decimal(str(fpxi.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
@@ -204,7 +203,7 @@ class solucion(QDialog):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxi.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)
@@ -235,9 +234,9 @@ class solucion(QDialog):
             currentRowCount = self.tableWidget.rowCount()  # necessary even when there are no rows in the table
             self.tableWidget.insertRow(currentRowCount)
             self.tableWidget.setItem(currentRowCount, 0, QTableWidgetItem(str(xns.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem(str(fxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem(str(fpxi.__getitem__(x))))
-            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem(str(fppxi.__getitem__(x))))
+            self.tableWidget.setItem(currentRowCount, 1, QTableWidgetItem('%.2E' % Decimal(str(fxi.__getitem__(x)))))
+            self.tableWidget.setItem(currentRowCount, 2, QTableWidgetItem('%.2E' % Decimal(str(fpxi.__getitem__(x)))))
+            self.tableWidget.setItem(currentRowCount, 3, QTableWidgetItem('%.2E' % Decimal(str(fppxi.__getitem__(x)))))
             self.tableWidget.setItem(currentRowCount, 4, QTableWidgetItem('%.2E' % Decimal(str(error.__getitem__(x)))))
         print(result)
         self.label_5.setText(result)

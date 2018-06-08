@@ -162,13 +162,13 @@ class EliminacionGaussianaEscalonado:
         self.etapas = []
 
 
-gausi = EliminacionGaussianaEscalonado()
-a = [1, -2, 0.5, -5]
-b = [-2, 5, -1.5, 0]
-c = [-0.2, 1.75, -1, 10]
+#gausi = EliminacionGaussianaEscalonado()
+#a = [1, -2, 0.5, -5]
+#b = [-2, 5, -1.5, 0]
+#c = [-0.2, 1.75, -1, 10]
 
-e = [a, b, c]
+#e = [a, b, c]
 
-gausi.eliminacionGaussianaEscalonado(3, e)
+#gausi.eliminacionGaussianaEscalonado(3, e)
 #print("JOCO")
 #print(gausi.arregloMarcas)

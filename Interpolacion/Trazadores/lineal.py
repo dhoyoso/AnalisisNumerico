@@ -31,7 +31,7 @@ class Lineal:
 x = [1.0, 3.0,5.0]
 y = [1.0,6.0,25.0]
 
-gausi = Lineal()
-gausi.lineal(3,x, y)
-print(gausi.hallarValor(5))
-print(gausi.funcion)
+#gausi = Lineal()
+#gausi.lineal(3,x, y)
+##print(gausi.hallarValor(5))
+#print(gausi.funcion)

@@ -213,10 +213,10 @@ class CubicoNatural:
         return self.etapas
 
 
-cubico = CubicoNatural()
+#cubico = CubicoNatural()
 
 x = [2, 3, 5]
 y = [-1, 2, -7]
-cubico.cubicoNatural(3, x, y)
-print(cubico.hallarValor(5))
+#cubico.cubicoNatural(3, x, y)
+#print(cubico.hallarValor(5))
 
