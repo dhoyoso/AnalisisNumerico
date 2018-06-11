@@ -13,8 +13,6 @@ class PuntoFijo:
             y = funciones.calculateFx(x)
             self.fxns.append(y)
             return y
-
-
         def g(x):
             y = funciones.calculateGx(x)
             self.gxns.append(y)

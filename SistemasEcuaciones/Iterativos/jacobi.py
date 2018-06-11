@@ -4,8 +4,6 @@ class Jacobi:
         self.xns = []
         self.A = [[]]
         self.b = []
-        self.L = [[]]
-        self.U = [[]]
         self.n = 0
         self.etapas = []
 
@@ -17,12 +15,11 @@ class Jacobi:
         iteraciones += 1
         contador = 1
 
-        print(str(contador))
         error = tolerancia + 1
         x = [0.0] * n
         self.etapas.append(np.copy(x0))
+        print(x0)
         while (error > tolerancia) & (contador < iteraciones):
-            print("L")
             for i in range(1, n + 1):
                 suma = 0
                 for j in range(1, n + 1):
@@ -35,6 +32,7 @@ class Jacobi:
                 x0[i - 1] = x[i - 1]
             contador += 1
             self.etapas.append(np.copy(x))
+            print(x)
         self.xns = x
 
         if error < tolerancia:
@@ -61,19 +59,18 @@ class Jacobi:
 
 
 #gausi = Jacobi()
-#q = [45, 13, -4, 8]
-#r = [-5, -28, 4, -14]
-#p = [9, 15, 63, -7]
-#s = [2, 3, -8, -42]
+q = [45, 13, -4, 8]
+r = [-5, -28, 4, -14]
+p = [9, 15, 63, -7]
+s = [2, 3, -8, -42]
 #
-#a = [q, r, p, s]
+a = [q, r, p, s]
 #
-#b = [-25, 82, 75, -43]
+b = [-25, 82, 75, -43]
 #
-#x0 = [2, 2, 2, 2]
+x0 = [2, 2, 2, 2]
 #
 ## def jacobi(self, A, b, n, x0, iteraciones, tolerancia, alpha):
 #
 #gausi.jacobi(a, b, 4, x0, 13, 10e-5, 1)
 #print("JOCO")
-#print(gausi.getEtapas())

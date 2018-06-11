@@ -64,9 +64,7 @@ class EliminacionGaussianaTotal:
             self.xns[i - 1] = temp
             print("X" + str(self.marcas[i - 1]) + " = " + str(self.xns[i - 1]))
 
-        print("Uno", self.xns, self.marcas)
         self.beforeordenar = np.copy(self.marcas)
-        print("DIEGO E SUN MK Y YO TENGO RAZON" + str(self.beforeordenar))
         self.ordenarX()
         print(self.xns, self.marcas)
 
@@ -153,11 +151,11 @@ class EliminacionGaussianaTotal:
 
 
 #gausi = EliminacionGaussianaTotal()
-#a = [1, -2, 0.5, -5]
-#b = [-2, 5, -1.5, 0]
-#c = [-0.2, 1.75, -1, 10]
+a = [1, -2, 0.5, -5]
+b = [-2, 5, -1.5, 0]
+c = [-0.2, 1.75, -1, 10]
 
-#e = [a, b, c]
+e = [a, b, c]
 
 #gausi.eliminacionGaussianaTotal(3, e)
 #print("JOCO")

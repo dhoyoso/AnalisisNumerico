@@ -17,10 +17,10 @@ class Seidel:
         iteraciones += 1
         contador = 1
 
-        print(str(contador))
         error = tolerancia + 1
         x = [0.0] * n
         self.etapas.append(np.copy(x0))
+        print(x0)
         while (error > tolerancia) & (contador < iteraciones):
             error = 0
             for i in range(1, n + 1):
@@ -38,6 +38,7 @@ class Seidel:
             for i in range(1, n + 1):
                 x0[i - 1] = x[i - 1]
             self.etapas.append(np.copy(x))
+            print(x)
             contador += 1
         self.xns = x
 
@@ -65,16 +66,14 @@ class Seidel:
         self.n = 0
 
 
-# gausi = Seidel()
-# q = [45, 13, -4, 8]
-# r = [-5, -28, 4, -14]
-# p = [9, 15, 63, -7]
-# s = [2, 3, -8, -42]
-#
-# a = [q, r, p, s]
-#
-# b = [-25, 82, 75, -43]
-#
-# x0 = [2, 2, 2, 2]
-#
-# gausi.seidel(a, b, 4, x0, 10, 10e-5, 1)
+#gausi = Seidel()
+q = [45, 13, -4, 8]
+r = [-5, -28, 4, -14]
+p = [9, 15, 63, -7]
+s = [2, 3, -8, -42]
+a = [q, r, p, s]
+b = [-25, 82, 75, -43]
+
+x0 = [2, 2, 2, 2]
+
+#gausi.seidel(a, b, 4, x0, 10, 10e-5, 1)

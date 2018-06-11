@@ -11,8 +11,6 @@ class Lagrange:
         self.x = x
         self.y = y
         self.n = nroPtos
-
-        resultado = 0
         self.pol = ""
 
         for k in range(0, self.n):
@@ -57,10 +55,10 @@ class Lagrange:
         self.n = 0
 
 
-#gausi = Lagrange()
+gausi = Lagrange()
 
-#x = [1, 1.2, 1.4, 1.6, 1.8]
-#y = [-0.620907, 0.640927, 2.234099, 4.183599, 6.513606]
+x = [1, 1.2, 1.4, 1.6, 1.8]
+y = [-0.620907, 0.640927, 2.234099, 4.183599, 6.513606]
 
-#gausi.lagrange(5, x, y)
-#print(gausi.hallarvalor(1.45))
+gausi.lagrange(5, x, y)
+print(gausi.hallarvalor(1.45))

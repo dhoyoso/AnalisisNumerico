@@ -50,7 +50,6 @@ class EliminacionGaussianaSimple:
             for p in range(i + 1, n + 1):
                 sumatoria = sumatoria + self.Ab[i - 1][p - 1] * self.xns[p - 1]
             temp = (self.Ab[i - 1][n] - sumatoria) / self.Ab[i - 1][i - 1]
-            print("ESTA ES I: ", i)
             self.xns[i - 1] = temp
             print("X" + str(i) + " = " + str(self.xns[i - 1]))
 
@@ -81,5 +80,5 @@ b = [-2, 5, -1.5, 0]
 c = [-0.2, 1.75, -1, 10]
 
 e = [a, b, c]
-#gausi.eliminacionGaussianaSimple(3, e)
+gausi.eliminacionGaussianaSimple(3, e)
 

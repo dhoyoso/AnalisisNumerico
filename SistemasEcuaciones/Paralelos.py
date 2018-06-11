@@ -30,7 +30,6 @@ def eliminacionGaussianaSimple(n, Ab):
                 Ab = rehacerAb(Ab,n,nuevasFilas,k)
                 pivote = Ab[k-1]
                 distribuidas = repartirEquitativamente(n, Ab, k)
-
         arreglofilas = comm.scatter(distribuidas, root=0)
         filaPivote = comm.bcast(pivote, root = 0)
         for i in range(0, len(arreglofilas)):
@@ -45,8 +44,6 @@ def eliminacionGaussianaSimple(n, Ab):
                 Ab[i] = Ab[i]
             else:
                 Ab[i] = nuevasFilas[0][0]
-        print('\n'.join(['     '.join(['{:4}'.format(item, 2) for item in row]) for row in Ab]))
-        print(" ")
         xns = [0.0] * n
         for i in range(n, 0, -1):
             sumatoria = 0
@@ -283,7 +280,7 @@ def jacobi(AB, n, x0, iteraciones, tolerancia, alpha):
     sobrantes = (n)%numeroDeNucleos
     #etapas.append(np.copy
     if(rank == 0):
-        distribuidas = repartirEquitativamente(4,AB,0)
+        distribuidas = repartirEquitativamente(n,AB,0)
         print(distribuidas)
     arregloDeFilas = comm.scatter(distribuidas,root= 0)
     x = [0.0] * len(arregloDeFilas)
@@ -672,15 +669,21 @@ def factorizacionLUCholesky(A, b, n):
 #g = [-2,7,-2,-5,3,3,4,20]
 #e = [a, b, c, d,e,f,g]
 
-a = [12, 3, -8, 9,23]
-b = [2, -3, 5, 12,-45]
-c = [2, -5, 3, -8,34]
-e = [3,-8,45,29,34]
-d = [a, b, c, e]
+#a = [12, 3, -8, 9,23]
+#b = [2, -3, 5, 12,-45]
+#c = [2, -5, 3, -8,34]
+#e = [3,-8,45,29,34]
+#d = [a, b, c, e]
 
 
+a = [1, -2, 0.5, -5]
+b = [-2, 5, -1.5, 0]
+c = [-0.2, 1.75, -1, 10]
+
+e = [a, b, c]
+eliminacionGaussianaSimple(3, e)
 #print(eliminacionGaussianaTotal(4, d))
 #eliminacionGaussianaSimple(7, e)
 
-a = [[13,-3,4,-8,-20],[5,-15,-6,-4,-32],[7,-3,14,5,-36],[6,-4,-9,-17,-40]]
-jacobi(a,4,[6,5,-7,7],100,10e-6,1)
+#a = [[13,-3,4,-8,-20],[5,-15,-6,-4,-32],[7,-3,14,5,-36],[6,-4,-9,-17,-40]]
+#jacobi(a,4,[6,5,-7,7],100,10e-6,1)

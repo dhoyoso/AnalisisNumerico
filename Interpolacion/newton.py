@@ -63,4 +63,4 @@ class NewtonInterpolacion:
 #x = [2,2.5,3,3.6,4.2,5]
 #y = [2.45,6.78,8.75,9.83,10.98,11.73]
 #gausi.newtonInterpolacion(6, x, y)
-#print(gausi.hallarvalor(2))
+#print(gausi.hallarvalor(2.1))

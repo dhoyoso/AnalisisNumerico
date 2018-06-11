@@ -7,7 +7,6 @@ class EliminacionGaussianaEscalonado:
         self.Ab = [[]]
         self.n = 0
         self.unica = True  # Este bool cuando es verdad podemos calcular la solucion, cuando es falsa, no se puede calcular nada
-
         self.etapas = []
         self.beforeordenar = []
         self.s = []

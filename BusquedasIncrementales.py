@@ -9,7 +9,6 @@ class BusquedasIncrementales:
             result = funciones.calculateFx(x)
             self.fxn.append(result)
             return result
-
         y0 = funcion(x0)
         if y0 != 0:
             x1 = np.float64(x0 + xdelta)

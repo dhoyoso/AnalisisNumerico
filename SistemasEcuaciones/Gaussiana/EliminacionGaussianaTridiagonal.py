@@ -1,6 +1,6 @@
 import numpy as np
 
-
+#TRI DIAGONAL B = DIAG PRIN; C = DIAG SUP; A = DIAG INF; D = INDEPENDIENTES
 class EliminacionGaussianaTridiagonal:
     def __init__(self):
         self.a = []
@@ -20,16 +20,15 @@ class EliminacionGaussianaTridiagonal:
         self.bb = bb
         self.n = n
         self.matrix = [[0.0] * n for i in range(self.n)]
-        if(a.count(0)!= 0) | (b.count(0)!= 0) | (c.count(0)!=0):
-            self.unica = False
-            print("No tiene solución única!")
-            return
         for i in range(0, self.n):
             self.matrix[i][i] = b[i]
             if (n - i) != 1:
                 self.matrix[i][i + 1] = c[i]
                 self.matrix[i + 1][i] = a[i]
-
+        if(np.linalg.det(self.matrix)==0):
+            self.unica = False
+            print("El sistema no tiene solución unica!")
+            return
         print("Matriz A: ")
         self.inicial = np.copy(self.matrix)
         self.inicialBB = np.copy(self.bb)
