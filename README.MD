@@ -6,16 +6,33 @@ Repositorio de métodos numéricos desarrollados para el curso Análisis Númeri
 
 Estas instrucciones le permitirán obtener una copia del proyecto en funcionamiento en su máquina local para fines de desarrollo y prueba.
 
-### Requisitos
+## Requisitos
+##### MacOS
+Es necesario un manejador de paquetes como [Homebrew](https://brew.sh/) y correr los comandos:
+
+
+```
+brew install pyqt
+brew install mpich
+```
+
+
+##### Ubuntu
+
+Es necesario correr los siguientes comandos:
+
+```
+sudo apt-install openmpi-bin openmpi-doc libopenmpi-dev
+```
 
 Para poner en marcha el programa es necesario tener  [Python](https://www.python.org/downloads/release/python-360/) en la version 3.6, [PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html), [numpy](http://www.numpy.org/) y [matplotlib](https://matplotlib.org/)
 
 
-### Instalación
 
-Una serie de ejemplos paso a paso que le indican cómo ejecutar un entorno de desarrollo
-
+## Instalación
 Tras instalar python siguiendo los pasos descritos [aquí](https://www.python.org/downloads/) descargaremos pip para instalar las dependencias [aquí](https://pip.pypa.io/en/stable/installing/).
+
+
 
 Despúes de tener python y pip procedemos a instalar las dependencias de nuestro proyecto así:
 
@@ -24,8 +41,6 @@ pip install PyQt5
 pip install matplotlib
 pip install numpy
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 Para correr el programa se ejecuta:
 
@@ -55,4 +70,3 @@ Usamos [SourceTree](https://www.sourcetreeapp.com/) para el versionamiento.
 ## Licencia
 
 Este proyecto es un proyecto académico de la universidad EAFIT.
-
