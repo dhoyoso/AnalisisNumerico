@@ -42,10 +42,18 @@ pip install matplotlib
 pip install numpy
 ```
 
+## Ejecución:
+
 Para correr el programa se ejecuta:
 
 ```
 python paginaprincipal.py
+```
+
+Para ejecutar en paralelo los códigos se ejecuta:
+
+```
+mpiexec -n <numero de cores> python <archivo>.py
 ```
 
 ## Hecho con:
